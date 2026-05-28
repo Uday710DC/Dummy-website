@@ -1,1385 +1,968 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Decentrialz — Wireframe v1 (Phase 2 Homepage)</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CIDP Phase 3 Study — Now enrolling in Tampa & El Paso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  /* =========================================
-     WIREFRAME TOKENS — strictly grayscale +
-     a single accent for primary CTAs only.
-     ========================================= */
-  :root {
-    --bg:           #EDEEF0;
-    --paper:        #FFFFFF;
-    --line:         #C4C7CC;
-    --line-strong:  #8A8E94;
-    --line-soft:    #DCDEE2;
-    --fill-1:       #F4F5F7;
-    --fill-2:       #E4E6EA;
-    --fill-3:       #D2D5DA;
-    --ink:          #3A3D42;
-    --ink-soft:     #6A6E74;
-    --ink-faint:    #9CA0A6;
-    --accent:       #287ABD;       /* brand primary, used VERY sparingly */
-    --accent-soft:  #DCE7F2;
-    --annotate:     #B85C00;       /* wireframe annotation color */
-    --annotate-soft:#FFF1DD;
+  :root{
+    --blue:#1E40AF;
+    --blue-deep:#1E3A8A;
+    --blue-darker:#172554;
+    --blue-light:#DBEAFE;
+    --blue-soft:#EFF6FF;
+    --blue-sky:#3B82F6;
+    --orange:#F97316;
+    --orange-deep:#EA580C;
+    --green:#16A34A;
+    --green-soft:#DCFCE7;
+    --red-soft:#FEE2E2;
+    --red:#DC2626;
+    --ink:#0F172A;
+    --ink-2:#1E293B;
+    --gray:#64748B;
+    --gray-2:#94A3B8;
+    --line:#E2E8F0;
+    --line-soft:#F1F5F9;
+    --bg:#F8FAFC;
+    --white:#FFFFFF;
   }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    font-family: 'Courier New', ui-monospace, monospace;
-    background: var(--bg);
-    color: var(--ink);
-    font-size: 13px;
-    line-height: 1.5;
-    padding: 32px 16px 80px;
-  }
-
-  /* ---------- WIREFRAME WRAPPER ---------- */
-  .wf-meta {
-    max-width: 1180px;
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: 0 8px;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .wf-meta h1 {
-    font-family: 'Georgia', serif;
-    font-weight: 400;
-    font-size: 22px;
-    margin: 0 0 4px;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-  .wf-meta .sub {
-    font-size: 11px;
-    color: var(--ink-soft);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-  .wf-meta .stamp {
-    border: 1.5px dashed var(--annotate);
-    color: var(--annotate);
-    background: var(--annotate-soft);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    padding: 6px 14px;
-    text-transform: uppercase;
-    transform: rotate(-1deg);
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Manrope',sans-serif;
+    background:var(--white);
+    color:var(--ink);
+    line-height:1.6;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
   }
 
-  .browser {
-    max-width: 1180px;
-    margin: 0 auto;
-    background: var(--paper);
-    border: 1.5px solid var(--line-strong);
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
-  }
-  .browser-bar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
-    background: var(--fill-2);
-    border-bottom: 1px solid var(--line);
-  }
-  .browser-bar .dots { display: flex; gap: 6px; }
-  .browser-bar .dot {
-    width: 11px; height: 11px;
-    border-radius: 999px;
-    background: var(--fill-3);
-    border: 1px solid var(--line);
-  }
-  .browser-bar .url {
-    flex: 1;
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 4px 12px;
-    font-size: 11px;
-    color: var(--ink-soft);
-  }
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft);padding:14px 32px}
+  .nav-inner{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand-mark{width:38px;height:38px;border-radius:8px;background:var(--blue);display:grid;place-items:center;color:#FFF;font-size:20px;font-weight:700}
+  .brand-name{font-size:17px;font-weight:700;color:var(--ink)}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{color:var(--ink-2);text-decoration:none;font-size:14px;font-weight:500}
+  .nav-links a:hover{color:var(--blue)}
+  .nav-phone{background:var(--orange);color:#FFF;padding:10px 18px;border-radius:99px;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background 0.2s}
+  .nav-phone:hover{background:var(--orange-deep)}
 
-  /* ---------- SECTION SHELL ---------- */
-  .section {
-    position: relative;
-    border-bottom: 1px dashed var(--line);
-    padding: 0;
-  }
-  .section:last-child { border-bottom: none; }
+  /* HERO */
+  .hero{position:relative;padding:60px 32px 80px;background:linear-gradient(180deg,var(--blue-soft) 0%,#FFFFFF 100%);overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-100px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(249,115,22,0.08) 0%,transparent 70%);pointer-events:none}
+  .hero-inner{max-width:1240px;margin:0 auto;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+  .pills-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+  .pill-blue{background:var(--blue-light);color:var(--blue-deep)}
+  .pill-green{background:var(--green-soft);color:var(--green)}
+  .pill-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+  h1.hero-h{font-size:clamp(38px,5.4vw,60px);line-height:1.1;font-weight:800;color:var(--ink);margin-bottom:24px;letter-spacing:-0.02em}
+  h1.hero-h span{color:var(--blue)}
+  .hero-lead{font-size:17px;color:var(--gray);max-width:540px;margin-bottom:32px;line-height:1.6}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#FFF;padding:15px 30px;border-radius:99px;font-family:inherit;font-weight:600;font-size:15px;text-decoration:none;cursor:pointer;border:none;transition:all 0.2s ease;box-shadow:0 8px 20px rgba(30,64,175,0.25)}
+  .btn-primary:hover{background:var(--blue-deep);transform:translateY(-1px);box-shadow:0 12px 28px rgba(30,64,175,0.35)}
+  .btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--blue);padding:15px 28px;border-radius:99px;border:1.5px solid var(--blue);font-family:inherit;font-weight:600;font-size:15px;text-decoration:none;cursor:pointer;transition:all 0.2s ease}
+  .btn-outline:hover{background:var(--blue-soft)}
+  .btn-orange{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#FFF;padding:14px 28px;border-radius:99px;font-family:inherit;font-weight:600;font-size:15px;text-decoration:none;cursor:pointer;border:none;transition:all 0.2s ease;box-shadow:0 8px 20px rgba(249,115,22,0.3)}
+  .btn-orange:hover{background:var(--orange-deep);transform:translateY(-1px);box-shadow:0 12px 28px rgba(249,115,22,0.4)}
+  .stat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:580px}
+  .stat-card{background:#FFF;border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-align:center;box-shadow:0 4px 14px rgba(15,23,42,0.04)}
+  .stat-num{font-size:26px;font-weight:800;color:var(--blue-deep);line-height:1;margin-bottom:6px}
+  .stat-label{font-size:12px;color:var(--gray);line-height:1.3;font-weight:500}
+  .hero-img-wrap{position:relative;aspect-ratio:1/1;max-width:520px;margin-left:auto}
+  .hero-img{width:100%;height:100%;border-radius:24px;overflow:hidden;box-shadow:0 24px 60px rgba(15,23,42,0.12)}
+  .hero-img svg{width:100%;height:100%;display:block}
+  .hero-badge-top{position:absolute;top:24px;left:-20px;background:#FFF;border:1px solid var(--line);border-radius:14px;padding:14px 18px;box-shadow:0 14px 32px rgba(15,23,42,0.1);display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--ink);z-index:2}
+  .hero-badge-top-icon{width:32px;height:32px;border-radius:8px;background:var(--blue-light);color:var(--blue-deep);display:grid;place-items:center;font-size:16px}
+  .hero-badge-top small{display:block;font-size:11px;color:var(--gray);font-weight:500;margin-top:2px}
+  .hero-badge-bottom{position:absolute;bottom:24px;left:-20px;background:var(--orange);border-radius:14px;padding:14px 18px;box-shadow:0 14px 32px rgba(249,115,22,0.35);display:flex;align-items:center;gap:10px;color:#FFF;z-index:2;max-width:240px}
+  .hero-badge-bottom-icon{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.2);display:grid;place-items:center;font-size:16px;flex-shrink:0;font-weight:700}
+  .hero-badge-bottom strong{display:block;font-size:13px;font-weight:700;margin-bottom:2px}
+  .hero-badge-bottom small{font-size:11px;font-weight:500;opacity:0.95;line-height:1.3}
 
-  .section-tag {
-    position: absolute;
-    top: 14px;
-    left: -76px;
-    width: 64px;
-    text-align: right;
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--annotate);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    line-height: 1.3;
-  }
-  .section-tag .num {
-    display: block;
-    font-size: 22px;
-    font-family: 'Georgia', serif;
-    color: var(--annotate);
-    font-weight: 400;
-    margin-bottom: 2px;
-  }
-  @media (max-width: 1320px) {
-    .section-tag {
-      position: relative; left: 0; top: 0;
-      width: auto; text-align: left;
-      padding: 12px 24px 0;
-      display: flex; align-items: baseline; gap: 10px;
-    }
-    .section-tag .num {
-      display: inline; font-size: 16px; margin: 0;
-    }
-  }
+  /* TRUST STRIP */
+  .trust-strip{background:var(--blue-deep);padding:22px 32px}
+  .trust-strip-inner{max-width:1240px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:24px;align-items:center}
+  .trust-item{color:#FFF;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+  .trust-item::after{content:"◆";color:var(--orange);font-size:10px;opacity:0.7}
+  .trust-item:last-child::after{display:none}
 
-  .container {
-    padding: 24px 32px;
-  }
+  /* SECTIONS */
+  section.std{padding:100px 32px}
+  .container{max-width:1240px;margin:0 auto}
+  .section-head{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:end;margin-bottom:64px}
+  .section-h{font-size:clamp(34px,4vw,46px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:var(--ink)}
+  .section-h span{color:var(--blue)}
+  .section-lead{font-size:15px;color:var(--gray);line-height:1.7;text-align:right}
 
-  /* ---------- WIREFRAME PRIMITIVES ---------- */
-  .ph-line {
-    height: 8px;
-    background: var(--fill-2);
-    border-radius: 2px;
-    margin-bottom: 6px;
-  }
-  .ph-line.short { width: 40%; }
-  .ph-line.mid   { width: 65%; }
-  .ph-line.long  { width: 90%; }
-  .ph-line.full  { width: 100%; }
-  .ph-line.dark  { background: var(--fill-3); }
+  /* ABOUT CARDS */
+  .about-card{background:#FFF;border:1px solid var(--line);border-radius:20px;padding:32px 28px;position:relative;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 2px 8px rgba(15,23,42,0.03)}
+  .about-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(15,23,42,0.08)}
+  .about-card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
+  .about-icon{width:46px;height:46px;border-radius:12px;background:var(--blue-light);color:var(--blue-deep);display:grid;place-items:center;font-size:22px}
+  .phase-tag{background:#FFEDD5;color:var(--orange-deep);padding:5px 12px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:0.08em}
+  .study-code{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px}
+  .study-title{font-size:20px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3}
+  .study-desc{font-size:14px;color:var(--gray);line-height:1.6;margin-bottom:20px}
+  .study-divider{height:1px;background:var(--line);margin:20px 0;position:relative}
+  .study-divider::before{content:"";position:absolute;left:0;top:0;width:40px;height:1px;background:var(--orange)}
+  .study-criteria{list-style:none;padding:0}
+  .study-criteria li{display:flex;align-items:flex-start;gap:10px;padding:5px 0;font-size:14px;color:var(--ink-2)}
+  .study-criteria li::before{content:"";flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--orange);margin-top:8px}
+  .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 
-  .ph-heading {
-    height: 18px;
-    background: var(--fill-3);
-    border-radius: 3px;
-    margin-bottom: 10px;
-  }
-  .ph-heading.lg { height: 28px; }
-  .ph-heading.xl { height: 40px; }
+  /* KEY FACT */
+  .keyfact-section{background:var(--blue-soft);padding:80px 32px}
+  .keyfact-card{max-width:1100px;margin:0 auto;background:#FFF;border-radius:24px;padding:48px 56px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;box-shadow:0 20px 50px rgba(15,23,42,0.08);border:1px solid var(--line)}
+  .keyfact-icon{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-sky));color:#FFF;display:grid;place-items:center;font-size:42px;font-weight:800;flex-shrink:0;box-shadow:0 10px 30px rgba(30,64,175,0.3)}
+  .keyfact-h{font-size:30px;font-weight:800;color:var(--ink);margin-bottom:12px;line-height:1.2;letter-spacing:-0.01em}
+  .keyfact-h span{color:var(--blue)}
+  .keyfact-p{font-size:16px;color:var(--gray);line-height:1.6}
+  .keyfact-p strong{color:var(--ink);font-weight:700}
 
-  /* image / illustration placeholder w/ diagonal lines */
-  .ph-img {
-    background: var(--fill-1);
-    border: 1.5px dashed var(--line);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--ink-faint);
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-  .ph-img::before, .ph-img::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom right, transparent calc(50% - 0.5px), var(--line) 50%, transparent calc(50% + 0.5px));
-    opacity: 0.5;
-  }
-  .ph-img::after {
-    background: linear-gradient(to top right, transparent calc(50% - 0.5px), var(--line) 50%, transparent calc(50% + 0.5px));
-  }
-  .ph-img > span {
-    position: relative;
-    z-index: 2;
-    background: var(--paper);
-    padding: 2px 8px;
-    border: 1px solid var(--line);
-    border-radius: 2px;
-  }
+  /* WASHOUT */
+  .washout-section{padding:80px 32px;background:#FFF}
+  .washout-card{max-width:1000px;margin:0 auto;background:#FFF7ED;border:1px solid #FED7AA;border-left:5px solid var(--orange);border-radius:16px;padding:40px 48px}
+  .washout-pill{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#FFF;padding:6px 14px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px}
+  .washout-h{font-size:28px;font-weight:800;color:var(--ink);margin-bottom:18px;letter-spacing:-0.01em;line-height:1.25}
+  .washout-p{font-size:16px;color:var(--ink-2);line-height:1.65;margin-bottom:14px}
+  .washout-p:last-child{margin-bottom:0}
+  .washout-p strong{font-weight:700;color:var(--ink)}
 
-  /* button shapes */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    border: 1.5px solid var(--ink);
-    background: var(--paper);
-    color: var(--ink);
-    padding: 8px 16px;
-    font-family: inherit;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .btn.primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
-  .btn.ghost {
-    border-style: dashed;
-    border-color: var(--line-strong);
-    color: var(--ink-soft);
-  }
-  .btn.lg { padding: 12px 22px; font-size: 12px; }
-  .btn.sm { padding: 5px 10px; font-size: 10px; }
+  /* ELIG */
+  .elig-section{padding:100px 32px;background:var(--bg)}
+  .elig-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
+  .elig-col{background:#FFF;border:1px solid var(--line);border-radius:20px;padding:36px;box-shadow:0 2px 8px rgba(15,23,42,0.03)}
+  .elig-col.good{background:#F0FDF4;border-color:#BBF7D0}
+  .elig-col.bad{background:#FEF2F2;border-color:#FECACA}
+  .elig-col-head{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+  .elig-icon{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:18px}
+  .elig-icon.yes{background:var(--green);color:#FFF}
+  .elig-icon.no{background:var(--red);color:#FFF}
+  .elig-col h3{font-size:20px;font-weight:700;color:var(--ink)}
+  .elig-items{list-style:none;padding:0}
+  .elig-items li{padding:14px 0;border-bottom:1px solid rgba(15,23,42,0.06)}
+  .elig-items li:last-child{border-bottom:none}
+  .elig-items li strong{display:block;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+  .elig-items li span{font-size:13px;color:var(--gray);line-height:1.5}
 
-  /* tag / badge */
-  .tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    border: 1px solid var(--line);
-    background: var(--fill-1);
-    padding: 3px 8px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border-radius: 999px;
-    color: var(--ink-soft);
-  }
-  .tag.live { border-color: var(--ink); color: var(--ink); background: var(--paper); }
+  /* TRUST GRID */
+  .trust-section{padding:100px 32px;background:#FFF}
+  .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+  .trust-card{background:#FFF;border:1px solid var(--line);border-radius:16px;padding:28px 24px;transition:transform 0.2s,box-shadow 0.2s}
+  .trust-card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(15,23,42,0.06)}
+  .trust-card-icon{width:46px;height:46px;border-radius:12px;background:var(--blue-light);color:var(--blue-deep);display:grid;place-items:center;font-size:22px;margin-bottom:20px}
+  .trust-card h4{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3}
+  .trust-card p{font-size:14px;color:var(--gray);line-height:1.6}
 
-  /* annotation callouts */
-  .annotate {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--annotate);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    background: var(--annotate-soft);
-    padding: 2px 8px;
-    border: 1px dashed var(--annotate);
-    border-radius: 3px;
-  }
-  .note {
-    font-size: 10px;
-    color: var(--annotate);
-    font-style: italic;
-    border-left: 2px solid var(--annotate);
-    padding-left: 8px;
-    margin: 6px 0;
-    background: var(--annotate-soft);
-    padding: 4px 8px;
-    border-radius: 0 3px 3px 0;
-  }
+  /* SITES */
+  .sites-section{padding:100px 32px;background:var(--bg)}
+  .sites-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+  .site-card{background:#FFF;border:1px solid var(--line);border-radius:20px;padding:36px;box-shadow:0 2px 8px rgba(15,23,42,0.03);transition:transform 0.2s,box-shadow 0.2s}
+  .site-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(15,23,42,0.08)}
+  .site-flag{display:inline-flex;align-items:center;gap:8px;background:var(--blue-light);color:var(--blue-deep);padding:6px 14px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:20px}
+  .site-h{font-size:22px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.3}
+  .site-addr{font-size:14px;color:var(--gray);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+  .site-pi-block{background:var(--blue-soft);border-radius:12px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .site-pi-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:4px}
+  .site-pi-name{font-size:16px;font-weight:700;color:var(--ink)}
+  .site-pi-icon{width:44px;height:44px;border-radius:50%;background:#FFF;color:var(--blue-deep);display:grid;place-items:center;font-size:14px;font-weight:700;flex-shrink:0}
 
-  /* generic input */
-  .input {
-    border: 1.5px solid var(--line);
-    background: var(--paper);
-    border-radius: 4px;
-    padding: 10px 12px;
-    font-family: inherit;
-    font-size: 11px;
-    color: var(--ink-faint);
-    width: 100%;
-  }
-  .input.search::before {
-    content: '⌕';
-    margin-right: 8px;
-  }
+  /* SCREENER */
+  .screener-section{padding:100px 32px;background:linear-gradient(180deg,#FFF 0%,var(--bg) 100%)}
+  .screener-card{max-width:1180px;margin:0 auto;background:#FFF;border-radius:24px;overflow:hidden;box-shadow:0 24px 60px rgba(15,23,42,0.1);border:1px solid var(--line);display:grid;grid-template-columns:0.85fr 1.15fr}
+  .screener-left{background:linear-gradient(135deg,var(--blue-deep) 0%,var(--blue-darker) 100%);color:#FFF;padding:56px 44px;position:relative;overflow:hidden}
+  .screener-left::before{content:"";position:absolute;bottom:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(249,115,22,0.2) 0%,transparent 70%);pointer-events:none}
+  .screener-left h2{font-size:32px;font-weight:800;line-height:1.15;margin-bottom:16px;letter-spacing:-0.01em;position:relative}
+  .screener-left h2 span{color:#FBBF24}
+  .screener-left-sub{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.6;margin-bottom:32px;position:relative}
+  .screener-trust-list{position:relative}
+  .screener-trust-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:16px 18px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start}
+  .screener-trust-item-icon{width:32px;height:32px;border-radius:8px;background:rgba(249,115,22,0.15);color:var(--orange);display:grid;place-items:center;font-size:14px;flex-shrink:0;font-weight:700}
+  .screener-trust-item strong{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
+  .screener-trust-item small{font-size:12px;color:rgba(255,255,255,0.65);line-height:1.4}
+  .screener-right{padding:48px 48px 44px}
+  .step-tabs{display:flex;gap:24px;margin-bottom:24px;border-bottom:1px solid var(--line);padding-bottom:14px;overflow-x:auto}
+  .step-tab{font-size:12px;font-weight:600;color:var(--gray-2);letter-spacing:0.04em;padding-bottom:4px;position:relative;white-space:nowrap}
+  .step-tab.active{color:var(--blue)}
+  .step-tab.active::after{content:"";position:absolute;bottom:-15px;left:0;right:0;height:2px;background:var(--blue)}
+  .step-eyebrow{display:inline-flex;align-items:center;background:var(--blue-light);color:var(--blue-deep);padding:5px 10px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:0.08em;margin-top:8px;margin-bottom:24px}
+  .step{display:none;animation:fadeIn 0.4s ease}
+  .step.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .q-label{font-size:21px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.3;letter-spacing:-0.01em}
+  .q-hint{font-size:13px;color:var(--gray);margin-bottom:22px;line-height:1.5}
+  .options{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+  .option{display:flex;align-items:center;gap:12px;padding:14px 18px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;transition:all 0.2s ease;background:#FFF;font-size:14px;font-weight:500;color:var(--ink-2)}
+  .option:hover{border-color:var(--blue);background:var(--blue-soft)}
+  .option.selected{border-color:var(--blue);background:var(--blue-soft);color:var(--blue-deep);font-weight:600}
+  .option-radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;display:grid;place-items:center;transition:all 0.2s ease}
+  .option.selected .option-radio{border-color:var(--blue)}
+  .option.selected .option-radio::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--blue)}
+  .checkbox-options .option-radio{border-radius:5px}
+  .checkbox-options .option.selected .option-radio::after{content:"✓";color:var(--blue);font-weight:700;font-size:12px;background:none;width:auto;height:auto}
+  .input-field{width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:14px;background:#FFF;color:var(--ink);margin-bottom:12px;transition:border-color 0.2s ease}
+  .input-field:focus{outline:none;border-color:var(--blue)}
+  .input-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .progress-bar{height:4px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:8px}
+  .progress-fill{height:100%;background:var(--blue);width:20%;transition:width 0.4s ease;border-radius:99px}
+  .progress-text{font-size:11px;font-weight:600;color:var(--gray);letter-spacing:0.08em;text-transform:uppercase}
+  .nav-buttons{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--line-soft)}
+  .btn-back{background:none;border:none;cursor:pointer;color:var(--gray);font-family:inherit;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+  .btn-next{background:var(--orange);color:#FFF;padding:14px 36px;border-radius:99px;font-family:inherit;font-weight:700;font-size:14px;border:none;cursor:pointer;transition:all 0.2s ease;box-shadow:0 6px 16px rgba(249,115,22,0.3)}
+  .btn-next:disabled{opacity:0.35;cursor:not-allowed;box-shadow:none}
+  .btn-next:not(:disabled):hover{background:var(--orange-deep);transform:translateY(-1px);box-shadow:0 10px 24px rgba(249,115,22,0.4)}
+  .result-screen{display:none;text-align:center;padding:16px 0}
+  .result-screen.active{display:block;animation:fadeIn 0.4s ease}
+  .result-icon{width:64px;height:64px;border-radius:50%;background:var(--green);color:#FFF;display:grid;place-items:center;margin:0 auto 20px;font-size:28px;font-weight:700}
+  .result-icon.no{background:var(--gray-2)}
+  .result-h{font-size:24px;font-weight:800;color:var(--ink);margin-bottom:12px;letter-spacing:-0.01em}
+  .result-p{color:var(--gray);margin-bottom:24px;font-size:14px;line-height:1.6;max-width:480px;margin-left:auto;margin-right:auto}
+  .result-contact{background:var(--blue-soft);border-radius:12px;padding:20px;font-size:13px;color:var(--ink-2);line-height:1.6;text-align:left}
+  .result-contact strong{display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px}
 
-  /* layout helpers */
-  .row { display: flex; gap: 16px; align-items: center; }
-  .row.between { justify-content: space-between; }
-  .row.wrap { flex-wrap: wrap; }
-  .stack > * + * { margin-top: 8px; }
+  /* CONSENT OPTIONS */
+  .consent-option{align-items:flex-start !important;padding:18px !important}
+  .consent-option .option-radio{margin-top:2px}
+  .consent-content{flex:1}
+  .consent-content strong{display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+  .consent-content span{font-size:12px;color:var(--gray);line-height:1.55;font-weight:400;display:block}
+  .consent-content a{color:var(--blue);text-decoration:underline}
+  select.input-field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'><path d='M1 1l6 6 6-6' stroke='%2364748B' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-repeat:no-repeat;background-position:right 16px center;padding-right:42px;cursor:pointer;color:var(--ink)}
+  select.input-field:invalid,select.input-field option[value=""]{color:var(--gray)}
 
-  /* =========================================
-     SECTION-SPECIFIC STYLES
-     ========================================= */
+  /* TIMELINE */
+  .timeline-section{padding:100px 32px;background:#FFF}
+  .timeline{margin-top:48px;position:relative}
+  .timeline-step{display:grid;grid-template-columns:auto 240px 1fr;gap:32px;align-items:start;padding:24px 0;border-bottom:1px solid var(--line-soft);position:relative}
+  .timeline-step:last-child{border-bottom:none}
+  .timeline-step::before{content:"";position:absolute;left:19px;top:60px;bottom:-1px;width:2px;background:var(--line)}
+  .timeline-step:last-child::before{display:none}
+  .timeline-num{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#FFF;display:grid;place-items:center;font-size:16px;font-weight:700;flex-shrink:0;position:relative;z-index:1}
+  .timeline-meta{padding-top:6px}
+  .timeline-time{font-size:11px;font-weight:700;color:var(--orange);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+  .timeline-step h4{font-size:18px;font-weight:700;color:var(--ink);line-height:1.3}
+  .timeline-body{padding-top:6px;font-size:14px;color:var(--gray);line-height:1.65}
 
-  /* 1. Utility bar */
-  .utility-bar {
-    background: var(--ink);
-    color: #fff;
-    font-size: 11px;
-    padding: 6px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .utility-bar .left, .utility-bar .right { display: flex; gap: 16px; align-items: center; }
-  .utility-bar .pill {
-    border: 1px solid rgba(255,255,255,0.4);
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-size: 10px;
-    letter-spacing: 0.06em;
-  }
+  /* CTA */
+  .cta-section{padding:60px 32px}
+  .cta-banner{max-width:1100px;margin:0 auto;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-deep) 100%);border-radius:24px;padding:64px 48px;text-align:center;color:#FFF;position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(30,64,175,0.25)}
+  .cta-banner::before{content:"";position:absolute;top:-50%;right:-10%;width:60%;height:200%;background:radial-gradient(circle,rgba(249,115,22,0.15) 0%,transparent 50%);pointer-events:none}
+  .cta-banner h2{font-size:clamp(28px,3.5vw,38px);font-weight:800;margin-bottom:16px;letter-spacing:-0.01em;line-height:1.2;position:relative}
+  .cta-banner p{font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:32px;max-width:580px;margin-left:auto;margin-right:auto;position:relative}
+  .cta-banner .btn-orange{position:relative}
 
-  /* 2. Nav bar */
-  .nav {
-    display: grid;
-    grid-template-columns: 200px 1fr auto;
-    align-items: center;
-    padding: 16px 32px;
-    border-bottom: 1px solid var(--line-soft);
-    gap: 24px;
-  }
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Georgia', serif;
-    font-size: 16px;
-    color: var(--ink);
-  }
-  .nav-logo .mark {
-    width: 28px; height: 28px;
-    border: 2px solid var(--ink);
-    background: var(--fill-2);
-    border-radius: 4px;
-  }
-  .nav-links {
-    display: flex;
-    gap: 22px;
-    justify-content: center;
-  }
-  .nav-link {
-    font-size: 11px;
-    color: var(--ink);
-    border-bottom: 2px solid transparent;
-    padding: 4px 0;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 700;
-  }
-  .nav-link.active { border-bottom-color: var(--ink); }
-  .nav-cta { display: flex; gap: 8px; }
+  /* FAQ */
+  .faq-section{padding:100px 32px;background:var(--bg)}
+  .faq-list{max-width:840px;margin:48px auto 0;display:flex;flex-direction:column;gap:12px}
+  .faq-item{background:#FFF;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:box-shadow 0.2s}
+  .faq-item:hover{box-shadow:0 8px 20px rgba(15,23,42,0.05)}
+  .faq-q{width:100%;background:none;border:none;cursor:pointer;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);text-align:left}
+  .faq-q-icon{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#FFF;display:grid;place-items:center;flex-shrink:0;font-size:18px;font-weight:600;line-height:1;transition:transform 0.2s}
+  .faq-item.open .faq-q-icon{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s ease;padding:0 24px;font-size:14px;color:var(--gray);line-height:1.7}
+  .faq-item.open .faq-a{max-height:300px;padding:0 24px 22px}
 
-  /* 3. Hero */
-  .hero {
-    padding: 48px 32px 32px;
-    background: linear-gradient(180deg, var(--fill-1) 0%, var(--paper) 100%);
-  }
-  .audience-toggle {
-    display: inline-flex;
-    border: 1.5px solid var(--line-strong);
-    border-radius: 999px;
-    padding: 4px;
-    background: var(--paper);
-    margin-bottom: 24px;
-  }
-  .audience-toggle .opt {
-    padding: 6px 16px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    border-radius: 999px;
-    color: var(--ink-soft);
-  }
-  .audience-toggle .opt.active {
-    background: var(--ink);
-    color: #fff;
-  }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 40px;
-    align-items: center;
-  }
-  .hero h2.mock {
-    font-family: 'Georgia', serif;
-    font-size: 32px;
-    line-height: 1.2;
-    margin: 8px 0 16px;
-    color: var(--ink);
-    font-weight: 400;
-  }
-  .trust-bullets {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px 16px;
-    margin: 16px 0 20px;
-    list-style: none;
-    padding: 0;
-  }
-  .trust-bullets li {
-    font-size: 11px;
-    color: var(--ink);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .trust-bullets li::before {
-    content: '✓';
-    color: var(--ink);
-    font-weight: 700;
-    background: var(--fill-2);
-    width: 14px; height: 14px;
-    border-radius: 999px;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 9px;
-  }
-  .hero-cta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
-  .microcopy {
-    font-size: 10px;
-    color: var(--ink-faint);
-    font-style: italic;
-  }
+  /* FOOTER */
+  footer{background:var(--blue-darker);color:rgba(255,255,255,0.7);padding:64px 32px 28px}
+  .footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.1)}
+  .footer-brand-row{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .footer-brand-mark{width:36px;height:36px;border-radius:8px;background:var(--blue);display:grid;place-items:center;color:#FFF;font-size:18px;font-weight:700}
+  .footer-brand-name{font-size:17px;font-weight:700;color:#FFF}
+  .footer-brand p{font-size:13px;line-height:1.65;max-width:380px}
+  .footer-col h5{font-size:13px;font-weight:700;color:#FFF;margin-bottom:16px}
+  .footer-col a,.footer-col p{font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;display:block;margin-bottom:10px}
+  .footer-col a:hover{color:#FFF}
+  .footer-base{max-width:1240px;margin:28px auto 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:rgba(255,255,255,0.4)}
 
-  /* 4. Stats strip */
-  .stats {
-    background: var(--accent-soft);
-    padding: 28px 32px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    border-top: 1px solid var(--line-soft);
-    border-bottom: 1px solid var(--line-soft);
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-img-wrap{margin:0 auto}
+    .section-head{grid-template-columns:1fr;gap:16px}
+    .section-lead{text-align:left}
+    .about-grid,.trust-grid{grid-template-columns:1fr;gap:16px}
+    .elig-grid,.sites-grid{grid-template-columns:1fr;gap:16px}
+    .screener-card{grid-template-columns:1fr}
+    .keyfact-card{grid-template-columns:1fr;gap:24px;padding:36px 28px;text-align:center}
+    .keyfact-icon{margin:0 auto}
+    .timeline-step{grid-template-columns:auto 1fr;gap:16px}
+    .timeline-meta,.timeline-body{grid-column:2}
+    .footer-inner{grid-template-columns:1fr 1fr;gap:32px}
+    .stat-cards{grid-template-columns:1fr 1fr 1fr;max-width:100%}
+    .nav-links{display:none}
   }
-  .stat .num {
-    font-family: 'Georgia', serif;
-    font-size: 22px;
-    color: var(--ink);
-    font-weight: 700;
-  }
-  .stat .label {
-    font-size: 11px;
-    color: var(--ink);
-    font-weight: 700;
-    margin-top: 2px;
-  }
-  .stat .sub {
-    font-size: 10px;
-    color: var(--ink-soft);
-    margin-top: 2px;
-  }
-
-  /* 5. Conditions */
-  .conditions { padding: 48px 32px; }
-  .section-header { text-align: center; margin-bottom: 28px; }
-  .section-header h3 {
-    font-family: 'Georgia', serif;
-    font-weight: 400;
-    font-size: 22px;
-    margin: 0 0 6px;
-    color: var(--ink);
-  }
-  .conditions .search-wrap {
-    max-width: 540px;
-    margin: 0 auto 24px;
-    position: relative;
-  }
-  .conditions-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    max-width: 880px;
-    margin: 0 auto;
-  }
-  .cond-tile {
-    border: 1.5px solid var(--line);
-    border-radius: 6px;
-    padding: 18px 14px;
-    background: var(--paper);
-    text-align: center;
-  }
-  .cond-tile.featured {
-    border-color: var(--ink);
-    background: var(--fill-1);
-    grid-row: span 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .cond-tile .icon {
-    width: 28px; height: 28px;
-    margin: 0 auto 8px;
-    border: 1.5px solid var(--line-strong);
-    background: var(--fill-2);
-    border-radius: 999px;
-  }
-  .cond-tile .name { font-size: 12px; font-weight: 700; color: var(--ink); }
-  .cond-tile .count { font-size: 10px; color: var(--ink-soft); margin-top: 3px; }
-
-  /* 6. How it works */
-  .how { padding: 48px 32px; background: var(--fill-1); }
-  .how-steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 980px;
-    margin: 0 auto;
-  }
-  .how-step {
-    background: var(--paper);
-    border: 1.5px solid var(--line);
-    border-radius: 6px;
-    padding: 24px;
-    text-align: center;
-    position: relative;
-  }
-  .how-step .step-num {
-    width: 36px; height: 36px;
-    border-radius: 999px;
-    background: var(--ink);
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Georgia', serif;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-  .how-step h4 {
-    font-family: 'Georgia', serif;
-    font-weight: 400;
-    font-size: 16px;
-    margin: 0 0 6px;
-    color: var(--ink);
-  }
-  .how-step .desc { font-size: 11px; color: var(--ink-soft); }
-  .how-step .timer {
-    margin-top: 10px;
-    display: inline-block;
-    font-size: 10px;
-    color: var(--ink);
-    background: var(--fill-2);
-    padding: 3px 8px;
-    border-radius: 3px;
-    border: 1px solid var(--line);
-  }
-  .how-cta { text-align: center; margin-top: 24px; }
-
-  /* 7. Human support */
-  .support { padding: 48px 32px; }
-  .support-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    max-width: 980px;
-    margin: 0 auto;
-    align-items: stretch;
-  }
-  .support-form {
-    background: var(--paper);
-    border: 1.5px solid var(--line);
-    border-radius: 6px;
-    padding: 24px;
-  }
-  .support-value {
-    list-style: none;
-    padding: 0;
-    margin: 14px 0 18px;
-  }
-  .support-value li {
-    font-size: 11px;
-    padding: 6px 0;
-    border-bottom: 1px dashed var(--line-soft);
-    color: var(--ink);
-  }
-  .contact-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 16px;
-    flex-wrap: wrap;
-  }
-
-  /* 8. Location */
-  .location {
-    padding: 48px 32px;
-    background: var(--fill-1);
-  }
-  .location-card {
-    max-width: 760px;
-    margin: 0 auto;
-    background: var(--paper);
-    border: 1.5px solid var(--line);
-    border-radius: 6px;
-    padding: 28px;
-  }
-  .location-input-row {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 12px;
-    align-items: center;
-    margin-top: 14px;
-  }
-  .location-input-row .or {
-    font-size: 10px;
-    color: var(--ink-faint);
-    letter-spacing: 0.1em;
-  }
-  .map-strip {
-    margin-top: 18px;
-    height: 80px;
-    border: 1.5px dashed var(--line);
-    border-radius: 4px;
-    background:
-      repeating-linear-gradient(0deg, var(--fill-1) 0 19px, var(--line-soft) 19px 20px),
-      repeating-linear-gradient(90deg, var(--fill-1) 0 19px, var(--line-soft) 19px 20px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    color: var(--ink-faint);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-
-  /* 9. Why */
-  .why { padding: 48px 32px; }
-  .why-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 32px;
-    max-width: 980px;
-    margin: 0 auto;
-    align-items: center;
-  }
-  .why-list {
-    list-style: none;
-    padding: 0;
-    margin: 16px 0 24px;
-  }
-  .why-list li {
-    padding: 10px 0;
-    border-bottom: 1px dashed var(--line-soft);
-    font-size: 12px;
-    color: var(--ink);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .why-list li::before {
-    content: '✓';
-    width: 18px; height: 18px;
-    border-radius: 999px;
-    background: var(--ink);
-    color: #fff;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 10px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  /* 10. Social proof */
-  .proof {
-    padding: 48px 32px;
-    background: var(--ink);
-    color: #fff;
-  }
-  .proof-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    max-width: 880px;
-    margin: 0 auto 24px;
-    text-align: center;
-  }
-  .proof .num {
-    font-family: 'Georgia', serif;
-    font-size: 32px;
-    font-weight: 700;
-  }
-  .proof .label {
-    font-size: 10px;
-    color: rgba(255,255,255,0.6);
-    margin-top: 4px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .testimonial {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    font-family: 'Georgia', serif;
-    font-style: italic;
-    font-size: 16px;
-    color: rgba(255,255,255,0.9);
-    border-top: 1px solid rgba(255,255,255,0.2);
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding: 18px 0;
-  }
-  .testimonial::before, .testimonial::after { content: '"'; color: rgba(255,255,255,0.5); }
-
-  /* 11. Blog */
-  .blog { padding: 48px 32px; }
-  .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    max-width: 980px;
-    margin: 0 auto;
-  }
-  .blog-card {
-    border: 1.5px solid var(--line);
-    border-radius: 6px;
-    overflow: hidden;
-    background: var(--paper);
-  }
-  .blog-card .ph-img {
-    height: 120px;
-    border: none;
-    border-bottom: 1.5px dashed var(--line);
-  }
-  .blog-card .body { padding: 14px; }
-  .blog-card h5 {
-    font-family: 'Georgia', serif;
-    font-weight: 400;
-    font-size: 14px;
-    margin: 0 0 8px;
-    color: var(--ink);
-    line-height: 1.3;
-  }
-  .blog-card .meta { font-size: 10px; color: var(--ink-faint); }
-  .inline-cta {
-    text-align: center;
-    margin-top: 24px;
-    padding: 16px;
-    border: 1.5px dashed var(--ink);
-    border-radius: 4px;
-    background: var(--fill-1);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* 12. Email capture */
-  .email-cap {
-    padding: 40px 32px;
-    background: var(--fill-1);
-  }
-  .email-cap-card {
-    max-width: 720px;
-    margin: 0 auto;
-    background: var(--paper);
-    border: 1.5px solid var(--line);
-    border-radius: 6px;
-    padding: 28px;
-    text-align: center;
-  }
-  .email-form {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr auto;
-    gap: 8px;
-    margin-top: 16px;
-  }
-
-  /* 13. FAQ */
-  .faq { padding: 48px 32px; }
-  .faq-list {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  .faq-item {
-    border: 1.5px solid var(--line);
-    border-radius: 4px;
-    padding: 14px 18px;
-    margin-bottom: 8px;
-    background: var(--paper);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .faq-item.open {
-    background: var(--fill-1);
-    border-color: var(--ink);
-  }
-  .faq-q {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--ink);
-  }
-  .faq-a {
-    font-size: 11px;
-    color: var(--ink-soft);
-    margin-top: 8px;
-    line-height: 1.5;
-  }
-  .faq-icon {
-    font-size: 14px;
-    color: var(--ink-soft);
-    flex-shrink: 0;
-  }
-  .faq-cta { text-align: center; margin-top: 24px; }
-
-  /* 14. Footer */
-  .footer {
-    background: var(--ink);
-    color: rgba(255,255,255,0.85);
-    padding: 40px 32px 24px;
-  }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr;
-    gap: 28px;
-    max-width: 1100px;
-    margin: 0 auto 28px;
-  }
-  .footer h6 {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.5);
-    margin: 0 0 12px;
-    font-weight: 700;
-  }
-  .footer-link {
-    display: block;
-    font-size: 11px;
-    padding: 4px 0;
-    color: rgba(255,255,255,0.7);
-  }
-  .footer-addr {
-    font-size: 11px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.6;
-  }
-  .footer-addr strong { color: #fff; display: block; margin-bottom: 2px; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
-  .footer-badges {
-    display: flex;
-    gap: 8px;
-    margin-top: 14px;
-    flex-wrap: wrap;
-  }
-  .footer-badge {
-    border: 1.5px dashed rgba(255,255,255,0.4);
-    padding: 6px 10px;
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.8);
-    border-radius: 3px;
-  }
-  .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.15);
-    padding-top: 16px;
-    text-align: center;
-    font-size: 10px;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 0.06em;
-  }
-
-  /* responsive cleanup */
-  @media (max-width: 880px) {
-    .hero-grid, .support-grid, .why-grid,
-    .conditions-grid, .how-steps, .blog-grid,
-    .stats, .proof-row, .footer-grid {
-      grid-template-columns: 1fr !important;
-    }
-    .nav { grid-template-columns: 1fr auto; }
-    .nav-links { display: none; }
-    .email-form { grid-template-columns: 1fr; }
-    .location-input-row { grid-template-columns: 1fr; }
+  @media (max-width:560px){
+    .hero{padding:40px 20px 60px}
+    section.std,.keyfact-section,.washout-section,.elig-section,.trust-section,.sites-section,.screener-section,.timeline-section,.cta-section,.faq-section{padding:64px 20px}
+    .footer-inner{grid-template-columns:1fr;gap:28px}
+    .input-row{grid-template-columns:1fr}
+    .screener-right,.screener-left{padding:32px 24px}
+    .keyfact-card,.washout-card{padding:28px 24px}
+    .trust-strip-inner{justify-content:flex-start;gap:14px}
+    .trust-item{font-size:11px}
   }
 </style>
 </head>
 <body>
 
-<!-- ============ HEADER META ============ -->
-<div class="wf-meta">
-  <div>
-    <h1>Decentrialz · Homepage Wireframe</h1>
-    <div class="sub">Phase 2 · Low-fidelity · v1.0 · 14 sections</div>
+<nav>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">K</div>
+      <div class="brand-name">KIg10 CIDP Study</div>
+    </div>
+    <div class="nav-links">
+      <a href="#study">About Study</a>
+      <a href="#eligibility">Eligibility</a>
+      <a href="#journey">Journey</a>
+      <a href="#sites">Sites</a>
+    </div>
+    <a href="tel:+18005551234" class="nav-phone">📞 +1 (800) 555-1234</a>
   </div>
-  <div class="stamp">Wireframe — not for production</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div>
+        <div class="pills-row">
+          <span class="pill pill-blue">PHASE 3 CIDP STUDY</span>
+          <span class="pill pill-green"><span class="pill-dot"></span> ENROLLING NOW</span>
+        </div>
+        <h1 class="hero-h">Living with CIDP and looking for <span>new options?</span></h1>
+        <p class="hero-lead">A Phase 3 clinical study is evaluating an investigational IVIG maintenance therapy for adults with chronic inflammatory demyelinating polyneuropathy. Both study groups receive active treatment — this study uses no placebo. Finding out if you may qualify takes about three minutes.</p>
+        <div class="btn-row">
+          <a href="#screener" class="btn-primary">Check your eligibility →</a>
+          <a href="#study" class="btn-outline">See the study ↓</a>
+        </div>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">U.S. study sites</div></div>
+          <div class="stat-card"><div class="stat-num">161</div><div class="stat-label">Participants globally</div></div>
+          <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Active treatment</div></div>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="hero-img">
+          <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FED7AA"/><stop offset="100%" stop-color="#FB923C"/>
+              </linearGradient>
+              <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#E5C4A1"/><stop offset="100%" stop-color="#C9A380"/>
+              </linearGradient>
+              <linearGradient id="shirtGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1E40AF"/><stop offset="100%" stop-color="#172554"/>
+              </linearGradient>
+            </defs>
+            <rect width="500" height="500" fill="url(#bgGrad)"/>
+            <rect x="0" y="320" width="500" height="180" fill="#A8917A" opacity="0.4"/>
+            <rect x="0" y="340" width="500" height="160" fill="#8C7560" opacity="0.5"/>
+            <rect x="40" y="240" width="180" height="120" rx="20" fill="#9C8268" opacity="0.6"/>
+            <ellipse cx="100" cy="120" rx="120" ry="80" fill="#FFF" opacity="0.2"/>
+            <path d="M 180 200 Q 200 180 250 175 Q 300 180 320 200 L 350 400 L 150 400 Z" fill="url(#shirtGrad)"/>
+            <circle cx="250" cy="150" r="58" fill="url(#skinGrad)"/>
+            <path d="M 198 130 Q 200 95 250 90 Q 300 95 302 130 Q 290 110 250 108 Q 210 110 198 130 Z" fill="#5A5048"/>
+            <path d="M 200 130 Q 210 115 250 113 Q 290 115 300 130" fill="#7A7068" opacity="0.5"/>
+            <ellipse cx="232" cy="148" rx="3" ry="4" fill="#2A2520"/>
+            <ellipse cx="268" cy="148" rx="3" ry="4" fill="#2A2520"/>
+            <path d="M 232 175 Q 250 180 268 175" stroke="#9C7A60" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M 180 240 Q 165 280 175 330 Q 185 360 220 380" fill="url(#shirtGrad)"/>
+            <ellipse cx="225" cy="385" rx="22" ry="16" fill="url(#skinGrad)" transform="rotate(20 225 385)"/>
+            <ellipse cx="290" cy="420" rx="80" ry="50" fill="#7A6850"/>
+            <ellipse cx="320" cy="430" rx="40" ry="22" fill="url(#skinGrad)"/>
+            <circle cx="335" cy="430" r="35" fill="#F97316" opacity="0.25"/>
+            <circle cx="335" cy="430" r="22" fill="#EA580C" opacity="0.4"/>
+            <circle cx="335" cy="430" r="12" fill="#F97316" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="hero-badge-top">
+          <div class="hero-badge-top-icon">🔒</div>
+          <div><strong>Privacy protected</strong><small>HIPAA-aligned data handling</small></div>
+        </div>
+        <div class="hero-badge-bottom">
+          <div class="hero-badge-bottom-icon">$</div>
+          <div><strong>No insurance required</strong><small>All study-related care at no cost</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-item">Insurance not needed</div>
+    <div class="trust-item">All care at no cost</div>
+    <div class="trust-item">Compensation provided</div>
+    <div class="trust-item">Privacy protected</div>
+    <div class="trust-item">IRB approved</div>
+  </div>
 </div>
 
-<!-- ============ BROWSER FRAME ============ -->
-<div class="browser">
-  <div class="browser-bar">
-    <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-    <div class="url">https://decentrialz.com/</div>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 01 · UTILITY BAR ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">01</span>Utility Bar</div>
-    <div class="utility-bar">
-      <div class="left">
-        <span>📞 +1 877 705 1914</span>
-        <span class="pill">● Available 24/7</span>
+<section class="std" id="study">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-h">A Phase 3 study, <span>three things to know.</span></h2>
+      <p class="section-lead">A summary of what this study is testing, who it's for, and how it differs from many clinical trials in CIDP and neurology.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-head"><div class="about-icon">💉</div><span class="phase-tag">PHASE 3</span></div>
+        <div class="study-code">What's being tested</div>
+        <h3 class="study-title">KIg10 — an investigational IVIG 10% therapy</h3>
+        <p class="study-desc">An intravenous immune globulin product evaluated as a maintenance therapy for adults with confirmed CIDP, comparing two dosing strengths.</p>
+        <div class="study-divider"></div>
+        <ul class="study-criteria">
+          <li>Two dose groups: 0.5 g/kg and 1.0 g/kg</li>
+          <li>Infusion every 3 weeks</li>
+          <li>Both groups receive active treatment</li>
+          <li>Total ~8–10 months participation</li>
+        </ul>
       </div>
-      <div class="right">
-        <span class="pill">🔒 HIPAA Compliant</span>
-        <span class="pill">🛡 ISO 27001 Certified</span>
+      <div class="about-card">
+        <div class="about-card-head"><div class="about-icon">👥</div><span class="phase-tag">ADULTS</span></div>
+        <div class="study-code">Who it's for</div>
+        <h3 class="study-title">Adults with confirmed CIDP, currently on treatment</h3>
+        <p class="study-desc">For adults whose CIDP has been managed with IVIG, SCIG, corticosteroids, or other standard therapy, and has been stable in recent months.</p>
+        <div class="study-divider"></div>
+        <ul class="study-criteria">
+          <li>Ages 18 and older</li>
+          <li>Diagnosed by a neurologist (EAN/PNS 2021)</li>
+          <li>Currently on CIDP treatment</li>
+          <li>Stable for at least 12 weeks</li>
+        </ul>
+      </div>
+      <div class="about-card">
+        <div class="about-card-head"><div class="about-icon">📋</div><span class="phase-tag">SPONSOR</span></div>
+        <div class="study-code">Conducted by</div>
+        <h3 class="study-title">Kedrion Biopharma, an established IVIG manufacturer</h3>
+        <p class="study-desc">Sponsored by Kedrion Biopharma, a biopharmaceutical company with 40+ years of experience in plasma-derived therapies including IVIG.</p>
+        <div class="study-divider"></div>
+        <ul class="study-criteria">
+          <li>FDA-regulated under active IND</li>
+          <li>ICH-GCP guideline compliant</li>
+          <li>Independent IRB oversight</li>
+          <li>Registered on ClinicalTrials.gov</li>
+        </ul>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ━━━━━━━━━━━━ 02 · NAV ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">02</span>Navigation</div>
-    <nav class="nav">
-      <div class="nav-logo">
-        <div class="mark"></div>
-        <span>Decentrialz</span>
-      </div>
-      <div class="nav-links">
-        <span class="nav-link active">Find Trials</span>
-        <span class="nav-link">For Patients</span>
-        <span class="nav-link">For Sites</span>
-        <span class="nav-link">For Sponsors</span>
-        <span class="nav-link">Resources</span>
-        <span class="nav-link">About</span>
-      </div>
-      <div class="nav-cta">
-        <button class="btn">Request Demo</button>
-        <button class="btn primary">Check Eligibility</button>
-      </div>
-    </nav>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 03 · HERO ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">03</span>Hero</div>
-    <div class="hero">
-      <div class="audience-toggle">
-        <span class="opt active">🧑‍⚕ I'm a Participant</span>
-        <span class="opt">🏥 I'm a Site / Sponsor</span>
-      </div>
-      <span class="annotate">Toggle swaps headline + CTA</span>
-
-      <div class="hero-grid" style="margin-top: 24px;">
-        <div>
-          <span class="tag">Hero · Conversion-first</span>
-          <h2 class="mock">Find Safe Clinical Trials for Your Condition — and Get Paid to Participate</h2>
-          <div class="ph-line long"></div>
-          <div class="ph-line mid"></div>
-
-          <ul class="trust-bullets">
-            <li>IRB-approved & monitored</li>
-            <li>100% free to join</li>
-            <li>Compensation available</li>
-            <li>Data is private & secure</li>
-          </ul>
-
-          <div class="hero-cta-row">
-            <button class="btn primary lg">Check If I Qualify — 2 Min</button>
-            <button class="btn lg">Browse by Condition</button>
-          </div>
-          <div class="microcopy">No spam. No commitment. You choose what's right for you.</div>
-        </div>
-
-        <div class="ph-img" style="height: 320px; border-radius: 6px;">
-          <span>Hero Visual / Illustration</span>
-        </div>
-      </div>
+<div class="keyfact-section">
+  <div class="keyfact-card">
+    <div class="keyfact-icon">✓</div>
+    <div>
+      <h2 class="keyfact-h">Important: <span>both groups receive active medication.</span></h2>
+      <p class="keyfact-p">Unlike many clinical studies, this Phase 3 trial does <strong>not use a placebo</strong>. Participants are randomly assigned to receive either 0.5 g/kg or 1.0 g/kg of KIg10 — both clinically meaningful doses of active IVIG. If symptoms worsen during the study, a rescue dose (2.0 g/kg) of active treatment is provided.</p>
     </div>
   </div>
-
-  <!-- ━━━━━━━━━━━━ 04 · STATS STRIP ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">04</span>Trust + Stats</div>
-    <div class="stats">
-      <div class="stat">
-        <div class="num">65,000+</div>
-        <div class="label">Trials Available</div>
-        <div class="sub">Actively recruiting now</div>
-      </div>
-      <div class="stat">
-        <div class="num">9,600+</div>
-        <div class="label">Cities Covered</div>
-        <div class="sub">Find trials near you</div>
-      </div>
-      <div class="stat">
-        <div class="num">✓</div>
-        <div class="label">Verified Research Sites</div>
-        <div class="sub">Trusted & compliant</div>
-      </div>
-      <div class="stat">
-        <div class="num">⚡</div>
-        <div class="label">Fast Matching</div>
-        <div class="sub">Results under 2 min</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 05 · CONDITIONS ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">05</span>Condition Discovery</div>
-    <div class="conditions">
-      <div class="section-header">
-        <h3>What condition are you looking for help with?</h3>
-        <div class="ph-line short" style="margin: 0 auto 20px;"></div>
-      </div>
-
-      <div class="search-wrap">
-        <input class="input" placeholder="⌕   Search your condition (e.g. Diabetes, Arthritis...)">
-      </div>
-
-      <div class="conditions-grid">
-        <div class="cond-tile featured">
-          <div class="icon"></div>
-          <div class="name">Cancer</div>
-          <div class="count">2,310 trials</div>
-          <span class="annotate" style="margin-top: 8px;">Featured</span>
-        </div>
-        <div class="cond-tile"><div class="icon"></div><div class="name">Diabetes</div><div class="count">1,240 trials</div></div>
-        <div class="cond-tile"><div class="icon"></div><div class="name">Heart Disease</div><div class="count">980 trials</div></div>
-        <div class="cond-tile"><div class="icon"></div><div class="name">Depression</div><div class="count">540 trials</div></div>
-        <div class="cond-tile"><div class="icon"></div><div class="name">Asthma</div><div class="count">320 trials</div></div>
-        <div class="cond-tile"><div class="icon"></div><div class="name">Chronic Pain</div><div class="count">410 trials</div></div>
-        <div class="cond-tile"><div class="icon"></div><div class="name">Alzheimer's</div><div class="count">280 trials</div></div>
-        <div class="cond-tile"><div class="icon"></div><div class="name">Obesity</div><div class="count">190 trials</div></div>
-      </div>
-
-      <div style="text-align: center; margin-top: 24px;">
-        <button class="btn">View All Conditions →</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 06 · HOW IT WORKS ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">06</span>How It Works</div>
-    <div class="how">
-      <div class="section-header">
-        <h3>Get Started in Under 3 Minutes</h3>
-      </div>
-      <div class="how-steps">
-        <div class="how-step">
-          <div class="step-num">1</div>
-          <h4>Find Matching Trials</h4>
-          <div class="desc">Search by condition or location</div>
-          <div class="timer">🕒 30 sec</div>
-        </div>
-        <div class="how-step">
-          <div class="step-num">2</div>
-          <h4>Check Your Eligibility</h4>
-          <div class="desc">Answer a few simple questions</div>
-          <div class="timer">🕒 90 sec</div>
-        </div>
-        <div class="how-step">
-          <div class="step-num">3</div>
-          <h4>Get Matched & Start</h4>
-          <div class="desc">We connect you with the study team</div>
-          <div class="timer">🕒 Hear back in 24 hrs</div>
-        </div>
-      </div>
-      <div class="how-cta">
-        <button class="btn primary lg">Start My Search Now</button>
-        <div class="microcopy" style="margin-top: 8px;">Free. Private. No obligation.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 07 · HUMAN SUPPORT ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">07</span>Human Support</div>
-    <div class="support">
-      <div class="section-header">
-        <h3>Talk to a Real Person — Not a Chatbot</h3>
-      </div>
-      <div class="support-grid">
-        <div>
-          <div class="ph-img" style="height: 240px; border-radius: 6px; margin-bottom: 16px;">
-            <span>Nurse / Support Photo</span>
-          </div>
-          <ul class="support-value">
-            <li>✓ Speak with clinical experts</li>
-            <li>✓ Get help choosing the right trial</li>
-            <li>✓ No pressure, just guidance</li>
-          </ul>
-          <div class="contact-row">
-            <button class="btn sm">📞 Call</button>
-            <button class="btn sm">💬 WhatsApp</button>
-            <button class="btn sm">📧 Email</button>
-          </div>
-        </div>
-
-        <div class="support-form">
-          <span class="annotate">CRITICAL · Inline form, not redirect</span>
-          <div class="ph-heading lg" style="margin-top: 14px; width: 70%;"></div>
-          <div class="stack" style="margin-top: 16px;">
-            <input class="input" placeholder="Full Name">
-            <input class="input" placeholder="Email or Phone">
-            <input class="input" placeholder="How can we help? ▾">
-          </div>
-          <button class="btn primary lg" style="margin-top: 16px; width: 100%; justify-content: center;">Get Help Now</button>
-          <div class="microcopy" style="text-align: center; margin-top: 8px;">Response within 1 business hour</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 08 · LOCATION ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">08</span>Location Search</div>
-    <div class="location">
-      <div class="section-header">
-        <h3>Find Clinical Trials Near You</h3>
-      </div>
-      <div class="location-card">
-        <div class="ph-line mid"></div>
-        <div class="location-input-row">
-          <input class="input" placeholder="📍 Enter City or ZIP">
-          <span class="or">— OR —</span>
-          <button class="btn">📡 Use My Location</button>
-        </div>
-        <div class="map-strip">Map / Heatmap Placeholder</div>
-        <div style="text-align: center; margin-top: 16px;">
-          <span class="tag live">📍 Showing 120 trials near Hyderabad</span>
-        </div>
-        <div style="text-align: center; margin-top: 16px;">
-          <button class="btn primary">Find Trials Near Me</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 09 · WHY ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">09</span>Why Decentrialz</div>
-    <div class="why">
-      <div class="section-header">
-        <h3>Why Thousands Trust DecenTrialz</h3>
-      </div>
-      <div class="why-grid">
-        <div class="ph-img" style="height: 280px; border-radius: 6px;">
-          <span>Lifestyle / People Image</span>
-        </div>
-        <div>
-          <ul class="why-list">
-            <li>Get matched faster with the right trials</li>
-            <li>No cost to participate</li>
-            <li>Compensation for your time</li>
-            <li>Full privacy & data protection</li>
-            <li>Support at every step</li>
-          </ul>
-          <button class="btn primary">Check My Eligibility</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 10 · SOCIAL PROOF ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">10</span>Social Proof</div>
-    <div class="proof">
-      <div class="proof-row">
-        <div>
-          <div class="num">4.8/5</div>
-          <div class="label">Participant Satisfaction</div>
-        </div>
-        <div>
-          <div class="num">12,000+</div>
-          <div class="label">Participants Helped</div>
-        </div>
-        <div>
-          <div class="num">120+</div>
-          <div class="label">Research Partners</div>
-        </div>
-      </div>
-      <div class="testimonial">
-        DecenTrialz helped me find a trial in 2 minutes. The process was smooth and transparent.
-      </div>
-      <div style="text-align: center; margin-top: 12px; font-size: 11px; color: rgba(255,255,255,0.6);">
-        — Verified Participant
-      </div>
-    </div>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 11 · BLOG ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">11</span>Blog</div>
-    <div class="blog">
-      <div class="section-header">
-        <h3>Learn Before You Join a Trial</h3>
-      </div>
-      <div class="blog-grid">
-        <div class="blog-card">
-          <div class="ph-img"><span>Article Image</span></div>
-          <div class="body">
-            <h5>Is it safe to join a clinical trial?</h5>
-            <div class="meta">5 min read · Safety</div>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="ph-img"><span>Article Image</span></div>
-          <div class="body">
-            <h5>How much can you get paid?</h5>
-            <div class="meta">4 min read · Compensation</div>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="ph-img"><span>Article Image</span></div>
-          <div class="body">
-            <h5>What happens to your data?</h5>
-            <div class="meta">6 min read · Privacy</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 24px;">
-        <button class="btn">Explore All Articles</button>
-      </div>
-
-      <div class="inline-cta">
-        <strong style="font-size: 13px;">👉 Ready to start?</strong>
-        <span style="font-size: 12px; color: var(--ink-soft); margin-left: 8px;">Check eligibility now.</span>
-        <button class="btn primary sm" style="margin-left: 12px;">Check Eligibility</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 12 · EMAIL CAPTURE ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">12</span>Email Capture</div>
-    <div class="email-cap">
-      <div class="email-cap-card">
-        <h3 style="font-family: Georgia, serif; font-weight: 400; margin: 0 0 6px;">Get Matched with New Trials First</h3>
-        <div class="ph-line mid" style="margin: 0 auto;"></div>
-        <div class="email-form">
-          <input class="input" placeholder="📧 your@email.com">
-          <input class="input" placeholder="I am a... ▾">
-          <button class="btn primary">Send Me Alerts</button>
-        </div>
-        <div class="microcopy" style="margin-top: 10px;">No spam. 1–2 emails per month.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 13 · FAQ ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">13</span>FAQ</div>
-    <div class="faq">
-      <div class="section-header">
-        <h3>Common Questions Before You Join</h3>
-      </div>
-
-      <div class="faq-list">
-        <span class="annotate" style="margin-bottom: 12px; display: inline-block;">Top 3 open by default — safety + compensation first</span>
-
-        <div class="faq-item open">
-          <div style="flex: 1;">
-            <div class="faq-q">Is it safe to participate?</div>
-            <div class="faq-a">All trials are IRB-approved and monitored by qualified medical professionals. Safety protocols are in place at every research site...</div>
-          </div>
-          <span class="faq-icon">−</span>
-        </div>
-
-        <div class="faq-item open">
-          <div style="flex: 1;">
-            <div class="faq-q">Will I get paid?</div>
-            <div class="faq-a">Most trials offer compensation for your time and travel. Amounts vary by study and are disclosed upfront before you commit...</div>
-          </div>
-          <span class="faq-icon">−</span>
-        </div>
-
-        <div class="faq-item open">
-          <div style="flex: 1;">
-            <div class="faq-q">Can I leave anytime?</div>
-            <div class="faq-a">Yes. Participation is voluntary and you can withdraw from any trial at any time, for any reason...</div>
-          </div>
-          <span class="faq-icon">−</span>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">Is it free?</div>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">How is my data protected?</div>
-          <span class="faq-icon">+</span>
-        </div>
-      </div>
-
-      <div class="faq-cta">
-        <button class="btn primary lg">Check Eligibility Now</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ━━━━━━━━━━━━ 14 · FOOTER ━━━━━━━━━━━━ -->
-  <div class="section">
-    <div class="section-tag"><span class="num">14</span>Footer</div>
-    <div class="footer">
-      <div class="footer-grid">
-        <div>
-          <div class="nav-logo" style="color: #fff; margin-bottom: 14px;">
-            <div class="mark" style="border-color: #fff; background: rgba(255,255,255,0.1);"></div>
-            <span>Decentrialz</span>
-          </div>
-          <div class="footer-addr">
-            Connecting patients with verified clinical trials worldwide.
-          </div>
-          <div class="footer-badges">
-            <span class="footer-badge">🔒 HIPAA</span>
-            <span class="footer-badge">🛡 ISO 27001</span>
-            <span class="footer-badge">✓ IRB</span>
-          </div>
-        </div>
-
-        <div>
-          <h6>Explore</h6>
-          <span class="footer-link">Home</span>
-          <span class="footer-link">Find Trials</span>
-          <span class="footer-link">How It Works</span>
-          <span class="footer-link">Blog</span>
-        </div>
-
-        <div>
-          <h6>Research</h6>
-          <span class="footer-link">For Sites</span>
-          <span class="footer-link">For Sponsors</span>
-          <span class="footer-link">CROs</span>
-          <span class="footer-link">Healthcare Pros</span>
-        </div>
-
-        <div>
-          <h6>Legal</h6>
-          <span class="footer-link">Privacy Policy</span>
-          <span class="footer-link">Terms of Service</span>
-          <span class="footer-link">Cookie Preferences</span>
-        </div>
-
-        <div>
-          <h6>Contact</h6>
-          <div class="footer-addr" style="margin-bottom: 12px;">
-            <strong>HQ — United States</strong>
-            3621 Harbor Lane North<br>
-            Suite 250, Plymouth MN
-          </div>
-          <div class="footer-addr">
-            <strong>Engineering & Operations</strong>
-            Hyderabad, India
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        © 2026 Decentrialz Labs Pvt Ltd · All rights reserved
-      </div>
-    </div>
-  </div>
-
 </div>
 
-<!-- ============ FOOTER NOTES ============ -->
-<div class="wf-meta" style="margin-top: 24px; align-items: flex-start;">
-  <div style="font-size: 11px; color: var(--ink-soft); max-width: 700px; line-height: 1.7;">
-    <strong style="color: var(--ink); font-family: Georgia, serif;">Reading this wireframe.</strong><br>
-    Numbered tabs on the left mark each of the 14 sections. Orange annotations flag critical UX decisions
-    (audience toggle, inline form, FAQ ordering). Brand blue is reserved exclusively for primary CTAs so
-    the action hierarchy reads at a glance — every other element stays grayscale.
+<section class="washout-section">
+  <div class="washout-card">
+    <div class="washout-pill">⚠ Important disclosure</div>
+    <h2 class="washout-h">Before the study drug begins, your current CIDP treatment is paused.</h2>
+    <p class="washout-p">This is the most important thing to understand about the study. Before randomization, all participants enter a <strong>wash-out phase of up to 12 weeks</strong>, during which your current IVIG or other CIDP treatment is paused. This gives the study team a clean starting point to measure how KIg10 affects your condition.</p>
+    <p class="washout-p"><strong>You are not on your own during this time.</strong> Symptoms are monitored closely. If your CIDP shows signs of worsening — measured by the INCAT disability score — the wash-out phase ends and active study treatment begins immediately.</p>
+    <p class="washout-p">Whether this is the right study for you depends on how you and your doctor weigh this pause against the potential benefit of participating. The study team discusses this in detail before you decide.</p>
   </div>
-  <div style="font-size: 10px; color: var(--ink-faint); letter-spacing: 0.1em; text-transform: uppercase;">
-    Decentrialz · Phase 2 · Wireframe v1
+</section>
+
+<section class="elig-section" id="eligibility">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-h">Who may be a <span>good fit</span></h2>
+      <p class="section-lead">A few headline criteria below. The screener checks the full eligibility list, and the study team confirms everything before enrollment.</p>
+    </div>
+    <div class="elig-grid">
+      <div class="elig-col good">
+        <div class="elig-col-head"><div class="elig-icon yes">✓</div><h3>Good fit</h3></div>
+        <ul class="elig-items">
+          <li><strong>Adults 18 and older with confirmed CIDP</strong><span>Diagnosed by a neurologist per 2021 EAN/PNS criteria.</span></li>
+          <li><strong>Currently on CIDP treatment</strong><span>IVIG, SCIG, corticosteroids, or other standard maintenance therapy.</span></li>
+          <li><strong>Condition stable for at least 12 weeks</strong><span>No major symptom worsening or significant treatment dose changes.</span></li>
+          <li><strong>Weakness in at least two limbs</strong><span>Disability score (INCAT) between 2 and 9, measured by the study team.</span></li>
+          <li><strong>Open to learning about the wash-out phase</strong><span>Willing to discuss pausing current treatment for up to 12 weeks before study drug begins.</span></li>
+        </ul>
+      </div>
+      <div class="elig-col bad">
+        <div class="elig-col-head"><div class="elig-icon no">×</div><h3>Not eligible right now</h3></div>
+        <ul class="elig-items">
+          <li><strong>Pure sensory or multivariant CIDP</strong><span>Certain CIDP variants are not part of this study's design.</span></li>
+          <li><strong>High-dose IVIG or SCIG requirements</strong><span>Currently needing more than 1.3 g/kg/month IVIG or 1.6 g/kg/month SCIG.</span></li>
+          <li><strong>Prior failure to respond to IVIG/SCIG</strong><span>If immunoglobulin therapy has not worked previously.</span></li>
+          <li><strong>Recent immune-modulating therapies</strong><span>Rituximab/alemtuzumab in past 12 months, efgartigimod in past 3 months, certain other agents.</span></li>
+          <li><strong>Certain medical conditions</strong><span>BMI &gt; 35, chronic kidney disease, active hepatitis/HIV, recent heart failure, recent blood clots.</span></li>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
+</section>
+
+<section class="trust-section">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-h">Built on science. <span>Backed by trust.</span></h2>
+      <p class="section-lead">Every aspect of this study follows established clinical research and patient safety standards.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card"><div class="trust-card-icon">🏛️</div><h4>Sponsored by an established biopharma</h4><p>Kedrion Biopharma is a regulated biopharmaceutical company with 40+ years of experience in plasma-derived therapies, running clinical trials worldwide.</p></div>
+      <div class="trust-card"><div class="trust-card-icon">📋</div><h4>Registered & regulated</h4><p>The study runs under an FDA-approved IND and is registered on ClinicalTrials.gov (NCT06752356) before enrollment opens.</p></div>
+      <div class="trust-card"><div class="trust-card-icon">⚖️</div><h4>Independent ethics review</h4><p>An external Institutional Review Board ensures the study is appropriate and participant rights are protected at every step.</p></div>
+      <div class="trust-card"><div class="trust-card-icon">🏥</div><h4>Qualified research sites</h4><p>Conducted at clinical research centers staffed by experienced neurologists and trained study coordinators familiar with CIDP care.</p></div>
+      <div class="trust-card"><div class="trust-card-icon">👤</div><h4>Voluntary participation</h4><p>Joining is voluntary. You may withdraw at any time without penalty or loss of benefits to which you are otherwise entitled.</p></div>
+      <div class="trust-card"><div class="trust-card-icon">🔒</div><h4>Your privacy matters</h4><p>Your information is kept confidential and managed in accordance with HIPAA and applicable privacy regulations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sites-section" id="sites">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-h">Two U.S. <span>study sites</span></h2>
+      <p class="section-lead">Both sites are established neurology centers with experience treating CIDP and conducting clinical research. Travel reimbursement available.</p>
+    </div>
+    <div class="sites-grid">
+      <div class="site-card">
+        <div class="site-flag">🌴 Florida</div>
+        <h3 class="site-h">USF Health — Morsani Center for Advanced Healthcare</h3>
+        <p class="site-addr">📍 Tampa, Florida 33613</p>
+        <div class="site-pi-block">
+          <div><div class="site-pi-label">Principal Investigator</div><div class="site-pi-name">Kathleen Murray, MD</div></div>
+          <div class="site-pi-icon">KM</div>
+        </div>
+      </div>
+      <div class="site-card">
+        <div class="site-flag">🌵 Texas</div>
+        <h3 class="site-h">Advanced Neurology Epilepsy and Sleep Center / ANESC Research</h3>
+        <p class="site-addr">📍 El Paso, Texas 79912</p>
+        <div class="site-pi-block">
+          <div><div class="site-pi-label">Principal Investigator</div><div class="site-pi-name">Aamr Herekar, MD</div></div>
+          <div class="site-pi-icon">AH</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="screener-section" id="screener">
+  <div class="screener-card">
+    <div class="screener-left">
+      <h2>Just a few quick steps to <span>see if you may qualify.</span></h2>
+      <p class="screener-left-sub">Takes about 3 minutes. Start with the basics, then a quick consent, then a short eligibility check. If your answers suggest you may qualify, a coordinator will follow up within 1–2 business days.</p>
+      <div class="screener-trust-list">
+        <div class="screener-trust-item"><div class="screener-trust-item-icon">✓</div><div><strong>No spam, ever</strong><small>Used only to follow up about this study match.</small></div></div>
+        <div class="screener-trust-item"><div class="screener-trust-item-icon">🔒</div><div><strong>Secure & private</strong><small>HIPAA-aligned handling of your information.</small></div></div>
+        <div class="screener-trust-item"><div class="screener-trust-item-icon">👤</div><div><strong>Expert guidance</strong><small>A trained study coordinator reviews your match.</small></div></div>
+      </div>
+    </div>
+
+    <div class="screener-right">
+      <div class="step-tabs">
+        <div class="step-tab active" id="tab-basics">Basics</div>
+        <div class="step-tab" id="tab-consent">Consent</div>
+        <div class="step-tab" id="tab-eligibility">Eligibility</div>
+        <div class="step-tab" id="tab-done">Done</div>
+      </div>
+      <div class="step-eyebrow" id="eyebrowText">BASIC INFORMATION</div>
+      <form id="screenerForm" onsubmit="return false;">
+
+        <!-- STEP 1: BASICS -->
+        <div class="step active" data-step="1">
+          <div class="q-label">Let's start with the basics</div>
+          <div class="q-hint">A study coordinator uses this to reach you. Your information stays private and is only used for this study match.</div>
+          <div class="input-row">
+            <input type="text" class="input-field" placeholder="First name *" data-q="firstname"/>
+            <input type="text" class="input-field" placeholder="Last name *" data-q="lastname"/>
+          </div>
+          <input type="tel" class="input-field" placeholder="Phone number *" data-q="phone"/>
+          <input type="email" class="input-field" placeholder="Email (optional)" data-q="email" data-optional="true"/>
+          <div class="input-row">
+            <input type="text" class="input-field" placeholder="ZIP code *" data-q="zip"/>
+            <select class="input-field" data-q="gender">
+              <option value="">Gender *</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="nonbinary">Non-binary</option>
+              <option value="prefer-not">Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- STEP 2: CONSENT -->
+        <div class="step" data-step="2">
+          <div class="q-label">A few quick consents</div>
+          <div class="q-hint">Both are required to continue. You can opt out at any time.</div>
+          <div class="options checkbox-options" data-q="contact_consent" style="margin-bottom:12px">
+            <div class="option consent-option" data-value="agreed">
+              <div class="option-radio"></div>
+              <div class="consent-content">
+                <strong>I agree to be contacted about this study</strong>
+                <span>I agree to receive phone calls, SMS messages, and emails from the study team about my potential eligibility for the KIg10 CIDP study. Message frequency may vary. Standard message and data rates may apply. Reply STOP to cancel or HELP for assistance.</span>
+              </div>
+            </div>
+          </div>
+          <div class="options checkbox-options" data-q="terms_consent">
+            <div class="option consent-option" data-value="agreed">
+              <div class="option-radio"></div>
+              <div class="consent-content">
+                <strong>I agree to the Terms and Privacy Policy</strong>
+                <span>I have read and agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. My information will be handled in accordance with HIPAA.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEPS 3-7: PRIMARY ELIGIBILITY -->
+        <div class="step" data-step="3">
+          <div class="q-label">Are you 18 years of age or older?</div>
+          <div class="options" data-q="age">
+            <div class="option" data-value="yes" data-pass="1"><div class="option-radio"></div> Yes</div>
+            <div class="option" data-value="no" data-pass="0"><div class="option-radio"></div> No</div>
+          </div>
+        </div>
+
+        <div class="step" data-step="4">
+          <div class="q-label">Have you been diagnosed with CIDP by a neurologist?</div>
+          <div class="q-hint">CIDP stands for chronic inflammatory demyelinating polyneuropathy.</div>
+          <div class="options" data-q="diagnosis">
+            <div class="option" data-value="yes" data-pass="1"><div class="option-radio"></div> Yes, formally diagnosed by a neurologist</div>
+            <div class="option" data-value="suspected" data-pass="0"><div class="option-radio"></div> Suspected but not formally diagnosed</div>
+            <div class="option" data-value="no" data-pass="0"><div class="option-radio"></div> No</div>
+          </div>
+        </div>
+
+        <div class="step" data-step="5">
+          <div class="q-label">Are you currently receiving treatment for your CIDP?</div>
+          <div class="q-hint">Includes IVIG, SCIG, corticosteroids like prednisone, or other CIDP medications.</div>
+          <div class="options" data-q="treatment">
+            <div class="option" data-value="yes" data-pass="1"><div class="option-radio"></div> Yes, I'm currently on treatment</div>
+            <div class="option" data-value="recently-stopped" data-pass="0"><div class="option-radio"></div> I recently stopped treatment</div>
+            <div class="option" data-value="never" data-pass="0"><div class="option-radio"></div> I'm not currently being treated</div>
+          </div>
+        </div>
+
+        <div class="step" data-step="6">
+          <div class="q-label">Has your CIDP and treatment been mostly stable for the last 3 months?</div>
+          <div class="q-hint">"Stable" means no major worsening of symptoms and no significant treatment dose changes.</div>
+          <div class="options" data-q="stability">
+            <div class="option" data-value="yes" data-pass="1"><div class="option-radio"></div> Yes, mostly stable</div>
+            <div class="option" data-value="some-changes" data-pass="0"><div class="option-radio"></div> There have been some changes</div>
+            <div class="option" data-value="no" data-pass="0"><div class="option-radio"></div> No, my condition or treatment has been changing</div>
+            <div class="option" data-value="notsure" data-pass="1"><div class="option-radio"></div> I'm not sure</div>
+          </div>
+        </div>
+
+        <div class="step" data-step="7">
+          <div class="q-label">Are you open to learning more about pausing your current CIDP treatment for up to 12 weeks during the study?</div>
+          <div class="q-hint">You'd be monitored closely. If symptoms worsen, the pause ends and active treatment begins immediately.</div>
+          <div class="options" data-q="washout">
+            <div class="option" data-value="yes" data-pass="1"><div class="option-radio"></div> Yes, I'd like to learn more</div>
+            <div class="option" data-value="need-info" data-pass="1"><div class="option-radio"></div> I need more information before I decide</div>
+            <div class="option" data-value="no" data-pass="0"><div class="option-radio"></div> No, I don't want to pause my current treatment</div>
+          </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="result-screen" id="resultPass">
+          <div class="result-icon">✓</div>
+          <div class="result-h">Thank you — you may be a candidate.</div>
+          <p class="result-p">Based on your answers, you may be a fit for the KIg10 CIDP study. A study coordinator will reach out within 1–2 business days to walk through a few more health-history questions and, if everything checks out, schedule your in-person screening visit.</p>
+          <div class="result-contact">
+            <strong>Have questions before then?</strong>
+            Call (800) 555-1234<br>
+            Email: studyteam@kig10study.example<br><br>
+            <em style="color:var(--gray);font-size:12px">Reference: NCT06752356</em>
+          </div>
+        </div>
+
+        <div class="result-screen" id="resultFail">
+          <div class="result-icon no">○</div>
+          <div class="result-h">Thank you for considering this study.</div>
+          <p class="result-p">Based on what you've shared, this particular study isn't likely to be a match. We'll keep your information on file in case future CIDP studies become a better fit, and a coordinator may reach out to share other options.</p>
+          <div class="result-contact">
+            <strong>Other CIDP resources:</strong>
+            The GBS|CIDP Foundation International maintains a list of current trials and patient support resources at gbs-cidp.org. You can also speak with your neurologist about other CIDP studies near you.
+          </div>
+        </div>
+
+        <div class="progress-bar" style="margin-top:24px"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-text" id="progressText" style="margin-top:8px">Basic information</div>
+
+        <div class="nav-buttons" id="navButtons">
+          <button type="button" class="btn-back" id="btnBack" style="visibility:hidden">← Back</button>
+          <button type="button" class="btn-next" id="btnNext" disabled>Continue →</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section" id="journey">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-h">What happens <span>step by step</span></h2>
+      <p class="section-lead">Total participation is approximately 8–10 months. Most infusions take 3–5 hours; assessments are typically 1–2 hours.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-step">
+        <div class="timeline-num">1</div>
+        <div class="timeline-meta"><div class="timeline-time">Today · 3 minutes</div><h4>Online eligibility check</h4></div>
+        <div class="timeline-body">Answer 5 short questions on this page. If you may be eligible, a study coordinator reaches out within 1–2 business days for a no-obligation phone call to confirm additional details.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-num">2</div>
+        <div class="timeline-meta"><div class="timeline-time">Weeks 1–4 · 1–2 visits</div><h4>Medical screening</h4></div>
+        <div class="timeline-body">Visit your assigned study site for a thorough health review: blood work, neurological exam, INCAT disability scoring, and verification of medical history. All study-related costs are covered.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-num">3</div>
+        <div class="timeline-meta"><div class="timeline-time">Up to 12 weeks</div><h4>Wash-out phase</h4></div>
+        <div class="timeline-body">Your current CIDP treatment is paused while you're monitored closely. If symptoms worsen (≥1 point on the INCAT score), the wash-out ends early and you transition into active study treatment.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-num">4</div>
+        <div class="timeline-meta"><div class="timeline-time">21 weeks</div><h4>Active treatment</h4></div>
+        <div class="timeline-body">KIg10 infusions every 3 weeks at your assigned study site. Disability and symptom assessments at each visit. Both study groups receive active treatment.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-num">5</div>
+        <div class="timeline-meta"><div class="timeline-time">Final visits</div><h4>Safety follow-up & close-out</h4></div>
+        <div class="timeline-body">Final assessments at the clinic and a phone check-in 30 days after your last dose. You then transition back to standard care with your regular neurologist.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-banner">
+    <h2>Three minutes now. A real shot at <span style="color:#FBBF24">new options for your CIDP.</span></h2>
+    <p>No commitment. No medical records needed. Just five short questions to see if this study could be a fit.</p>
+    <a href="#screener" class="btn-orange">Check your eligibility →</a>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-h">Frequently asked <span>questions</span></h2>
+      <p class="section-lead">The questions people ask us most, answered in plain language.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">What is this CIDP study testing?<span class="faq-q-icon">+</span></button>
+        <div class="faq-a">This Phase 3 study is comparing two different doses of KIg10 — an investigational 10% intravenous immunoglobulin (IVIG) product — as a maintenance therapy for adults with CIDP. The goal is to determine the most effective maintenance dose. Both groups receive active treatment; there is no placebo.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will I be on a placebo?<span class="faq-q-icon">+</span></button>
+        <div class="faq-a">No. This study does not use a placebo. Participants are randomly assigned to receive either 0.5 g/kg or 1.0 g/kg of KIg10 — both are clinically meaningful doses of active IVIG. If your symptoms worsen, a rescue dose of 2.0 g/kg is provided.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Why does my current treatment need to be paused?<span class="faq-q-icon">+</span></button>
+        <div class="faq-a">The wash-out phase gives the study team a clean baseline to measure how KIg10 affects your CIDP. You're monitored closely throughout. If your INCAT disability score worsens by ≥1 point, the wash-out ends early and you transition into active study treatment immediately.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I need insurance to participate?<span class="faq-q-icon">+</span></button>
+        <div class="faq-a">No. All study-related care, study drug, and study-required tests are provided at no cost. Travel reimbursement is also available. Your regular healthcare is separate and continues to use your normal coverage.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long is the study?<span class="faq-q-icon">+</span></button>
+        <div class="faq-a">Total participation is approximately 8–10 months, including up to 12 weeks of wash-out, 21 weeks of active treatment with infusions every 3 weeks, and a final safety follow-up.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Where are the study sites?<span class="faq-q-icon">+</span></button>
+        <div class="faq-a">Currently in the U.S., this study is enrolling at USF Health Morsani Center for Advanced Healthcare in Tampa, Florida, and the Advanced Neurology Epilepsy and Sleep Center (ANESC Research) in El Paso, Texas. Travel reimbursement is available.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is participation voluntary?<span class="faq-q-icon">+</span></button>
+        <div class="faq-a">Yes. Joining the study is entirely voluntary. You may withdraw at any time without any penalty or loss of benefits to which you are otherwise entitled. Your regular medical care is not affected by your decision to join, stay, or leave the study.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-row">
+        <div class="footer-brand-mark">K</div>
+        <div class="footer-brand-name">KIg10 CIDP Study</div>
+      </div>
+      <p>A Phase 3 clinical study investigating intravenous human immune globulin 10% (KIg10) as maintenance therapy for adults with chronic inflammatory demyelinating polyneuropathy. Sponsored by Kedrion Biopharma. Conducted under FDA-reviewed IND, ICH-GCP guidelines, and independent IRB oversight. Participation is voluntary.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Quick links</h5>
+      <a href="#study">About the study</a>
+      <a href="#eligibility">Eligibility</a>
+      <a href="#journey">Journey</a>
+      <a href="#sites">Study sites</a>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <a href="#">Privacy policy</a>
+      <a href="#">Terms of use</a>
+      <a href="#">IRB information</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="tel:+18005551234">+1 (800) 555-1234</a>
+      <a href="mailto:studyteam@kig10study.example">studyteam@kig10study.example</a>
+    </div>
+  </div>
+  <div class="footer-base">
+    <div>© 2026 KIg10 CIDP Study · All rights reserved</div>
+    <div>ClinicalTrials.gov: NCT06752356</div>
+  </div>
+</footer>
+
+<script>
+  const totalSteps = 7;
+  const primaryStart = 3;
+  const primaryEnd = 7;
+  let currentStep = 1;
+  const answers = {};
+
+  const fill = document.getElementById('progressFill');
+  const ptext = document.getElementById('progressText');
+  const btnBack = document.getElementById('btnBack');
+  const btnNext = document.getElementById('btnNext');
+  const navButtons = document.getElementById('navButtons');
+  const eyebrowText = document.getElementById('eyebrowText');
+  const tabBasics = document.getElementById('tab-basics');
+  const tabConsent = document.getElementById('tab-consent');
+  const tabEligibility = document.getElementById('tab-eligibility');
+  const tabDone = document.getElementById('tab-done');
+
+  document.querySelectorAll('.options').forEach(group => {
+    group.addEventListener('click', e => {
+      const opt = e.target.closest('.option');
+      if (!opt) return;
+      const isMulti = group.dataset.multi === 'true';
+      const opts = group.querySelectorAll('.option');
+      if (isMulti || opts.length === 1) {
+        opt.classList.toggle('selected');
+      } else {
+        opts.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+      }
+      checkCanProceed();
+    });
+  });
+
+  document.querySelectorAll('.input-field').forEach(input => {
+    input.addEventListener('input', checkCanProceed);
+    input.addEventListener('change', checkCanProceed);
+  });
+
+  function checkCanProceed() {
+    const step = document.querySelector(`.step[data-step="${currentStep}"]`);
+    if (!step) { btnNext.disabled = true; return; }
+    let ok = true;
+    step.querySelectorAll('.options').forEach(g => {
+      if (!g.querySelector('.option.selected')) ok = false;
+    });
+    step.querySelectorAll('.input-field').forEach(i => {
+      if (i.dataset.optional === 'true') return;
+      if (!i.value.trim()) ok = false;
+    });
+    btnNext.disabled = !ok;
+  }
+
+  function captureAnswer() {
+    const step = document.querySelector(`.step[data-step="${currentStep}"]`);
+    if (!step) return { pass: true };
+    let pass = true;
+    step.querySelectorAll('.options').forEach(g => {
+      const q = g.dataset.q;
+      const selected = g.querySelectorAll('.option.selected');
+      const optsCount = g.querySelectorAll('.option').length;
+      if (g.dataset.multi === 'true' || optsCount === 1) {
+        answers[q] = Array.from(selected).map(o => o.dataset.value);
+      } else if (selected.length) {
+        answers[q] = selected[0].dataset.value;
+        if (selected[0].dataset.pass === '0') pass = false;
+      }
+    });
+    step.querySelectorAll('.input-field').forEach(i => { answers[i.dataset.q] = i.value.trim(); });
+    return { pass };
+  }
+
+  function setActiveTab(n) {
+    [tabBasics, tabConsent, tabEligibility, tabDone].forEach(t => t.classList.remove('active'));
+    if (n === 1) tabBasics.classList.add('active');
+    else if (n === 2) tabConsent.classList.add('active');
+    else if (n <= totalSteps) tabEligibility.classList.add('active');
+  }
+
+  function goToStep(n) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    const next = document.querySelector(`.step[data-step="${n}"]`);
+    if (next) next.classList.add('active');
+    currentStep = n;
+
+    fill.style.width = `${(n / totalSteps) * 100}%`;
+
+    if (n === 1) {
+      ptext.textContent = 'Step 1 · Basic information';
+      eyebrowText.textContent = 'BASIC INFORMATION';
+    } else if (n === 2) {
+      ptext.textContent = 'Step 2 · Consent';
+      eyebrowText.textContent = 'CONSENT TO CONTACT';
+    } else {
+      const num = n - primaryStart + 1;
+      const tot = primaryEnd - primaryStart + 1;
+      ptext.textContent = `Eligibility check · ${num} of ${tot}`;
+      eyebrowText.textContent = 'ELIGIBILITY CHECK';
+    }
+
+    setActiveTab(n);
+    btnBack.style.visibility = n === 1 ? 'hidden' : 'visible';
+    btnNext.textContent = n === totalSteps ? 'Submit →' : 'Continue →';
+    checkCanProceed();
+  }
+
+  function showResult(pass) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    navButtons.style.display = 'none';
+    fill.style.width = '100%';
+    [tabBasics, tabConsent, tabEligibility, tabDone].forEach(t => t.classList.remove('active'));
+    tabDone.classList.add('active');
+    eyebrowText.style.display = 'none';
+    if (pass) {
+      ptext.textContent = '✓ Complete';
+      document.getElementById('resultPass').classList.add('active');
+    } else {
+      ptext.textContent = '';
+      document.getElementById('resultFail').classList.add('active');
+    }
+  }
+
+  btnNext.addEventListener('click', () => {
+    const { pass } = captureAnswer();
+    if (currentStep >= primaryStart && currentStep <= primaryEnd && !pass) { showResult(false); return; }
+    if (currentStep === totalSteps) { console.log('Final answers:', answers); showResult(true); return; }
+    goToStep(currentStep + 1);
+  });
+
+  btnBack.addEventListener('click', () => { if (currentStep > 1) goToStep(currentStep - 1); });
+
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => { btn.parentElement.classList.toggle('open'); });
+  });
+
+  goToStep(1);
+</script>
 
 </body>
 </html>
