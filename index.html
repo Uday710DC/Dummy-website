@@ -3,801 +3,1528 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Find Trials — DecenTrialz</title>
+<title>Find Clinical Trials — DecenTrialz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
-    --brand-blue: #1456E0;
-    --brand-blue-dark: #0E3FA8;
-    --ink-900: #0B1220;
+    --ink-900: #0B0F1E;
     --ink-700: #2A3142;
     --ink-500: #5A6478;
-    --ink-300: #9AA3B5;
-    --line: #E8EBF2;
-    --bg: #F6F7FB;
-    --card: #FFFFFF;
+    --ink-400: #8A93A6;
+    --ink-300: #B5BCCB;
+    --line: #E6E4F2;
+    --line-strong: #D5D2E5;
+    --brand: #1456E0;
+    --brand-deep: #0E3FA8;
+    --brand-soft: #EEF3FE;
+    --accent: #FF8B5C;
+    --accent-soft: #FCB656;
     --green: #16A34A;
-    --amber: #D97706;
-    --rose: #E11D48;
-    --shadow-sm: 0 1px 2px rgba(11,18,32,0.04), 0 0 0 1px rgba(11,18,32,0.04);
-    --shadow-md: 0 24px 48px -16px rgba(11,18,32,0.18), 0 0 0 1px rgba(11,18,32,0.06);
+    --card: #FFFFFF;
+    --bg: #FBFAFE;
+    --shadow-sm: 0 1px 2px rgba(11,15,30,0.04), 0 0 0 1px rgba(11,15,30,0.04);
+    --shadow-md: 0 16px 40px -12px rgba(11,15,30,0.15), 0 0 0 1px rgba(11,15,30,0.04);
   }
 
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
     color: var(--ink-900);
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: 'cv11', 'ss01';
+    background: var(--bg);
+    overflow-x: hidden;
   }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  button { font-family: inherit; cursor: pointer; }
 
-  /* Page header */
-  .page {
+  /* ============ NAV ============ */
+  .nav {
+    position: relative;
+    z-index: 10;
     max-width: 1320px;
     margin: 0 auto;
-    padding: 56px 32px 96px;
-  }
-  .page-header {
+    padding: 18px 32px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 36px;
-    gap: 24px;
-    flex-wrap: wrap;
   }
-  .page-title {
-    margin: 0;
-    font-size: 36px;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1.1;
+  .logo {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     color: var(--ink-900);
   }
-  .page-title em {
+  .logo-mark {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--brand) 0%, #5B9EFF 100%);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: white; font-size: 14px; font-weight: 800;
+  }
+  .nav-menu {
+    display: flex; gap: 32px;
+    font-size: 14.5px; font-weight: 500; color: var(--ink-700);
+  }
+  .nav-menu li.active a { color: var(--ink-900); font-weight: 600; }
+  .nav-cta { display: flex; align-items: center; gap: 10px; }
+  .btn-ghost {
+    padding: 10px 18px; border-radius: 999px;
+    font-size: 14px; font-weight: 600;
+    color: var(--ink-900);
+    border: 1px solid rgba(11,15,30,0.12);
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(8px);
+  }
+  .btn-primary {
+    padding: 10px 14px 10px 18px; border-radius: 999px;
+    font-size: 14px; font-weight: 600;
+    color: white; background: var(--ink-900);
+    border: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary .arrow {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--brand);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+
+  /* ============ PAGE HERO ============ */
+  .page-hero {
+    position: relative;
+    background:
+      radial-gradient(ellipse at 85% 0%, rgba(252, 182, 86, 0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 15% 100%, rgba(165, 160, 243, 0.18) 0%, transparent 55%),
+      linear-gradient(180deg, #F0EFFB 0%, #EAF0FB 70%, transparent 100%);
+    padding-bottom: 80px;
+    overflow: hidden;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 32px 0;
+    position: relative;
+    z-index: 2;
+  }
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-500);
+    font-weight: 500;
+    margin-bottom: 36px;
+  }
+  .breadcrumb a { color: var(--brand); }
+  .breadcrumb .sep { color: var(--ink-300); }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(11,15,30,0.06);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-700);
+    margin-bottom: 22px;
+  }
+  .eyebrow .pulse {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 4px rgba(22,163,74,0.18);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+  h1.hero-title {
+    margin: 0 0 18px;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    max-width: 900px;
+  }
+  h1.hero-title em {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
     font-weight: 400;
-    color: var(--brand-blue);
+    color: var(--brand);
   }
-  .page-sub {
-    margin: 8px 0 0;
+  h1.hero-title .underscore-word::before {
+    content: '_';
+    color: var(--accent);
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    margin-right: 0.02em;
+  }
+  .hero-sub {
+    font-size: 17px;
+    line-height: 1.55;
     color: var(--ink-500);
-    font-size: 15px;
+    max-width: 640px;
+    margin: 0 0 36px;
+    font-weight: 400;
   }
-  .filter-bar {
-    display: flex;
-    gap: 8px;
+
+  /* ============ SEARCH ============ */
+  .search-card {
     background: white;
-    padding: 6px;
     border-radius: 999px;
-    box-shadow: var(--shadow-sm);
+    padding: 8px 8px 8px 8px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    max-width: 880px;
+    border: 1px solid rgba(11,15,30,0.04);
   }
-  .chip {
-    padding: 8px 16px;
+  .search-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    padding: 8px 20px;
+    min-width: 0;
+  }
+  .search-field svg {
+    color: var(--ink-400);
+    flex-shrink: 0;
+  }
+  .search-field input {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-900);
+    background: transparent;
+    width: 100%;
+    padding: 0;
+    min-width: 0;
+  }
+  .search-field input::placeholder { color: var(--ink-400); font-weight: 400; }
+  .search-field .label-stack {
+    display: flex; flex-direction: column; gap: 1px;
+    flex: 1; min-width: 0;
+  }
+  .search-field .label-stack small {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .search-divider { width: 1px; height: 36px; background: var(--line); }
+  .search-btn {
+    padding: 0 22px;
+    height: 52px;
     border-radius: 999px;
+    background: var(--brand);
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s ease;
+    flex-shrink: 0;
+  }
+  .search-btn:hover { background: var(--brand-deep); }
+
+  /* Quick filters */
+  .quick-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
     font-size: 13px;
+  }
+  .quick-filters .label {
+    color: var(--ink-500);
+    font-weight: 500;
+    margin-right: 4px;
+  }
+  .quick-filters a {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.8);
+    border: 1px solid rgba(11,15,30,0.06);
     font-weight: 500;
     color: var(--ink-700);
-    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     transition: all 0.15s ease;
+  }
+  .quick-filters a:hover {
+    background: white;
+    border-color: rgba(11,15,30,0.16);
+    color: var(--ink-900);
+  }
+  .quick-filters a .check {
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* ============ BROWSE TABS ============ */
+  .browse-tabs-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(251, 250, 254, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+    margin-top: -40px;
+  }
+  .browse-tabs {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .tab-group {
+    display: flex;
+    gap: 4px;
+    background: white;
+    border-radius: 999px;
+    padding: 5px;
+    box-shadow: var(--shadow-sm);
+  }
+  .tab {
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-500);
     border: none;
     background: transparent;
-    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s ease;
   }
-  .chip.active {
+  .tab .count {
+    background: var(--line);
+    color: var(--ink-700);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .tab:hover { color: var(--ink-900); }
+  .tab.active {
     background: var(--ink-900);
     color: white;
   }
-  .chip:hover:not(.active) {
-    background: var(--bg);
+  .tab.active .count {
+    background: rgba(255,255,255,0.15);
+    color: white;
   }
-
-  /* Card grid */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  @media (max-width: 1100px) {
-    .grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 720px) {
-    .grid { grid-template-columns: 1fr; }
-    .page { padding: 32px 20px 56px; }
-    .page-title { font-size: 28px; }
-  }
-
-  /* Card */
-  .card {
-    background: var(--card);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.35s cubic-bezier(.2,.7,.2,1), box-shadow 0.35s ease;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    position: relative;
-  }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-  }
-
-  /* Hero */
-  .hero {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-    isolation: isolate;
-  }
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0) 50%, rgba(11,18,32,0.12) 100%);
-    z-index: 1;
-    pointer-events: none;
-  }
-  .hero-corner {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    right: 14px;
-    z-index: 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  /* Badges */
-  .badge {
+  .sort-pill {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 6px 10px;
+    padding: 8px 14px;
     border-radius: 999px;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--ink-900);
-    letter-spacing: 0.01em;
-    box-shadow: 0 2px 8px rgba(11,18,32,0.08);
-  }
-  .badge .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 0 3px rgba(22,163,74,0.18);
-    animation: pulse 2s infinite;
-  }
-  .badge.new .dot { background: var(--amber); box-shadow: 0 0 0 3px rgba(217,119,6,0.2); }
-  .badge.popular .dot { background: var(--rose); box-shadow: 0 0 0 3px rgba(225,29,72,0.2); }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-
-  .phase-pill {
-    background: rgba(11,18,32,0.65);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    color: white;
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
-
-  /* Specialty label in hero (bottom) */
-  .specialty-label {
-    position: absolute;
-    bottom: 14px;
-    left: 16px;
-    z-index: 2;
-    color: var(--ink-900);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0.7;
-  }
-
-  /* Body */
-  .body {
-    padding: 20px 22px 18px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  .title {
-    margin: 0 0 14px;
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 1.35;
-    letter-spacing: -0.01em;
-    color: var(--ink-900);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    min-height: 46px;
-  }
-
-  /* Meta rows */
-  .meta {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  .meta-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13.5px;
+    background: white;
+    box-shadow: var(--shadow-sm);
+    font-size: 13px;
+    font-weight: 500;
     color: var(--ink-700);
   }
-  .meta-row svg {
-    flex-shrink: 0;
-    color: var(--ink-300);
-  }
-  .meta-row strong {
-    font-weight: 600;
-    color: var(--ink-900);
-  }
-  .meta-row.compensation {
-    color: #047857;
-  }
-  .meta-row.compensation svg { color: #10B981; }
 
-  /* Progress footer */
-  .progress-block {
-    margin-top: auto;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
+  /* ============ MAIN ============ */
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
   }
-  .progress-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--ink-500);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .progress-label span:last-child {
-    color: var(--ink-900);
-    font-weight: 600;
-    letter-spacing: 0;
-    text-transform: none;
-    font-size: 12px;
-  }
-  .progress-bar {
-    height: 4px;
-    background: var(--line);
-    border-radius: 999px;
-    overflow: hidden;
-    position: relative;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--brand-blue), #4F8AFF);
-    border-radius: 999px;
-    transition: width 0.6s cubic-bezier(.2,.7,.2,1);
-  }
-  .card:hover .progress-fill {
-    background: linear-gradient(90deg, var(--brand-blue-dark), var(--brand-blue));
-  }
+  .view { display: none; }
+  .view.active { display: block; }
 
-  /* CTA */
-  .cta-row {
+  .section-head {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    margin-top: 14px;
+    margin-bottom: 28px;
+    gap: 24px;
+    flex-wrap: wrap;
   }
-  .stats-pair {
-    font-size: 12px;
+  .section-head h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .section-head h2 em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--brand);
+  }
+  .section-head p {
+    margin: 6px 0 0;
     color: var(--ink-500);
+    font-size: 15px;
   }
-  .stats-pair strong {
-    color: var(--ink-900);
-    font-weight: 600;
-  }
-  .cta {
+  .section-head .right {
+    text-align: right;
     font-size: 13px;
-    font-weight: 600;
-    color: var(--brand-blue);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: gap 0.2s ease;
+    color: var(--ink-500);
   }
-  .card:hover .cta {
-    gap: 10px;
-  }
-  .cta svg {
-    transition: transform 0.2s ease;
-  }
-  .card:hover .cta svg {
-    transform: translateX(2px);
+  .section-head .right strong {
+    color: var(--ink-900);
+    font-weight: 700;
+    font-size: 15px;
+    display: block;
   }
 
-  /* Hero — soft gradient base + consistent thin hairline pattern */
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
+  /* ============ THERAPEUTIC AREA CARDS ============ */
+  .area-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
   }
-  /* Universal thin-line pattern overlay used on every hero */
-  .hero-bg::before {
+  .area-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s cubic-bezier(.2,.7,.2,1), box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+  .area-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .area-hero {
+    height: 110px;
+    position: relative;
+    overflow: hidden;
+  }
+  .area-hero::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(45deg, rgba(11,18,32,0.06) 1px, transparent 1px),
-      linear-gradient(-45deg, rgba(11,18,32,0.06) 1px, transparent 1px),
-      radial-gradient(circle at 1px 1px, rgba(11,18,32,0.10) 0.8px, transparent 1px);
-    background-size: 28px 28px, 28px 28px, 28px 28px;
-    background-position: 0 0, 0 0, 14px 14px;
+      linear-gradient(45deg, rgba(11,15,30,0.05) 1px, transparent 1px),
+      linear-gradient(-45deg, rgba(11,15,30,0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
     pointer-events: none;
   }
-  /* Subtle film grain on top of pattern */
-  .hero-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    pointer-events: none;
-    mix-blend-mode: multiply;
+  .area-body {
+    padding: 16px 18px 18px;
   }
-
-  /* Category gradients — light, washed, with category accent from one corner only */
-  .hero-cardio {
-    background:
-      radial-gradient(at 85% 15%, #FECACA 0%, transparent 55%),
-      radial-gradient(at 15% 85%, #FBCFE8 0%, transparent 50%),
-      linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
+  .area-name {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink-900);
   }
-  .hero-ophthal {
-    background:
-      radial-gradient(at 85% 15%, #BAE6FD 0%, transparent 55%),
-      radial-gradient(at 15% 85%, #A7F3D0 0%, transparent 50%),
-      linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
+  .area-meta {
+    font-size: 12.5px;
+    color: var(--ink-500);
+    font-weight: 500;
   }
-  .hero-gastro {
-    background:
-      radial-gradient(at 85% 15%, #FED7AA 0%, transparent 55%),
-      radial-gradient(at 15% 85%, #FEF3C7 0%, transparent 50%),
-      linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
+  .area-meta strong {
+    color: var(--ink-900);
+    font-weight: 700;
   }
-  .hero-neuro {
-    background:
-      radial-gradient(at 85% 15%, #DDD6FE 0%, transparent 55%),
-      radial-gradient(at 15% 85%, #E9D5FF 0%, transparent 50%),
-      linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
-  }
-  .hero-endo {
-    background:
-      radial-gradient(at 85% 15%, #BFDBFE 0%, transparent 55%),
-      radial-gradient(at 15% 85%, #C7D2FE 0%, transparent 50%),
-      linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
-  }
-  .hero-derm {
-    background:
-      radial-gradient(at 85% 15%, #FBCFE8 0%, transparent 55%),
-      radial-gradient(at 15% 85%, #FECDD3 0%, transparent 50%),
-      linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
-  }
-
-  /* Section break visual */
-  .section-meta {
+  .area-foot {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    font-size: 13px;
+    justify-content: space-between;
+    font-size: 12.5px;
     color: var(--ink-500);
+    font-weight: 500;
   }
-  .section-meta-divider {
-    height: 1px;
+  .area-foot .explore {
+    color: var(--brand);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s ease;
+  }
+  .area-card:hover .area-foot .explore { gap: 8px; }
+
+  /* Therapeutic area gradients */
+  .h-cardio { background: radial-gradient(at 85% 15%, #FECACA 0%, transparent 60%), radial-gradient(at 15% 85%, #FBCFE8 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-onco { background: radial-gradient(at 85% 15%, #DDD6FE 0%, transparent 60%), radial-gradient(at 15% 85%, #C7D2FE 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-neuro { background: radial-gradient(at 85% 15%, #DDD6FE 0%, transparent 60%), radial-gradient(at 15% 85%, #E9D5FF 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-endo { background: radial-gradient(at 85% 15%, #BFDBFE 0%, transparent 60%), radial-gradient(at 15% 85%, #C7D2FE 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-derm { background: radial-gradient(at 85% 15%, #FBCFE8 0%, transparent 60%), radial-gradient(at 15% 85%, #FECDD3 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-gastro { background: radial-gradient(at 85% 15%, #FED7AA 0%, transparent 60%), radial-gradient(at 15% 85%, #FEF3C7 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-pulm { background: radial-gradient(at 85% 15%, #BAE6FD 0%, transparent 60%), radial-gradient(at 15% 85%, #A7F3D0 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-psych { background: radial-gradient(at 85% 15%, #E9D5FF 0%, transparent 60%), radial-gradient(at 15% 85%, #DBEAFE 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-ophth { background: radial-gradient(at 85% 15%, #A7F3D0 0%, transparent 60%), radial-gradient(at 15% 85%, #BAE6FD 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-heme { background: radial-gradient(at 85% 15%, #FECDD3 0%, transparent 60%), radial-gradient(at 15% 85%, #FCA5A5 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-infect { background: radial-gradient(at 85% 15%, #D9F99D 0%, transparent 60%), radial-gradient(at 15% 85%, #FEF3C7 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-rheum { background: radial-gradient(at 85% 15%, #FED7AA 0%, transparent 60%), radial-gradient(at 15% 85%, #FBCFE8 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-nephro { background: radial-gradient(at 85% 15%, #A7F3D0 0%, transparent 60%), radial-gradient(at 15% 85%, #BFDBFE 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-women { background: radial-gradient(at 85% 15%, #FBCFE8 0%, transparent 60%), radial-gradient(at 15% 85%, #E9D5FF 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-rare { background: radial-gradient(at 85% 15%, #DDD6FE 0%, transparent 60%), radial-gradient(at 15% 85%, #FBCFE8 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+  .h-immune { background: radial-gradient(at 85% 15%, #A7F3D0 0%, transparent 60%), radial-gradient(at 15% 85%, #D9F99D 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
+
+  /* ============ A-Z CONDITION VIEW ============ */
+  .az-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .az-search {
     flex: 1;
-    background: var(--line);
+    min-width: 280px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 10px 16px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
   }
-  .section-meta-count {
+  .az-search input {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 14.5px;
+    color: var(--ink-900);
+    background: transparent;
+    flex: 1;
+  }
+  .az-search input::placeholder { color: var(--ink-400); }
+  .az-search svg { color: var(--ink-400); }
+
+  .az-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    background: white;
+    padding: 6px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+  .az-pill {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink-500);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+  .az-pill:hover { color: var(--ink-900); background: var(--bg); }
+  .az-pill.active {
+    background: var(--ink-900);
+    color: white;
+  }
+
+  /* Featured conditions row */
+  .featured-band {
+    background: white;
+    border-radius: 18px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 36px;
+  }
+  .featured-band-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-500);
+    margin-bottom: 16px;
+  }
+  .featured-band-head .star { color: var(--accent); font-size: 14px; }
+  .featured-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .featured-condition {
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: var(--bg);
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .featured-condition:hover {
+    background: white;
+    border-color: var(--line-strong);
+    transform: translateY(-2px);
+  }
+  .featured-condition .name {
+    font-size: 14px;
     font-weight: 600;
     color: var(--ink-900);
-    font-variant-numeric: tabular-nums;
+  }
+  .featured-condition .count {
+    font-size: 12px;
+    color: var(--ink-500);
+    font-weight: 600;
+    background: white;
+    padding: 3px 9px;
+    border-radius: 999px;
   }
 
-  /* Sort/view toggle */
-  .meta-toggle {
+  /* Letter sections */
+  .letter-section {
+    margin-bottom: 40px;
+  }
+  .letter-head {
     display: flex;
     align-items: center;
-    gap: 14px;
-    font-size: 13px;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--line);
   }
-  .meta-toggle a {
-    color: var(--ink-700);
-    text-decoration: none;
+  .letter-head .letter {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--ink-900);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .letter-head .count {
+    font-size: 13px;
+    color: var(--ink-500);
     font-weight: 500;
+  }
+  .condition-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .condition-item {
+    padding: 11px 16px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+  }
+  .condition-item:hover {
+    background: white;
+    border-color: var(--line);
+  }
+  .condition-item .c-name {
+    font-size: 14px;
+    color: var(--ink-900);
+    font-weight: 500;
+  }
+  .condition-item .c-count {
+    font-size: 12px;
+    color: var(--ink-500);
+    font-weight: 500;
+  }
+
+  /* ============ LOCATION VIEW ============ */
+  .location-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 40px;
+  }
+  .loc-card {
+    background: white;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s cubic-bezier(.2,.7,.2,1), box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .loc-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .loc-card::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(20,86,224,0.08), transparent 70%);
+  }
+  .loc-card .flag {
+    font-size: 28px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .loc-card h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .loc-card .stats {
+    display: flex;
+    gap: 16px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    position: relative;
+    z-index: 1;
+  }
+  .loc-card .stats .stat strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -0.02em;
+  }
+  .loc-card .stats .stat span {
+    font-size: 11px;
+    color: var(--ink-500);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+  }
+
+  /* Sub-region list */
+  .region-list {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+  .region-list h3 {
+    margin: 0 0 18px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-500);
+  }
+  .region-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .region-item {
+    padding: 10px 14px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.15s ease;
+  }
+  .region-item:hover { background: var(--bg); }
+  .region-item .r-name {
+    font-size: 14px;
+    color: var(--ink-900);
+    font-weight: 500;
+  }
+  .region-item .r-count {
+    font-size: 12px;
+    color: var(--ink-500);
+    font-weight: 500;
+  }
+
+  /* ============ HELP CTA ============ */
+  .help-cta {
+    max-width: 1280px;
+    margin: 0 auto 80px;
+    padding: 0 32px;
+  }
+  .help-inner {
+    background:
+      radial-gradient(ellipse at 85% 0%, rgba(252,182,86,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 15% 100%, rgba(165,160,243,0.25) 0%, transparent 55%),
+      linear-gradient(135deg, #1A1D2E 0%, #0B0F1E 100%);
+    border-radius: 24px;
+    padding: 48px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .help-inner h2 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .help-inner h2 em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-soft);
+  }
+  .help-inner p {
+    margin: 0;
+    color: rgba(255,255,255,0.7);
+    font-size: 15px;
+    max-width: 480px;
+  }
+  .help-actions {
+    display: flex;
+    gap: 12px;
+  }
+  .help-actions .btn-light {
+    padding: 14px 22px;
+    border-radius: 999px;
+    background: white;
+    color: var(--ink-900);
+    font-weight: 600;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+  }
+  .help-actions .btn-outline {
+    padding: 14px 22px;
+    border-radius: 999px;
+    background: transparent;
+    color: white;
+    font-weight: 600;
+    font-size: 14.5px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 980px) {
+    .nav-menu { display: none; }
+    h1.hero-title { font-size: 42px; }
+    .area-grid, .featured-list, .location-grid { grid-template-columns: repeat(2, 1fr); }
+    .condition-grid, .region-grid { grid-template-columns: repeat(2, 1fr); }
+    .search-card { flex-wrap: wrap; border-radius: 20px; padding: 12px; }
+    .search-divider { display: none; }
+    .search-field { width: 100%; padding: 10px 12px; }
+    .search-btn { width: 100%; justify-content: center; }
+    .help-inner { padding: 32px 28px; }
+  }
+  @media (max-width: 640px) {
+    h1.hero-title { font-size: 32px; }
+    .hero-inner, main, .help-cta { padding-left: 20px; padding-right: 20px; }
+    .area-grid, .featured-list, .location-grid, .condition-grid, .region-grid { grid-template-columns: 1fr; }
+    .browse-tabs { flex-direction: column; align-items: stretch; }
+    .tab-group { overflow-x: auto; }
+    .tab { white-space: nowrap; }
   }
 </style>
 </head>
 <body>
 
-<main class="page">
-
-  <header class="page-header">
-    <div>
-      <h1 class="page-title">Trials that <em>fit you</em></h1>
-      <p class="page-sub">Recruiting now — matched to your location and conditions</p>
-    </div>
-    <div class="filter-bar">
-      <button class="chip active">All</button>
-      <button class="chip">Near me</button>
-      <button class="chip">Recruiting</button>
-      <button class="chip">Paid</button>
-      <button class="chip">Phase 2+</button>
-    </div>
-  </header>
-
-  <div class="section-meta">
-    <span><span class="section-meta-count">847</span> trials matched</span>
-    <span class="section-meta-divider"></span>
-    <span class="meta-toggle">
-      <a href="#">Sort: Best match ↓</a>
-    </span>
+<!-- Nav -->
+<nav class="nav">
+  <a href="#" class="logo">
+    <span class="logo-mark">D</span>
+    DecenTrialz
+  </a>
+  <ul class="nav-menu">
+    <li class="active"><a href="#">Find Trials</a></li>
+    <li><a href="#">For Sponsors</a></li>
+    <li><a href="#">For Research Sites</a></li>
+    <li><a href="#">Resources</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <div class="nav-cta">
+    <button class="btn-ghost">Sign in</button>
+    <button class="btn-primary">
+      Become a Volunteer
+      <span class="arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+          <line x1="7" y1="17" x2="17" y2="7"/>
+          <polyline points="7 7 17 7 17 17"/>
+        </svg>
+      </span>
+    </button>
   </div>
+</nav>
 
-  <section class="grid">
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb">
+      <a href="#">Home</a>
+      <span class="sep">/</span>
+      <span>Find Trials</span>
+    </div>
 
-    <!-- CARD 1: ARTEMIS Cardiology -->
-    <article class="card">
-      <div class="hero">
-        <div class="hero-bg hero-cardio"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-corner">
-          <span class="badge"><span class="dot"></span> Recruiting</span>
-          <span class="phase-pill">Phase 3</span>
-        </div>
-        <div class="specialty-label">Cardiology</div>
-      </div>
-      <div class="body">
-        <h3 class="title">ARTEMIS: Ziltivekimab vs Placebo After a Heart Attack</h3>
-        <div class="meta">
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-            <span><strong>970</strong> sites · <strong>6.1 mi</strong> away</span>
-          </div>
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2"/>
-            </svg>
-            <span>Adults <strong>18+</strong> · post-MI</span>
-          </div>
-          <div class="meta-row compensation">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M9 12h6M9 8h6M9 16h6"/>
-            </svg>
-            <span>Travel reimbursement available</span>
-          </div>
-        </div>
-        <div class="progress-block">
-          <div class="progress-label">
-            <span>Trial Progress</span>
-            <span>Phase 3 of 4</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
-          <div class="cta-row">
-            <div class="stats-pair">Acute Myocardial Infarction</div>
-            <div class="cta">View trial
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
+    <span class="eyebrow">
+      <span class="pulse"></span>
+      65,034 active trials · Updated daily
+    </span>
 
-    <!-- CARD 2: T1695 Ophthalmology -->
-    <article class="card">
-      <div class="hero">
-        <div class="hero-bg hero-ophthal"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-corner">
-          <span class="badge new"><span class="dot"></span> New</span>
-          <span class="phase-pill">Phase 2</span>
-        </div>
-        <div class="specialty-label">Ophthalmology</div>
-      </div>
-      <div class="body">
-        <h3 class="title">T1695 Ophthalmic Solution vs Ciclosporin in Pediatric Patients</h3>
-        <div class="meta">
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-            <span><strong>11</strong> sites · <strong>6.1 mi</strong> away</span>
-          </div>
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2"/>
-            </svg>
-            <span>Children <strong>4–17</strong> years</span>
-          </div>
-          <div class="meta-row compensation">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M9 12h6M9 8h6M9 16h6"/>
-            </svg>
-            <span>Compensation provided</span>
-          </div>
-        </div>
-        <div class="progress-block">
-          <div class="progress-label">
-            <span>Trial Progress</span>
-            <span>Phase 2 of 4</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
-          <div class="cta-row">
-            <div class="stats-pair">Vernal Keratoconjunctivitis</div>
-            <div class="cta">View trial
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
+    <h1 class="hero-title">
+      Explore clinical trials<br>
+      <em>made for you</em>.
+    </h1>
+    <p class="hero-sub">
+      Browse 65,034 active trials across 161 health conditions at 8,987 research sites worldwide. Pre-screened by registered nurses. Free for participants, always.
+    </p>
 
-    <!-- CARD 3: SAR441566 Gastroenterology -->
-    <article class="card">
-      <div class="hero">
-        <div class="hero-bg hero-gastro"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-corner">
-          <span class="badge popular"><span class="dot"></span> Popular</span>
-          <span class="phase-pill">Phase 2</span>
-        </div>
-        <div class="specialty-label">Gastroenterology</div>
-      </div>
-      <div class="body">
-        <h3 class="title">SAR441566 Tablets for Moderate-to-Severe Ulcerative Colitis</h3>
-        <div class="meta">
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-            <span><strong>115</strong> sites · <strong>6.1 mi</strong> away</span>
-          </div>
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2"/>
-            </svg>
-            <span>Adults <strong>18–75</strong> years</span>
-          </div>
-          <div class="meta-row compensation">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M9 12h6M9 8h6M9 16h6"/>
-            </svg>
-            <span>Compensation provided</span>
-          </div>
-        </div>
-        <div class="progress-block">
-          <div class="progress-label">
-            <span>Trial Progress</span>
-            <span>Phase 2 of 4</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
-          <div class="cta-row">
-            <div class="stats-pair">Ulcerative Colitis</div>
-            <div class="cta">View trial
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
-          </div>
+    <div class="search-card">
+      <div class="search-field">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        <div class="label-stack">
+          <small>Condition</small>
+          <input type="text" placeholder="e.g. Diabetes, Lupus, NCT04567890" />
         </div>
       </div>
-    </article>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        <div class="label-stack">
+          <small>Location</small>
+          <input type="text" placeholder="City or zip" />
+        </div>
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="12" cy="12" r="4"/>
+          <line x1="12" y1="2" x2="12" y2="6"/>
+        </svg>
+        <div class="label-stack">
+          <small>Radius</small>
+          <input type="text" placeholder="25 miles" />
+        </div>
+      </div>
+      <button class="search-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        Search
+      </button>
+    </div>
 
-    <!-- CARD 4: Neurology -->
-    <article class="card">
-      <div class="hero">
-        <div class="hero-bg hero-neuro"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-corner">
-          <span class="badge"><span class="dot"></span> Recruiting</span>
-          <span class="phase-pill">Phase 3</span>
-        </div>
-        <div class="specialty-label">Neurology</div>
-      </div>
-      <div class="body">
-        <h3 class="title">Donanemab for Early Symptomatic Alzheimer's Disease</h3>
-        <div class="meta">
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-            <span><strong>342</strong> sites · <strong>8.2 mi</strong> away</span>
-          </div>
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2"/>
-            </svg>
-            <span>Adults <strong>60–85</strong> years</span>
-          </div>
-          <div class="meta-row compensation">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M9 12h6M9 8h6M9 16h6"/>
-            </svg>
-            <span>Care partner required</span>
-          </div>
-        </div>
-        <div class="progress-block">
-          <div class="progress-label">
-            <span>Trial Progress</span>
-            <span>Phase 3 of 4</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
-          <div class="cta-row">
-            <div class="stats-pair">Alzheimer's Disease</div>
-            <div class="cta">View trial
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
+    <div class="quick-filters">
+      <span class="label">Quick filters:</span>
+      <a href="#"><span class="check">✓</span> Recruiting now</a>
+      <a href="#">Near me</a>
+      <a href="#">Compensation</a>
+      <a href="#">Phase 2+</a>
+      <a href="#">Healthy volunteers</a>
+      <a href="#">Remote/Decentralized</a>
+    </div>
+  </div>
+</section>
 
-    <!-- CARD 5: Endocrinology -->
-    <article class="card">
-      <div class="hero">
-        <div class="hero-bg hero-endo"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-corner">
-          <span class="badge"><span class="dot"></span> Recruiting</span>
-          <span class="phase-pill">Phase 3</span>
-        </div>
-        <div class="specialty-label">Endocrinology</div>
-      </div>
-      <div class="body">
-        <h3 class="title">Once-Weekly Tirzepatide for Type 2 Diabetes Management</h3>
-        <div class="meta">
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-            <span><strong>208</strong> sites · <strong>4.4 mi</strong> away</span>
-          </div>
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2"/>
-            </svg>
-            <span>Adults <strong>18+</strong> · HbA1c 7.0–10.5</span>
-          </div>
-          <div class="meta-row compensation">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M9 12h6M9 8h6M9 16h6"/>
-            </svg>
-            <span>Compensation provided</span>
-          </div>
-        </div>
-        <div class="progress-block">
-          <div class="progress-label">
-            <span>Trial Progress</span>
-            <span>Phase 3 of 4</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
-          <div class="cta-row">
-            <div class="stats-pair">Type 2 Diabetes</div>
-            <div class="cta">View trial
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
+<!-- Browse Tabs (sticky) -->
+<div class="browse-tabs-wrap">
+  <div class="browse-tabs">
+    <div class="tab-group">
+      <button class="tab active" data-view="therapeutic">
+        Therapeutic Area
+        <span class="count">24</span>
+      </button>
+      <button class="tab" data-view="condition">
+        Medical Condition
+        <span class="count">4,500+</span>
+      </button>
+      <button class="tab" data-view="location">
+        Location
+        <span class="count">120+</span>
+      </button>
+    </div>
+    <div class="sort-pill">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="6" y1="12" x2="18" y2="12"/>
+        <line x1="10" y1="18" x2="14" y2="18"/>
+      </svg>
+      Sort: Most trials
+    </div>
+  </div>
+</div>
 
-    <!-- CARD 6: Dermatology -->
-    <article class="card">
-      <div class="hero">
-        <div class="hero-bg hero-derm"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-corner">
-          <span class="badge new"><span class="dot"></span> New</span>
-          <span class="phase-pill">Phase 2</span>
-        </div>
-        <div class="specialty-label">Dermatology</div>
-      </div>
-      <div class="body">
-        <h3 class="title">Topical Roflumilast Cream for Moderate Plaque Psoriasis</h3>
-        <div class="meta">
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-            <span><strong>62</strong> sites · <strong>5.8 mi</strong> away</span>
-          </div>
-          <div class="meta-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2"/>
-            </svg>
-            <span>Adults <strong>18+</strong> · plaque psoriasis</span>
-          </div>
-          <div class="meta-row compensation">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M9 12h6M9 8h6M9 16h6"/>
-            </svg>
-            <span>Compensation up to $1,200</span>
-          </div>
-        </div>
-        <div class="progress-block">
-          <div class="progress-label">
-            <span>Trial Progress</span>
-            <span>Phase 2 of 4</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
-          <div class="cta-row">
-            <div class="stats-pair">Plaque Psoriasis</div>
-            <div class="cta">View trial
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
+<main>
 
+  <!-- ============ THERAPEUTIC AREA VIEW ============ -->
+  <section id="view-therapeutic" class="view active">
+    <div class="section-head">
+      <div>
+        <h2>Browse by <em>therapeutic area</em></h2>
+        <p>Discover trials across 24 medical specialties</p>
+      </div>
+      <div class="right">
+        <strong>65,034</strong>
+        Total active trials
+      </div>
+    </div>
+
+    <div class="area-grid">
+      <div class="area-card">
+        <div class="area-hero h-cardio"></div>
+        <div class="area-body">
+          <h3 class="area-name">Cardiology</h3>
+          <p class="area-meta"><strong>4,287</strong> trials</p>
+          <div class="area-foot">
+            <span>42 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-onco"></div>
+        <div class="area-body">
+          <h3 class="area-name">Oncology</h3>
+          <p class="area-meta"><strong>12,840</strong> trials</p>
+          <div class="area-foot">
+            <span>180 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-neuro"></div>
+        <div class="area-body">
+          <h3 class="area-name">Neurology</h3>
+          <p class="area-meta"><strong>3,621</strong> trials</p>
+          <div class="area-foot">
+            <span>67 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-endo"></div>
+        <div class="area-body">
+          <h3 class="area-name">Endocrinology</h3>
+          <p class="area-meta"><strong>2,943</strong> trials</p>
+          <div class="area-foot">
+            <span>38 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-derm"></div>
+        <div class="area-body">
+          <h3 class="area-name">Dermatology</h3>
+          <p class="area-meta"><strong>1,856</strong> trials</p>
+          <div class="area-foot">
+            <span>54 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-gastro"></div>
+        <div class="area-body">
+          <h3 class="area-name">Gastroenterology</h3>
+          <p class="area-meta"><strong>2,210</strong> trials</p>
+          <div class="area-foot">
+            <span>49 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-pulm"></div>
+        <div class="area-body">
+          <h3 class="area-name">Pulmonology</h3>
+          <p class="area-meta"><strong>1,932</strong> trials</p>
+          <div class="area-foot">
+            <span>31 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-psych"></div>
+        <div class="area-body">
+          <h3 class="area-name">Psychiatry &amp; Mental Health</h3>
+          <p class="area-meta"><strong>3,108</strong> trials</p>
+          <div class="area-foot">
+            <span>72 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-ophth"></div>
+        <div class="area-body">
+          <h3 class="area-name">Ophthalmology</h3>
+          <p class="area-meta"><strong>1,247</strong> trials</p>
+          <div class="area-foot">
+            <span>28 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-heme"></div>
+        <div class="area-body">
+          <h3 class="area-name">Hematology</h3>
+          <p class="area-meta"><strong>1,683</strong> trials</p>
+          <div class="area-foot">
+            <span>36 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-infect"></div>
+        <div class="area-body">
+          <h3 class="area-name">Infectious Disease</h3>
+          <p class="area-meta"><strong>2,564</strong> trials</p>
+          <div class="area-foot">
+            <span>45 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-rheum"></div>
+        <div class="area-body">
+          <h3 class="area-name">Rheumatology</h3>
+          <p class="area-meta"><strong>1,124</strong> trials</p>
+          <div class="area-foot">
+            <span>22 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-nephro"></div>
+        <div class="area-body">
+          <h3 class="area-name">Nephrology</h3>
+          <p class="area-meta"><strong>892</strong> trials</p>
+          <div class="area-foot">
+            <span>18 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-women"></div>
+        <div class="area-body">
+          <h3 class="area-name">Women's Health</h3>
+          <p class="area-meta"><strong>1,547</strong> trials</p>
+          <div class="area-foot">
+            <span>34 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-rare"></div>
+        <div class="area-body">
+          <h3 class="area-name">Rare Diseases</h3>
+          <p class="area-meta"><strong>3,256</strong> trials</p>
+          <div class="area-foot">
+            <span>410 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-card">
+        <div class="area-hero h-immune"></div>
+        <div class="area-body">
+          <h3 class="area-name">Immunology</h3>
+          <p class="area-meta"><strong>1,789</strong> trials</p>
+          <div class="area-foot">
+            <span>29 conditions</span>
+            <span class="explore">Explore →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MEDICAL CONDITION VIEW ============ -->
+  <section id="view-condition" class="view">
+    <div class="section-head">
+      <div>
+        <h2>Browse by <em>medical condition</em></h2>
+        <p>4,500+ conditions, alphabetically organized</p>
+      </div>
+      <div class="right">
+        <strong>4,521</strong>
+        Indexed conditions
+      </div>
+    </div>
+
+    <div class="az-bar">
+      <div class="az-search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input placeholder="Search conditions — e.g. Crohn's, Psoriasis, Type 2 Diabetes" />
+      </div>
+      <div class="az-pills">
+        <button class="az-pill active">All</button>
+        <button class="az-pill">A</button>
+        <button class="az-pill">B</button>
+        <button class="az-pill">C</button>
+        <button class="az-pill">D</button>
+        <button class="az-pill">E</button>
+        <button class="az-pill">F</button>
+        <button class="az-pill">G</button>
+        <button class="az-pill">H</button>
+        <button class="az-pill">I</button>
+        <button class="az-pill">J</button>
+        <button class="az-pill">K</button>
+        <button class="az-pill">L</button>
+        <button class="az-pill">M</button>
+        <button class="az-pill">N</button>
+        <button class="az-pill">O</button>
+        <button class="az-pill">P</button>
+        <button class="az-pill">Q</button>
+        <button class="az-pill">R</button>
+        <button class="az-pill">S</button>
+        <button class="az-pill">T</button>
+        <button class="az-pill">U</button>
+        <button class="az-pill">V</button>
+        <button class="az-pill">W</button>
+        <button class="az-pill">X</button>
+        <button class="az-pill">Y</button>
+        <button class="az-pill">Z</button>
+      </div>
+    </div>
+
+    <div class="featured-band">
+      <div class="featured-band-head">
+        <span class="star">✦</span>
+        Most Searched This Week
+      </div>
+      <div class="featured-list">
+        <a href="#" class="featured-condition">
+          <span class="name">Type 2 Diabetes</span>
+          <span class="count">1,284</span>
+        </a>
+        <a href="#" class="featured-condition">
+          <span class="name">Breast Cancer</span>
+          <span class="count">2,140</span>
+        </a>
+        <a href="#" class="featured-condition">
+          <span class="name">Alzheimer's Disease</span>
+          <span class="count">342</span>
+        </a>
+        <a href="#" class="featured-condition">
+          <span class="name">Depression</span>
+          <span class="count">486</span>
+        </a>
+        <a href="#" class="featured-condition">
+          <span class="name">Crohn's Disease</span>
+          <span class="count">218</span>
+        </a>
+        <a href="#" class="featured-condition">
+          <span class="name">Psoriasis</span>
+          <span class="count">395</span>
+        </a>
+        <a href="#" class="featured-condition">
+          <span class="name">Multiple Sclerosis</span>
+          <span class="count">412</span>
+        </a>
+        <a href="#" class="featured-condition">
+          <span class="name">Hypertension</span>
+          <span class="count">678</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="letter-section">
+      <div class="letter-head">
+        <span class="letter">A</span>
+        <span class="count">428 conditions</span>
+      </div>
+      <div class="condition-grid">
+        <a href="#" class="condition-item"><span class="c-name">AADC Deficiency</span><span class="c-count">2</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Abdominal Aortic Aneurysm</span><span class="c-count">117</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Abdominal Cancer</span><span class="c-count">1,370</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Abdominal Pain</span><span class="c-count">361</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Achalasia</span><span class="c-count">24</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Acne Vulgaris</span><span class="c-count">186</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Acute Lymphoblastic Leukemia</span><span class="c-count">412</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Acute Myeloid Leukemia</span><span class="c-count">638</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Acute Myocardial Infarction</span><span class="c-count">298</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Addison's Disease</span><span class="c-count">14</span></a>
+        <a href="#" class="condition-item"><span class="c-name">ADHD</span><span class="c-count">227</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Alopecia Areata</span><span class="c-count">94</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Alzheimer's Disease</span><span class="c-count">342</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Amyloidosis</span><span class="c-count">112</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Anemia</span><span class="c-count">456</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Ankylosing Spondylitis</span><span class="c-count">73</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Anorexia Nervosa</span><span class="c-count">38</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Anxiety Disorders</span><span class="c-count">312</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Asthma</span><span class="c-count">521</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Atopic Dermatitis</span><span class="c-count">287</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Atrial Fibrillation</span><span class="c-count">198</span></a>
+      </div>
+    </div>
+
+    <div class="letter-section">
+      <div class="letter-head">
+        <span class="letter">B</span>
+        <span class="count">196 conditions</span>
+      </div>
+      <div class="condition-grid">
+        <a href="#" class="condition-item"><span class="c-name">Back Pain</span><span class="c-count">412</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Bacterial Infection</span><span class="c-count">289</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Barrett's Esophagus</span><span class="c-count">47</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Beta Thalassemia</span><span class="c-count">68</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Bipolar Disorder</span><span class="c-count">198</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Bladder Cancer</span><span class="c-count">347</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Brain Tumor</span><span class="c-count">456</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Breast Cancer</span><span class="c-count">2,140</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Bronchitis</span><span class="c-count">112</span></a>
+      </div>
+    </div>
+
+    <div class="letter-section">
+      <div class="letter-head">
+        <span class="letter">C</span>
+        <span class="count">387 conditions</span>
+      </div>
+      <div class="condition-grid">
+        <a href="#" class="condition-item"><span class="c-name">Cardiomyopathy</span><span class="c-count">156</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Celiac Disease</span><span class="c-count">87</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Cervical Cancer</span><span class="c-count">418</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Chronic Fatigue Syndrome</span><span class="c-count">42</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Chronic Kidney Disease</span><span class="c-count">684</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Chronic Pain</span><span class="c-count">523</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Colorectal Cancer</span><span class="c-count">1,247</span></a>
+        <a href="#" class="condition-item"><span class="c-name">COPD</span><span class="c-count">387</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Coronary Artery Disease</span><span class="c-count">412</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Crohn's Disease</span><span class="c-count">218</span></a>
+        <a href="#" class="condition-item"><span class="c-name">Cystic Fibrosis</span><span class="c-count">142</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOCATION VIEW ============ -->
+  <section id="view-location" class="view">
+    <div class="section-head">
+      <div>
+        <h2>Browse by <em>location</em></h2>
+        <p>Find trials in your country, state, or city — 8,987 sites across 120+ countries</p>
+      </div>
+      <div class="right">
+        <strong>120+</strong>
+        Countries with trials
+      </div>
+    </div>
+
+    <div class="location-grid">
+      <div class="loc-card">
+        <span class="flag">🇺🇸</span>
+        <h3>United States</h3>
+        <p class="area-meta">All 50 states · 3,847 sites</p>
+        <div class="stats">
+          <div class="stat"><strong>28,142</strong><span>Trials</span></div>
+          <div class="stat"><strong>3,847</strong><span>Sites</span></div>
+        </div>
+      </div>
+
+      <div class="loc-card">
+        <span class="flag">🇬🇧</span>
+        <h3>United Kingdom</h3>
+        <p class="area-meta">London · Manchester · 487 sites</p>
+        <div class="stats">
+          <div class="stat"><strong>4,128</strong><span>Trials</span></div>
+          <div class="stat"><strong>487</strong><span>Sites</span></div>
+        </div>
+      </div>
+
+      <div class="loc-card">
+        <span class="flag">🇨🇦</span>
+        <h3>Canada</h3>
+        <p class="area-meta">Toronto · Montreal · 312 sites</p>
+        <div class="stats">
+          <div class="stat"><strong>2,847</strong><span>Trials</span></div>
+          <div class="stat"><strong>312</strong><span>Sites</span></div>
+        </div>
+      </div>
+
+      <div class="loc-card">
+        <span class="flag">🇩🇪</span>
+        <h3>Germany</h3>
+        <p class="area-meta">Berlin · Munich · 418 sites</p>
+        <div class="stats">
+          <div class="stat"><strong>3,621</strong><span>Trials</span></div>
+          <div class="stat"><strong>418</strong><span>Sites</span></div>
+        </div>
+      </div>
+
+      <div class="loc-card">
+        <span class="flag">🇮🇳</span>
+        <h3>India</h3>
+        <p class="area-meta">Hyderabad · Mumbai · 287 sites</p>
+        <div class="stats">
+          <div class="stat"><strong>2,134</strong><span>Trials</span></div>
+          <div class="stat"><strong>287</strong><span>Sites</span></div>
+        </div>
+      </div>
+
+      <div class="loc-card">
+        <span class="flag">🇦🇺</span>
+        <h3>Australia</h3>
+        <p class="area-meta">Sydney · Melbourne · 218 sites</p>
+        <div class="stats">
+          <div class="stat"><strong>1,847</strong><span>Trials</span></div>
+          <div class="stat"><strong>218</strong><span>Sites</span></div>
+        </div>
+      </div>
+
+      <div class="loc-card">
+        <span class="flag">🇫🇷</span>
+        <h3>France</h3>
+        <p class="area-meta">Paris · Lyon · 342 sites</p>
+        <div class="stats">
+          <div class="stat"><strong>2,891</strong><span>Trials</span></div>
+          <div class="stat"><strong>342</strong><span>Sites</span></div>
+        </div>
+      </div>
+
+      <div class="loc-card">
+        <span class="flag">🇯🇵</span>
+        <h3>Japan</h3>
+        <p class="area-meta">Tokyo · Osaka · 287 sites</p>
+        <div class="stats">
+          <div class="stat"><strong>2,247</strong><span>Trials</span></div>
+          <div class="stat"><strong>287</strong><span>Sites</span></div>
+        </div>
+      </div>
+
+      <div class="loc-card">
+        <span class="flag">🇧🇷</span>
+        <h3>Brazil</h3>
+        <p class="area-meta">São Paulo · Rio · 198 sites</p>
+        <div class="stats">
+          <div class="stat"><strong>1,524</strong><span>Trials</span></div>
+          <div class="stat"><strong>198</strong><span>Sites</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="region-list">
+      <h3>Popular US States</h3>
+      <div class="region-grid">
+        <a href="#" class="region-item"><span class="r-name">California</span><span class="r-count">4,287</span></a>
+        <a href="#" class="region-item"><span class="r-name">New York</span><span class="r-count">3,621</span></a>
+        <a href="#" class="region-item"><span class="r-name">Texas</span><span class="r-count">3,012</span></a>
+        <a href="#" class="region-item"><span class="r-name">Florida</span><span class="r-count">2,847</span></a>
+        <a href="#" class="region-item"><span class="r-name">Massachusetts</span><span class="r-count">2,134</span></a>
+        <a href="#" class="region-item"><span class="r-name">Pennsylvania</span><span class="r-count">1,891</span></a>
+        <a href="#" class="region-item"><span class="r-name">Illinois</span><span class="r-count">1,724</span></a>
+        <a href="#" class="region-item"><span class="r-name">Minnesota</span><span class="r-count">1,524</span></a>
+        <a href="#" class="region-item"><span class="r-name">Ohio</span><span class="r-count">1,418</span></a>
+        <a href="#" class="region-item"><span class="r-name">North Carolina</span><span class="r-count">1,287</span></a>
+        <a href="#" class="region-item"><span class="r-name">Georgia</span><span class="r-count">1,142</span></a>
+        <a href="#" class="region-item"><span class="r-name">Washington</span><span class="r-count">1,047</span></a>
+      </div>
+    </div>
   </section>
 
 </main>
+
+<!-- Help CTA -->
+<section class="help-cta">
+  <div class="help-inner">
+    <div>
+      <h2>Need help finding a <em>trial</em>?</h2>
+      <p>Our registered nurses can guide you through the process and pre-screen you for trials that best fit your condition, location, and goals.</p>
+    </div>
+    <div class="help-actions">
+      <button class="btn-light">
+        Talk to a Nurse
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
+      <button class="btn-outline">Browse all trials</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Tab switching
+  const tabs = document.querySelectorAll('.tab');
+  const views = document.querySelectorAll('.view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.view;
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      views.forEach(v => v.classList.remove('active'));
+      document.getElementById('view-' + target).classList.add('active');
+      // scroll to top of main
+      window.scrollTo({ top: document.querySelector('.browse-tabs-wrap').offsetTop - 10, behavior: 'smooth' });
+    });
+  });
+
+  // A-Z pill active state (visual only)
+  document.querySelectorAll('.az-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.az-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+</script>
 
 </body>
 </html>
