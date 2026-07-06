@@ -1,1530 +1,828 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Find Clinical Trials — DecenTrialz</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advait Labs: World-Class Digital Marketing in India for US Business</title>
+<meta name="description" content="Advait Labs delivers world-class digital marketing and engineering from India for US businesses. SEO, Google Ads, web development, and design in India. Premium work, growth pricing, night-shift speed.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink-900: #0B0F1E;
-    --ink-700: #2A3142;
-    --ink-500: #5A6478;
-    --ink-400: #8A93A6;
-    --ink-300: #B5BCCB;
-    --line: #E6E4F2;
-    --line-strong: #D5D2E5;
-    --brand: #1456E0;
-    --brand-deep: #0E3FA8;
-    --brand-soft: #EEF3FE;
-    --accent: #FF8B5C;
-    --accent-soft: #FCB656;
-    --green: #16A34A;
-    --card: #FFFFFF;
-    --bg: #FBFAFE;
-    --shadow-sm: 0 1px 2px rgba(11,15,30,0.04), 0 0 0 1px rgba(11,15,30,0.04);
-    --shadow-md: 0 16px 40px -12px rgba(11,15,30,0.15), 0 0 0 1px rgba(11,15,30,0.04);
+  :root{
+    --ink:#0C1226;
+    --ink-2:#131B33;
+    --ink-3:#1B2444;
+    --ivory:#F4F1E8;
+    --muted:#98A2C0;
+    --saffron:#F4A93B;
+    --saffron-deep:#E4922A;
+    --line:rgba(244,241,232,.12);
+    --line-soft:rgba(244,241,232,.07);
+    --disp:"Bricolage Grotesque",system-ui,sans-serif;
+    --body:"Instrument Sans",system-ui,sans-serif;
+    --mono:"Space Mono",ui-monospace,monospace;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+  body{
+    background:var(--ink);color:var(--ivory);font-family:var(--body);
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--saffron);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--saffron);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- meridian strip ---------- */
+  .meridian{
+    border-bottom:1px solid var(--line-soft);background:#080D1C;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:var(--muted);
+  }
+  .meridian .wrap{display:flex;align-items:center;gap:18px;padding-top:9px;padding-bottom:9px;flex-wrap:wrap}
+  .mz{display:flex;align-items:center;gap:7px;white-space:nowrap}
+  .mz b{color:var(--ivory);font-weight:700}
+  .mline{flex:1;height:1px;min-width:40px;background:linear-gradient(90deg,transparent,var(--line),transparent);position:relative}
+  .live{display:inline-flex;align-items:center;gap:6px;color:var(--saffron)}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--saffron);box-shadow:0 0 0 0 rgba(244,169,59,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(244,169,59,.55)}70%{box-shadow:0 0 0 7px rgba(244,169,59,0)}100%{box-shadow:0 0 0 0 rgba(244,169,59,0)}}
+
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(12,18,38,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:-.01em}
+  .brand .mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--saffron),var(--saffron-deep));display:grid;place-items:center;color:var(--ink);font-size:15px;font-weight:800;box-shadow:0 4px 16px rgba(244,169,59,.3)}
+  .brand small{display:block;font-family:var(--mono);font-weight:400;font-size:9.5px;color:var(--muted);letter-spacing:.12em;margin-top:-3px}
+  nav.main{display:flex;align-items:center;gap:4px}
+  nav.main a{font-size:14.5px;color:var(--muted);padding:8px 13px;border-radius:8px;transition:color .2s,background .2s;font-weight:500}
+  nav.main a:hover{color:var(--ivory);background:var(--line-soft)}
+  nav.main a.active{color:var(--ivory)}
+  nav.main a.active::after{content:"";display:block;height:2px;background:var(--saffron);border-radius:2px;margin-top:5px}
+  /* services dropdown */
+  .navdrop{position:relative}
+  .navdrop>button{font-family:var(--body);font-weight:500;font-size:14.5px;color:var(--muted);background:none;border:none;cursor:pointer;padding:8px 13px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;transition:color .2s,background .2s}
+  .navdrop>button:hover,.navdrop:hover>button,.navdrop.open>button{color:var(--ivory);background:var(--line-soft)}
+  .navdrop>button.active{color:var(--ivory)}
+  .navdrop>button .chev{transition:transform .25s;font-size:10px;opacity:.8}
+  .navdrop:hover>button .chev,.navdrop.open>button .chev{transform:rotate(180deg)}
+  .navdrop-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);
+    min-width:320px;background:rgba(15,21,44,.98);backdrop-filter:blur(16px);border:1px solid var(--line);
+    border-radius:14px;padding:8px;box-shadow:0 24px 60px rgba(0,0,0,.5);opacity:0;visibility:hidden;
+    transition:opacity .22s,transform .22s,visibility .22s;z-index:70}
+  .navdrop:hover .navdrop-menu,.navdrop.open .navdrop-menu,.navdrop:focus-within .navdrop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .navdrop-menu::before{content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%) rotate(45deg);width:12px;height:12px;background:rgba(15,21,44,.98);border-left:1px solid var(--line);border-top:1px solid var(--line)}
+  .navdrop-menu a{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:9px;color:var(--ivory);font-size:14px;transition:background .18s}
+  .navdrop-menu a:hover{background:var(--line-soft)}
+  .navdrop-menu a .dn{font-family:var(--mono);font-size:11px;color:var(--saffron);min-width:20px}
+  .navdrop-menu a .dt{display:flex;flex-direction:column;line-height:1.3}
+  .navdrop-menu a .dt small{color:var(--muted);font-size:11.5px}
+  .navdrop-foot{border-top:1px solid var(--line-soft);margin:6px 4px 2px;padding:10px 8px 4px;display:flex;justify-content:space-between;align-items:center}
+  .navdrop-foot a{padding:0;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--saffron)}
+  .navdrop-foot a:hover{background:none;text-decoration:underline}
+  .btn{font-family:var(--body);font-weight:600;font-size:14.5px;cursor:pointer;border:none;border-radius:10px;padding:11px 20px;transition:transform .15s,box-shadow .2s,background .2s;display:inline-flex;align-items:center;gap:8px}
+  .btn-primary{background:var(--saffron);color:var(--ink);box-shadow:0 6px 20px rgba(244,169,59,.25)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(244,169,59,.38)}
+  .btn-ghost{background:transparent;color:var(--ivory);border:1px solid var(--line)}
+  .btn-ghost:hover{background:var(--line-soft);border-color:var(--muted)}
+  .btn-lg{padding:15px 28px;font-size:16px;border-radius:12px}
+  .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:9px;padding:9px 11px;cursor:pointer}
+  .menu-toggle span{display:block;width:20px;height:2px;background:var(--ivory);margin:4px 0;border-radius:2px}
+
+  /* ---------- generic sections ---------- */
+  main{min-height:60vh}
+  section{padding:96px 0}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--saffron);display:inline-flex;align-items:center;gap:9px;margin-bottom:22px}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--saffron)}
+  h1,h2,h3{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;line-height:1.04}
+  h1{font-size:clamp(38px,6vw,68px)}
+  h2{font-size:clamp(30px,4.4vw,46px)}
+  h3{font-size:22px;letter-spacing:-.01em}
+  .lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:56ch;line-height:1.62}
+  .india{color:var(--saffron)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:80px 0 60px;overflow:hidden}
+  .hero-glow{position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(720px 420px at 78% 8%,rgba(244,169,59,.16),transparent 60%),
+               radial-gradient(560px 460px at 8% 88%,rgba(108,99,255,.10),transparent 62%)}
+  .hero .wrap{position:relative;z-index:1}
+  .hero h1{max-width:16ch}
+  .hero h1 em{font-style:normal;color:var(--saffron)}
+  .hero .lead{margin-top:26px}
+  .hero-cta{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+  .hero-strip{margin-top:56px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--ink-2),rgba(19,27,51,.4));padding:26px 28px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center}
+  .hs-node{display:flex;flex-direction:column;gap:4px}
+  .hs-node .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  .hs-node .time{font-family:var(--disp);font-weight:800;font-size:clamp(24px,3.5vw,34px);color:var(--ivory)}
+  .hs-node.right{align-items:flex-end;text-align:right}
+  .hs-bridge{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:120px}
+  .hs-bridge .rail{width:100%;height:2px;background:linear-gradient(90deg,var(--saffron),transparent 15%,transparent 85%,var(--saffron));position:relative}
+  .hs-bridge .rail::before,.hs-bridge .rail::after{content:"";position:absolute;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:var(--saffron)}
+  .hs-bridge .rail::before{left:0}.hs-bridge .rail::after{right:0}
+  .hs-bridge .cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--saffron);text-align:center}
+  .hs-note{grid-column:1/-1;border-top:1px solid var(--line-soft);padding-top:16px;font-size:14px;color:var(--muted);text-align:center}
+  .hs-note b{color:var(--ivory);font-weight:600}
+
+  /* ---------- trust bar ---------- */
+  .trust{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:40px 0;background:#0A0F1F}
+  .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .stat .n{font-family:var(--disp);font-weight:800;font-size:clamp(28px,3.4vw,40px);color:var(--ivory)}
+  .stat .n span{color:var(--saffron)}
+  .stat .l{font-size:13.5px;color:var(--muted);margin-top:2px}
+
+  /* ---------- services grid ---------- */
+  .head-block{max-width:60ch;margin-bottom:52px}
+  .head-block .lead{margin-top:20px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{border:1px solid var(--line);border-radius:16px;padding:28px;background:linear-gradient(180deg,var(--ink-2),rgba(19,27,51,.35));transition:transform .22s,border-color .22s,box-shadow .22s;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:230px}
+  .card::after{content:"";position:absolute;inset:0;background:radial-gradient(320px 160px at 100% 0,rgba(244,169,59,.10),transparent 60%);opacity:0;transition:opacity .3s}
+  .card:hover{transform:translateY(-5px);border-color:rgba(244,169,59,.4);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+  .card:hover::after{opacity:1}
+  .card .num{font-family:var(--mono);font-size:12px;color:var(--saffron);letter-spacing:.1em}
+  .card h3{margin:16px 0 10px;position:relative;z-index:1}
+  .card p{font-size:14.5px;color:var(--muted);position:relative;z-index:1;flex:1}
+  .card .go{margin-top:18px;font-family:var(--mono);font-size:12.5px;color:var(--ivory);display:inline-flex;align-items:center;gap:8px;letter-spacing:.03em;position:relative;z-index:1}
+  .card .go .arw{transition:transform .2s}
+  .card:hover .go .arw{transform:translateX(5px)}
+
+  /* ---------- why india ---------- */
+  .why{background:#0A0F1F;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  .why-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start}
+  .why-list{display:flex;flex-direction:column;gap:2px}
+  .why-item{border-top:1px solid var(--line);padding:22px 0;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+  .why-item:last-child{border-bottom:1px solid var(--line)}
+  .why-item .k{font-family:var(--mono);font-size:12px;color:var(--saffron);padding-top:5px;letter-spacing:.08em}
+  .why-item h3{font-size:18px;margin-bottom:6px}
+  .why-item p{font-size:14.5px;color:var(--muted)}
+  .why-card{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--ink-2),rgba(19,27,51,.3));padding:32px;position:sticky;top:100px}
+  .why-card .big{font-family:var(--disp);font-weight:800;font-size:56px;color:var(--saffron);line-height:1}
+  .why-card .cap{font-size:14.5px;color:var(--muted);margin-top:12px;line-height:1.55}
+  .why-card .rulebar{margin:26px 0;height:1px;background:var(--line)}
+  .mini-clock{font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;justify-content:space-between}
+  .mini-clock b{color:var(--ivory)}
+
+  /* ---------- process ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+  .step{border:1px solid var(--line);border-radius:14px;padding:24px;background:var(--ink-2)}
+  .step .st{font-family:var(--mono);font-size:12px;color:var(--saffron);letter-spacing:.1em}
+  .step h3{font-size:18px;margin:14px 0 8px}
+  .step p{font-size:14px;color:var(--muted)}
+
+  /* ---------- cta band ---------- */
+  .cta-band{position:relative;overflow:hidden;border-radius:22px;background:linear-gradient(120deg,var(--ink-3),var(--ink-2));border:1px solid var(--line);padding:64px 48px;text-align:center}
+  .cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 50% -20%,rgba(244,169,59,.18),transparent 60%);pointer-events:none}
+  .cta-band h2{position:relative;max-width:20ch;margin:0 auto 18px}
+  .cta-band .lead{position:relative;margin:0 auto 34px;text-align:center}
+  .cta-band .hero-cta{justify-content:center}
+
+  /* ---------- service page ---------- */
+  .svc-hero{padding:72px 0 40px}
+  .svc-hero h1{max-width:18ch}
+  .svc-hero .lead{margin-top:24px}
+  .two{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+  .checklist{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .checklist li{display:grid;grid-template-columns:auto 1fr;gap:14px;font-size:15.5px;color:var(--ivory);align-items:start}
+  .checklist .tick{width:22px;height:22px;border-radius:6px;background:rgba(244,169,59,.14);color:var(--saffron);display:grid;place-items:center;font-size:12px;margin-top:2px;flex-shrink:0}
+  .checklist li span:last-child{color:var(--muted);font-size:14.5px}
+  .panel{border:1px solid var(--line);border-radius:16px;background:var(--ink-2);padding:28px}
+  .panel h3{font-size:17px;margin-bottom:16px}
+  .price-row{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line-soft);font-size:14.5px}
+  .price-row:first-of-type{border-top:none}
+  .price-row .v{font-family:var(--mono);color:var(--saffron)}
+  .faq{display:flex;flex-direction:column;gap:0}
+  .faq details{border-top:1px solid var(--line);padding:20px 0}
+  .faq details:last-child{border-bottom:1px solid var(--line)}
+  .faq summary{font-family:var(--disp);font-weight:600;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--saffron);font-size:22px;font-family:var(--mono)}
+  .faq details[open] summary::after{content:"–"}
+  .faq p{color:var(--muted);font-size:14.5px;margin-top:12px;max-width:70ch}
+
+  /* ---------- about ---------- */
+  .val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .val{border:1px solid var(--line);border-radius:14px;padding:26px;background:var(--ink-2)}
+  .val .k{font-family:var(--mono);color:var(--saffron);font-size:12px;letter-spacing:.1em}
+  .val h3{font-size:18px;margin:12px 0 8px}
+  .val p{font-size:14px;color:var(--muted)}
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px;font-family:var(--mono);letter-spacing:.04em}
+  .field input,.field textarea,.field select{width:100%;background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:13px 15px;color:var(--ivory);font-family:var(--body);font-size:15px;transition:border-color .2s}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--saffron)}
+  .field textarea{resize:vertical;min-height:120px}
+  .form-note{font-size:13px;color:var(--muted);margin-top:10px}
+  .ok{background:rgba(47,184,160,.12);border:1px solid rgba(47,184,160,.4);color:#8fe6d4;border-radius:10px;padding:14px 16px;font-size:14.5px;margin-top:8px}
+  .cinfo{display:flex;flex-direction:column;gap:22px}
+  .cinfo .row{border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--ink-2)}
+  .cinfo .row .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--saffron);text-transform:uppercase}
+  .cinfo .row .v{font-size:16px;margin-top:6px}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line-soft);background:#080D1C;padding:60px 0 30px;margin-top:40px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:44px}
+  .foot-grid h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:16px}
+  .foot-grid a{display:block;font-size:14.5px;color:var(--muted);padding:5px 0;transition:color .2s}
+  .foot-grid a:hover{color:var(--saffron)}
+  .foot-brand p{font-size:14px;color:var(--muted);margin-top:14px;max-width:34ch}
+  .foot-bottom{border-top:1px solid var(--line-soft);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted);font-family:var(--mono)}
+
+  /* ---------- media / images ---------- */
+  .media{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line);
+    background:linear-gradient(135deg,#1d1740,#131B33 55%,#0E1730);isolation:isolate}
+  .media::before{content:"";position:absolute;inset:0;z-index:0;
+    background:radial-gradient(420px 220px at 82% 12%,rgba(244,169,59,.20),transparent 62%),
+               radial-gradient(360px 260px at 10% 92%,rgba(108,99,255,.16),transparent 64%)}
+  .media .motif{position:absolute;inset:0;z-index:0;opacity:.35;
+    background-image:radial-gradient(rgba(244,241,232,.18) 1px,transparent 1px);background-size:22px 22px}
+  .media img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;
+    opacity:0;transition:opacity .9s cubic-bezier(.2,.7,.2,1);filter:saturate(1.06) contrast(1.03)}
+  .media img.loaded{opacity:.94}
+  .media::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(180deg,rgba(12,18,38,0) 42%,rgba(12,18,38,.66))}
+  .media .cap{position:absolute;z-index:3;left:16px;bottom:14px;font-family:var(--mono);
+    font-size:11.5px;letter-spacing:.06em;color:var(--ivory);text-shadow:0 1px 8px rgba(0,0,0,.5)}
+  .media .cap b{color:var(--saffron)}
+
+  .card-media{position:relative;overflow:hidden;height:158px;margin:-28px -28px 22px;
+    background:linear-gradient(135deg,#1d1740,#131B33);border-bottom:1px solid var(--line)}
+  .card-media .motif{position:absolute;inset:0;opacity:.3;
+    background-image:radial-gradient(rgba(244,241,232,.18) 1px,transparent 1px);background-size:20px 20px}
+  .card-media img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;
+    transition:opacity .8s ease;filter:saturate(1.05)}
+  .card-media img.loaded{opacity:.9}
+  .card-media::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(19,27,51,.15),rgba(19,27,51,.75))}
+  .card-media .glow{position:absolute;inset:0;
+    background:radial-gradient(240px 120px at 100% 0,rgba(244,169,59,.22),transparent 60%)}
+
+  .band{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);
+    aspect-ratio:21/8;min-height:220px;background:linear-gradient(135deg,#1d1740,#0E1730)}
+  .band .motif{position:absolute;inset:0;opacity:.3;
+    background-image:radial-gradient(rgba(244,241,232,.16) 1px,transparent 1px);background-size:24px 24px}
+  .band img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;opacity:0;
+    transition:opacity 1s ease;filter:saturate(1.05) contrast(1.02)}
+  .band img.loaded{opacity:.9}
+  .band::after{content:"";position:absolute;inset:0;z-index:2;
+    background:linear-gradient(90deg,rgba(12,18,38,.85),rgba(12,18,38,.25) 55%,rgba(12,18,38,.6)),
+               radial-gradient(500px 300px at 88% 10%,rgba(244,169,59,.14),transparent 60%)}
+  .band .band-txt{position:absolute;z-index:3;inset:0;display:flex;flex-direction:column;
+    justify-content:center;padding:0 clamp(24px,5vw,56px);max-width:60ch}
+  .band .band-txt .eyebrow{margin-bottom:14px}
+  .band .band-txt h3{font-size:clamp(22px,3.2vw,32px);max-width:20ch}
+  .band .band-txt p{color:var(--muted);font-size:15px;margin-top:10px;max-width:46ch}
+  @media(max-width:560px){.band{aspect-ratio:auto;min-height:340px}.card-media{height:140px}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:900px){
+    nav.main,.header-cta{display:none}
+    .menu-toggle{display:block}
+    .grid,.steps,.val-grid,.trust .wrap{grid-template-columns:repeat(2,1fr)}
+    .why-grid,.two,.contact-grid{grid-template-columns:1fr;gap:36px}
+    .why-card{position:static}
+    .hero-strip{grid-template-columns:1fr;gap:18px;text-align:center}
+    .hs-node,.hs-node.right{align-items:center;text-align:center}
+    .hs-bridge{order:2}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:560px){
+    section{padding:64px 0}
+    .grid,.steps,.val-grid,.trust .wrap,.foot-grid{grid-template-columns:1fr}
+    .cta-band{padding:44px 24px}
+    .meridian .wrap{font-size:10.5px;gap:12px}
   }
 
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-    color: var(--ink-900);
-    -webkit-font-smoothing: antialiased;
-    background: var(--bg);
-    overflow-x: hidden;
-  }
-  a { color: inherit; text-decoration: none; }
-  ul { list-style: none; padding: 0; margin: 0; }
-  button { font-family: inherit; cursor: pointer; }
-
-  /* ============ NAV ============ */
-  .nav {
-    position: relative;
-    z-index: 10;
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 18px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .logo {
-    font-weight: 700;
-    font-size: 22px;
-    letter-spacing: -0.02em;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--ink-900);
-  }
-  .logo-mark {
-    width: 28px; height: 28px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, var(--brand) 0%, #5B9EFF 100%);
-    display: inline-flex; align-items: center; justify-content: center;
-    color: white; font-size: 14px; font-weight: 800;
-  }
-  .nav-menu {
-    display: flex; gap: 32px;
-    font-size: 14.5px; font-weight: 500; color: var(--ink-700);
-  }
-  .nav-menu li.active a { color: var(--ink-900); font-weight: 600; }
-  .nav-cta { display: flex; align-items: center; gap: 10px; }
-  .btn-ghost {
-    padding: 10px 18px; border-radius: 999px;
-    font-size: 14px; font-weight: 600;
-    color: var(--ink-900);
-    border: 1px solid rgba(11,15,30,0.12);
-    background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(8px);
-  }
-  .btn-primary {
-    padding: 10px 14px 10px 18px; border-radius: 999px;
-    font-size: 14px; font-weight: 600;
-    color: white; background: var(--ink-900);
-    border: none;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-primary .arrow {
-    width: 26px; height: 26px; border-radius: 50%;
-    background: var(--brand);
-    display: inline-flex; align-items: center; justify-content: center;
-  }
-
-  /* ============ PAGE HERO ============ */
-  .page-hero {
-    position: relative;
-    background:
-      radial-gradient(ellipse at 85% 0%, rgba(252, 182, 86, 0.10) 0%, transparent 50%),
-      radial-gradient(ellipse at 15% 100%, rgba(165, 160, 243, 0.18) 0%, transparent 55%),
-      linear-gradient(180deg, #F0EFFB 0%, #EAF0FB 70%, transparent 100%);
-    padding-bottom: 80px;
-    overflow: hidden;
-  }
-  .hero-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 24px 32px 0;
-    position: relative;
-    z-index: 2;
-  }
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--ink-500);
-    font-weight: 500;
-    margin-bottom: 36px;
-  }
-  .breadcrumb a { color: var(--brand); }
-  .breadcrumb .sep { color: var(--ink-300); }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 7px 14px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.75);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(11,15,30,0.06);
-    font-size: 12.5px;
-    font-weight: 500;
-    color: var(--ink-700);
-    margin-bottom: 22px;
-  }
-  .eyebrow .pulse {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 0 4px rgba(22,163,74,0.18);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
-
-  h1.hero-title {
-    margin: 0 0 18px;
-    font-size: 60px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.04;
-    max-width: 900px;
-  }
-  h1.hero-title em {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--brand);
-  }
-  h1.hero-title .underscore-word::before {
-    content: '_';
-    color: var(--accent);
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    margin-right: 0.02em;
-  }
-  .hero-sub {
-    font-size: 17px;
-    line-height: 1.55;
-    color: var(--ink-500);
-    max-width: 640px;
-    margin: 0 0 36px;
-    font-weight: 400;
-  }
-
-  /* ============ SEARCH ============ */
-  .search-card {
-    background: white;
-    border-radius: 999px;
-    padding: 8px 8px 8px 8px;
-    box-shadow: var(--shadow-md);
-    display: flex;
-    align-items: center;
-    max-width: 880px;
-    border: 1px solid rgba(11,15,30,0.04);
-  }
-  .search-field {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex: 1;
-    padding: 8px 20px;
-    min-width: 0;
-  }
-  .search-field svg {
-    color: var(--ink-400);
-    flex-shrink: 0;
-  }
-  .search-field input {
-    border: none;
-    outline: none;
-    font-family: inherit;
-    font-size: 14.5px;
-    font-weight: 500;
-    color: var(--ink-900);
-    background: transparent;
-    width: 100%;
-    padding: 0;
-    min-width: 0;
-  }
-  .search-field input::placeholder { color: var(--ink-400); font-weight: 400; }
-  .search-field .label-stack {
-    display: flex; flex-direction: column; gap: 1px;
-    flex: 1; min-width: 0;
-  }
-  .search-field .label-stack small {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--ink-500);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .search-divider { width: 1px; height: 36px; background: var(--line); }
-  .search-btn {
-    padding: 0 22px;
-    height: 52px;
-    border-radius: 999px;
-    background: var(--brand);
-    border: none;
-    color: white;
-    font-weight: 600;
-    font-size: 14.5px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.15s ease;
-    flex-shrink: 0;
-  }
-  .search-btn:hover { background: var(--brand-deep); }
-
-  /* Quick filters */
-  .quick-filters {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    margin-top: 18px;
-    font-size: 13px;
-  }
-  .quick-filters .label {
-    color: var(--ink-500);
-    font-weight: 500;
-    margin-right: 4px;
-  }
-  .quick-filters a {
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.8);
-    border: 1px solid rgba(11,15,30,0.06);
-    font-weight: 500;
-    color: var(--ink-700);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.15s ease;
-  }
-  .quick-filters a:hover {
-    background: white;
-    border-color: rgba(11,15,30,0.16);
-    color: var(--ink-900);
-  }
-  .quick-filters a .check {
-    color: var(--green);
-    font-weight: 700;
-  }
-
-  /* ============ BROWSE TABS ============ */
-  .browse-tabs-wrap {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: rgba(251, 250, 254, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--line);
-    margin-top: -40px;
-  }
-  .browse-tabs {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 20px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-  .tab-group {
-    display: flex;
-    gap: 4px;
-    background: white;
-    border-radius: 999px;
-    padding: 5px;
-    box-shadow: var(--shadow-sm);
-  }
-  .tab {
-    padding: 10px 22px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink-500);
-    border: none;
-    background: transparent;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.15s ease;
-  }
-  .tab .count {
-    background: var(--line);
-    color: var(--ink-700);
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 999px;
-    font-weight: 600;
-  }
-  .tab:hover { color: var(--ink-900); }
-  .tab.active {
-    background: var(--ink-900);
-    color: white;
-  }
-  .tab.active .count {
-    background: rgba(255,255,255,0.15);
-    color: white;
-  }
-  .sort-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: white;
-    box-shadow: var(--shadow-sm);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink-700);
-  }
-
-  /* ============ MAIN ============ */
-  main {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 48px 32px 80px;
-  }
-  .view { display: none; }
-  .view.active { display: block; }
-
-  .section-head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 28px;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .section-head h2 {
-    margin: 0;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-  .section-head h2 em {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--brand);
-  }
-  .section-head p {
-    margin: 6px 0 0;
-    color: var(--ink-500);
-    font-size: 15px;
-  }
-  .section-head .right {
-    text-align: right;
-    font-size: 13px;
-    color: var(--ink-500);
-  }
-  .section-head .right strong {
-    color: var(--ink-900);
-    font-weight: 700;
-    font-size: 15px;
-    display: block;
-  }
-
-  /* ============ THERAPEUTIC AREA CARDS ============ */
-  .area-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-  }
-  .area-card {
-    background: white;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.3s cubic-bezier(.2,.7,.2,1), box-shadow 0.3s ease;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-  }
-  .area-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-  }
-  .area-hero {
-    height: 110px;
-    position: relative;
-    overflow: hidden;
-  }
-  .area-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(45deg, rgba(11,15,30,0.05) 1px, transparent 1px),
-      linear-gradient(-45deg, rgba(11,15,30,0.05) 1px, transparent 1px);
-    background-size: 24px 24px;
-    pointer-events: none;
-  }
-  .area-body {
-    padding: 16px 18px 18px;
-  }
-  .area-name {
-    margin: 0 0 4px;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--ink-900);
-  }
-  .area-meta {
-    font-size: 12.5px;
-    color: var(--ink-500);
-    font-weight: 500;
-  }
-  .area-meta strong {
-    color: var(--ink-900);
-    font-weight: 700;
-  }
-  .area-foot {
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid var(--line);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 12.5px;
-    color: var(--ink-500);
-    font-weight: 500;
-  }
-  .area-foot .explore {
-    color: var(--brand);
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    transition: gap 0.2s ease;
-  }
-  .area-card:hover .area-foot .explore { gap: 8px; }
-
-  /* Therapeutic area gradients */
-  .h-cardio { background: radial-gradient(at 85% 15%, #FECACA 0%, transparent 60%), radial-gradient(at 15% 85%, #FBCFE8 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-onco { background: radial-gradient(at 85% 15%, #DDD6FE 0%, transparent 60%), radial-gradient(at 15% 85%, #C7D2FE 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-neuro { background: radial-gradient(at 85% 15%, #DDD6FE 0%, transparent 60%), radial-gradient(at 15% 85%, #E9D5FF 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-endo { background: radial-gradient(at 85% 15%, #BFDBFE 0%, transparent 60%), radial-gradient(at 15% 85%, #C7D2FE 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-derm { background: radial-gradient(at 85% 15%, #FBCFE8 0%, transparent 60%), radial-gradient(at 15% 85%, #FECDD3 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-gastro { background: radial-gradient(at 85% 15%, #FED7AA 0%, transparent 60%), radial-gradient(at 15% 85%, #FEF3C7 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-pulm { background: radial-gradient(at 85% 15%, #BAE6FD 0%, transparent 60%), radial-gradient(at 15% 85%, #A7F3D0 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-psych { background: radial-gradient(at 85% 15%, #E9D5FF 0%, transparent 60%), radial-gradient(at 15% 85%, #DBEAFE 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-ophth { background: radial-gradient(at 85% 15%, #A7F3D0 0%, transparent 60%), radial-gradient(at 15% 85%, #BAE6FD 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-heme { background: radial-gradient(at 85% 15%, #FECDD3 0%, transparent 60%), radial-gradient(at 15% 85%, #FCA5A5 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-infect { background: radial-gradient(at 85% 15%, #D9F99D 0%, transparent 60%), radial-gradient(at 15% 85%, #FEF3C7 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-rheum { background: radial-gradient(at 85% 15%, #FED7AA 0%, transparent 60%), radial-gradient(at 15% 85%, #FBCFE8 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-nephro { background: radial-gradient(at 85% 15%, #A7F3D0 0%, transparent 60%), radial-gradient(at 15% 85%, #BFDBFE 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-women { background: radial-gradient(at 85% 15%, #FBCFE8 0%, transparent 60%), radial-gradient(at 15% 85%, #E9D5FF 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-rare { background: radial-gradient(at 85% 15%, #DDD6FE 0%, transparent 60%), radial-gradient(at 15% 85%, #FBCFE8 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-  .h-immune { background: radial-gradient(at 85% 15%, #A7F3D0 0%, transparent 60%), radial-gradient(at 15% 85%, #D9F99D 0%, transparent 55%), linear-gradient(135deg, #FAFAFA, #F5F5F5); }
-
-  /* ============ A-Z CONDITION VIEW ============ */
-  .az-bar {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 28px;
-    flex-wrap: wrap;
-  }
-  .az-search {
-    flex: 1;
-    min-width: 280px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: white;
-    padding: 10px 16px;
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
-  }
-  .az-search input {
-    border: none;
-    outline: none;
-    font-family: inherit;
-    font-size: 14.5px;
-    color: var(--ink-900);
-    background: transparent;
-    flex: 1;
-  }
-  .az-search input::placeholder { color: var(--ink-400); }
-  .az-search svg { color: var(--ink-400); }
-
-  .az-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    background: white;
-    padding: 6px;
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
-  }
-  .az-pill {
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    border: none;
-    background: transparent;
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--ink-500);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.15s ease;
-  }
-  .az-pill:hover { color: var(--ink-900); background: var(--bg); }
-  .az-pill.active {
-    background: var(--ink-900);
-    color: white;
-  }
-
-  /* Featured conditions row */
-  .featured-band {
-    background: white;
-    border-radius: 18px;
-    padding: 24px 28px;
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 36px;
-  }
-  .featured-band-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--ink-500);
-    margin-bottom: 16px;
-  }
-  .featured-band-head .star { color: var(--accent); font-size: 14px; }
-  .featured-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
-  .featured-condition {
-    padding: 14px 16px;
-    border-radius: 12px;
-    background: var(--bg);
-    border: 1px solid transparent;
-    transition: all 0.15s ease;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .featured-condition:hover {
-    background: white;
-    border-color: var(--line-strong);
-    transform: translateY(-2px);
-  }
-  .featured-condition .name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink-900);
-  }
-  .featured-condition .count {
-    font-size: 12px;
-    color: var(--ink-500);
-    font-weight: 600;
-    background: white;
-    padding: 3px 9px;
-    border-radius: 999px;
-  }
-
-  /* Letter sections */
-  .letter-section {
-    margin-bottom: 40px;
-  }
-  .letter-head {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--line);
-  }
-  .letter-head .letter {
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--ink-900);
-    letter-spacing: -0.04em;
-    line-height: 1;
-  }
-  .letter-head .count {
-    font-size: 13px;
-    color: var(--ink-500);
-    font-weight: 500;
-  }
-  .condition-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-  .condition-item {
-    padding: 11px 16px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.15s ease;
-    border: 1px solid transparent;
-  }
-  .condition-item:hover {
-    background: white;
-    border-color: var(--line);
-  }
-  .condition-item .c-name {
-    font-size: 14px;
-    color: var(--ink-900);
-    font-weight: 500;
-  }
-  .condition-item .c-count {
-    font-size: 12px;
-    color: var(--ink-500);
-    font-weight: 500;
-  }
-
-  /* ============ LOCATION VIEW ============ */
-  .location-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-bottom: 40px;
-  }
-  .loc-card {
-    background: white;
-    border-radius: 18px;
-    padding: 24px;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.3s cubic-bezier(.2,.7,.2,1), box-shadow 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .loc-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-  }
-  .loc-card::after {
-    content: '';
-    position: absolute;
-    top: -40px;
-    right: -40px;
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(20,86,224,0.08), transparent 70%);
-  }
-  .loc-card .flag {
-    font-size: 28px;
-    margin-bottom: 14px;
-    display: block;
-  }
-  .loc-card h3 {
-    margin: 0 0 6px;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-  .loc-card .stats {
-    display: flex;
-    gap: 16px;
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid var(--line);
-    position: relative;
-    z-index: 1;
-  }
-  .loc-card .stats .stat strong {
-    display: block;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--ink-900);
-    letter-spacing: -0.02em;
-  }
-  .loc-card .stats .stat span {
-    font-size: 11px;
-    color: var(--ink-500);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-weight: 600;
-  }
-
-  /* Sub-region list */
-  .region-list {
-    background: white;
-    border-radius: 18px;
-    padding: 28px;
-    box-shadow: var(--shadow-sm);
-  }
-  .region-list h3 {
-    margin: 0 0 18px;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--ink-500);
-  }
-  .region-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-  }
-  .region-item {
-    padding: 10px 14px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background 0.15s ease;
-  }
-  .region-item:hover { background: var(--bg); }
-  .region-item .r-name {
-    font-size: 14px;
-    color: var(--ink-900);
-    font-weight: 500;
-  }
-  .region-item .r-count {
-    font-size: 12px;
-    color: var(--ink-500);
-    font-weight: 500;
-  }
-
-  /* ============ HELP CTA ============ */
-  .help-cta {
-    max-width: 1280px;
-    margin: 0 auto 80px;
-    padding: 0 32px;
-  }
-  .help-inner {
-    background:
-      radial-gradient(ellipse at 85% 0%, rgba(252,182,86,0.18) 0%, transparent 50%),
-      radial-gradient(ellipse at 15% 100%, rgba(165,160,243,0.25) 0%, transparent 55%),
-      linear-gradient(135deg, #1A1D2E 0%, #0B0F1E 100%);
-    border-radius: 24px;
-    padding: 48px 56px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    flex-wrap: wrap;
-    color: white;
-    position: relative;
-    overflow: hidden;
-  }
-  .help-inner h2 {
-    margin: 0 0 8px;
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-  .help-inner h2 em {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent-soft);
-  }
-  .help-inner p {
-    margin: 0;
-    color: rgba(255,255,255,0.7);
-    font-size: 15px;
-    max-width: 480px;
-  }
-  .help-actions {
-    display: flex;
-    gap: 12px;
-  }
-  .help-actions .btn-light {
-    padding: 14px 22px;
-    border-radius: 999px;
-    background: white;
-    color: var(--ink-900);
-    font-weight: 600;
-    font-size: 14.5px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: none;
-  }
-  .help-actions .btn-outline {
-    padding: 14px 22px;
-    border-radius: 999px;
-    background: transparent;
-    color: white;
-    font-weight: 600;
-    font-size: 14.5px;
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-
-  /* ============ RESPONSIVE ============ */
-  @media (max-width: 980px) {
-    .nav-menu { display: none; }
-    h1.hero-title { font-size: 42px; }
-    .area-grid, .featured-list, .location-grid { grid-template-columns: repeat(2, 1fr); }
-    .condition-grid, .region-grid { grid-template-columns: repeat(2, 1fr); }
-    .search-card { flex-wrap: wrap; border-radius: 20px; padding: 12px; }
-    .search-divider { display: none; }
-    .search-field { width: 100%; padding: 10px 12px; }
-    .search-btn { width: 100%; justify-content: center; }
-    .help-inner { padding: 32px 28px; }
-  }
-  @media (max-width: 640px) {
-    h1.hero-title { font-size: 32px; }
-    .hero-inner, main, .help-cta { padding-left: 20px; padding-right: 20px; }
-    .area-grid, .featured-list, .location-grid, .condition-grid, .region-grid { grid-template-columns: 1fr; }
-    .browse-tabs { flex-direction: column; align-items: stretch; }
-    .tab-group { overflow-x: auto; }
-    .tab { white-space: nowrap; }
-  }
+  /* mobile menu */
+  .mobile-menu{position:fixed;inset:0;z-index:60;background:var(--ink);padding:80px 24px 24px;display:none;flex-direction:column;gap:8px}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{font-family:var(--disp);font-weight:600;font-size:24px;padding:12px 0;border-bottom:1px solid var(--line-soft)}
+  .mobile-menu .btn{margin-top:20px;justify-content:center}
+  .mobile-menu .close{position:absolute;top:22px;right:24px;background:none;border:1px solid var(--line);border-radius:9px;color:var(--ivory);padding:8px 14px;cursor:pointer;font-family:var(--mono)}
 </style>
 </head>
 <body>
 
-<!-- Nav -->
-<nav class="nav">
-  <a href="#" class="logo">
-    <span class="logo-mark">D</span>
-    DecenTrialz
-  </a>
-  <ul class="nav-menu">
-    <li class="active"><a href="#">Find Trials</a></li>
-    <li><a href="#">For Sponsors</a></li>
-    <li><a href="#">For Research Sites</a></li>
-    <li><a href="#">Resources</a></li>
-    <li><a href="#">About</a></li>
-  </ul>
-  <div class="nav-cta">
-    <button class="btn-ghost">Sign in</button>
-    <button class="btn-primary">
-      Become a Volunteer
-      <span class="arrow">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
-          <line x1="7" y1="17" x2="17" y2="7"/>
-          <polyline points="7 7 17 7 17 17"/>
-        </svg>
-      </span>
-    </button>
-  </div>
-</nav>
-
-<!-- Page Hero -->
-<section class="page-hero">
-  <div class="hero-inner">
-    <div class="breadcrumb">
-      <a href="#">Home</a>
-      <span class="sep">/</span>
-      <span>Find Trials</span>
-    </div>
-
-    <span class="eyebrow">
-      <span class="pulse"></span>
-      65,034 active trials · Updated daily
-    </span>
-
-    <h1 class="hero-title">
-      Explore clinical trials<br>
-      <em>made for you</em>.
-    </h1>
-    <p class="hero-sub">
-      Browse 65,034 active trials across 161 health conditions at 8,987 research sites worldwide. Pre-screened by registered nurses. Free for participants, always.
-    </p>
-
-    <div class="search-card">
-      <div class="search-field">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-        </svg>
-        <div class="label-stack">
-          <small>Condition</small>
-          <input type="text" placeholder="e.g. Diabetes, Lupus, NCT04567890" />
-        </div>
-      </div>
-      <div class="search-divider"></div>
-      <div class="search-field">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/>
-          <circle cx="12" cy="9" r="2.5"/>
-        </svg>
-        <div class="label-stack">
-          <small>Location</small>
-          <input type="text" placeholder="City or zip" />
-        </div>
-      </div>
-      <div class="search-divider"></div>
-      <div class="search-field">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"/>
-          <circle cx="12" cy="12" r="4"/>
-          <line x1="12" y1="2" x2="12" y2="6"/>
-        </svg>
-        <div class="label-stack">
-          <small>Radius</small>
-          <input type="text" placeholder="25 miles" />
-        </div>
-      </div>
-      <button class="search-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
-          <circle cx="11" cy="11" r="7"/>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-        Search
-      </button>
-    </div>
-
-    <div class="quick-filters">
-      <span class="label">Quick filters:</span>
-      <a href="#"><span class="check">✓</span> Recruiting now</a>
-      <a href="#">Near me</a>
-      <a href="#">Compensation</a>
-      <a href="#">Phase 2+</a>
-      <a href="#">Healthy volunteers</a>
-      <a href="#">Remote/Decentralized</a>
-    </div>
-  </div>
-</section>
-
-<!-- Browse Tabs (sticky) -->
-<div class="browse-tabs-wrap">
-  <div class="browse-tabs">
-    <div class="tab-group">
-      <button class="tab active" data-view="therapeutic">
-        Therapeutic Area
-        <span class="count">24</span>
-      </button>
-      <button class="tab" data-view="condition">
-        Medical Condition
-        <span class="count">4,500+</span>
-      </button>
-      <button class="tab" data-view="location">
-        Location
-        <span class="count">120+</span>
-      </button>
-    </div>
-    <div class="sort-pill">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <line x1="6" y1="12" x2="18" y2="12"/>
-        <line x1="10" y1="18" x2="14" y2="18"/>
-      </svg>
-      Sort: Most trials
-    </div>
+<!-- LIVE MERIDIAN STRIP -->
+<div class="meridian">
+  <div class="wrap">
+    <div class="mz"><b>Hyderabad · Bengaluru</b> <span id="ist">··:··</span> IST</div>
+    <div class="mline"></div>
+    <div class="live"><span class="dot"></span> WORKING WHILE YOU SLEEP</div>
+    <div class="mline"></div>
+    <div class="mz"><span id="est">··:··</span> EST <b>New York · Austin</b></div>
   </div>
 </div>
 
-<main>
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <a href="#/" class="brand" aria-label="Advait Labs home">
+      <span class="mark">A</span>
+      <span>Advait Labs<small>DIGITAL MARKETING · ENGINEERING · INDIA</small></span>
+    </a>
+    <nav class="main" id="nav"></nav>
+    <div class="header-cta"><a href="#/contact" class="btn btn-primary">Book a call</a></div>
+    <button class="menu-toggle" id="mtoggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-  <!-- ============ THERAPEUTIC AREA VIEW ============ -->
-  <section id="view-therapeutic" class="view active">
-    <div class="section-head">
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" id="mclose">Close</button>
+  <a href="#/" data-mnav>Home</a>
+  <a href="#/services/digital-marketing" data-mnav>Digital Marketing in India</a>
+  <a href="#/services/seo" data-mnav>SEO in India</a>
+  <a href="#/services/google-ads" data-mnav>Google Ads in India</a>
+  <a href="#/services/web-development" data-mnav>Web Development in India</a>
+  <a href="#/services/web-design" data-mnav>Web Design in India</a>
+  <a href="#/services/ecommerce" data-mnav>Ecommerce in India</a>
+  <a href="#/services/social-media" data-mnav>Social Media in India</a>
+  <a href="#/why-india" data-mnav>Why India</a>
+  <a href="#/about" data-mnav>About</a>
+  <a href="#/contact" class="btn btn-primary" data-mnav>Book a call</a>
+</div>
+
+<main id="app"></main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#/" class="brand"><span class="mark">A</span><span>Advait Labs</span></a>
+        <p>An India-based growth studio delivering world-class digital marketing and software for ambitious US businesses. Premium work, growth pricing, night-shift speed.</p>
+      </div>
       <div>
-        <h2>Browse by <em>therapeutic area</em></h2>
-        <p>Discover trials across 24 medical specialties</p>
+        <h4>Services in India</h4>
+        <a href="#/services/digital-marketing">Digital Marketing</a>
+        <a href="#/services/seo">SEO</a>
+        <a href="#/services/google-ads">Google Ads / PPC</a>
+        <a href="#/services/web-development">Web Development</a>
       </div>
-      <div class="right">
-        <strong>65,034</strong>
-        Total active trials
-      </div>
-    </div>
-
-    <div class="area-grid">
-      <div class="area-card">
-        <div class="area-hero h-cardio"></div>
-        <div class="area-body">
-          <h3 class="area-name">Cardiology</h3>
-          <p class="area-meta"><strong>4,287</strong> trials</p>
-          <div class="area-foot">
-            <span>42 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-onco"></div>
-        <div class="area-body">
-          <h3 class="area-name">Oncology</h3>
-          <p class="area-meta"><strong>12,840</strong> trials</p>
-          <div class="area-foot">
-            <span>180 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-neuro"></div>
-        <div class="area-body">
-          <h3 class="area-name">Neurology</h3>
-          <p class="area-meta"><strong>3,621</strong> trials</p>
-          <div class="area-foot">
-            <span>67 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-endo"></div>
-        <div class="area-body">
-          <h3 class="area-name">Endocrinology</h3>
-          <p class="area-meta"><strong>2,943</strong> trials</p>
-          <div class="area-foot">
-            <span>38 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-derm"></div>
-        <div class="area-body">
-          <h3 class="area-name">Dermatology</h3>
-          <p class="area-meta"><strong>1,856</strong> trials</p>
-          <div class="area-foot">
-            <span>54 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-gastro"></div>
-        <div class="area-body">
-          <h3 class="area-name">Gastroenterology</h3>
-          <p class="area-meta"><strong>2,210</strong> trials</p>
-          <div class="area-foot">
-            <span>49 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-pulm"></div>
-        <div class="area-body">
-          <h3 class="area-name">Pulmonology</h3>
-          <p class="area-meta"><strong>1,932</strong> trials</p>
-          <div class="area-foot">
-            <span>31 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-psych"></div>
-        <div class="area-body">
-          <h3 class="area-name">Psychiatry &amp; Mental Health</h3>
-          <p class="area-meta"><strong>3,108</strong> trials</p>
-          <div class="area-foot">
-            <span>72 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-ophth"></div>
-        <div class="area-body">
-          <h3 class="area-name">Ophthalmology</h3>
-          <p class="area-meta"><strong>1,247</strong> trials</p>
-          <div class="area-foot">
-            <span>28 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-heme"></div>
-        <div class="area-body">
-          <h3 class="area-name">Hematology</h3>
-          <p class="area-meta"><strong>1,683</strong> trials</p>
-          <div class="area-foot">
-            <span>36 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-infect"></div>
-        <div class="area-body">
-          <h3 class="area-name">Infectious Disease</h3>
-          <p class="area-meta"><strong>2,564</strong> trials</p>
-          <div class="area-foot">
-            <span>45 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-rheum"></div>
-        <div class="area-body">
-          <h3 class="area-name">Rheumatology</h3>
-          <p class="area-meta"><strong>1,124</strong> trials</p>
-          <div class="area-foot">
-            <span>22 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-nephro"></div>
-        <div class="area-body">
-          <h3 class="area-name">Nephrology</h3>
-          <p class="area-meta"><strong>892</strong> trials</p>
-          <div class="area-foot">
-            <span>18 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-women"></div>
-        <div class="area-body">
-          <h3 class="area-name">Women's Health</h3>
-          <p class="area-meta"><strong>1,547</strong> trials</p>
-          <div class="area-foot">
-            <span>34 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-rare"></div>
-        <div class="area-body">
-          <h3 class="area-name">Rare Diseases</h3>
-          <p class="area-meta"><strong>3,256</strong> trials</p>
-          <div class="area-foot">
-            <span>410 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="area-card">
-        <div class="area-hero h-immune"></div>
-        <div class="area-body">
-          <h3 class="area-name">Immunology</h3>
-          <p class="area-meta"><strong>1,789</strong> trials</p>
-          <div class="area-foot">
-            <span>29 conditions</span>
-            <span class="explore">Explore →</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ MEDICAL CONDITION VIEW ============ -->
-  <section id="view-condition" class="view">
-    <div class="section-head">
       <div>
-        <h2>Browse by <em>medical condition</em></h2>
-        <p>4,500+ conditions, alphabetically organized</p>
+        <h4>More</h4>
+        <a href="#/services/web-design">Web Design</a>
+        <a href="#/services/ecommerce">Ecommerce</a>
+        <a href="#/services/social-media">Social Media</a>
+        <a href="#/why-india">Why India</a>
       </div>
-      <div class="right">
-        <strong>4,521</strong>
-        Indexed conditions
-      </div>
-    </div>
-
-    <div class="az-bar">
-      <div class="az-search">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="7"/>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-        <input placeholder="Search conditions — e.g. Crohn's, Psoriasis, Type 2 Diabetes" />
-      </div>
-      <div class="az-pills">
-        <button class="az-pill active">All</button>
-        <button class="az-pill">A</button>
-        <button class="az-pill">B</button>
-        <button class="az-pill">C</button>
-        <button class="az-pill">D</button>
-        <button class="az-pill">E</button>
-        <button class="az-pill">F</button>
-        <button class="az-pill">G</button>
-        <button class="az-pill">H</button>
-        <button class="az-pill">I</button>
-        <button class="az-pill">J</button>
-        <button class="az-pill">K</button>
-        <button class="az-pill">L</button>
-        <button class="az-pill">M</button>
-        <button class="az-pill">N</button>
-        <button class="az-pill">O</button>
-        <button class="az-pill">P</button>
-        <button class="az-pill">Q</button>
-        <button class="az-pill">R</button>
-        <button class="az-pill">S</button>
-        <button class="az-pill">T</button>
-        <button class="az-pill">U</button>
-        <button class="az-pill">V</button>
-        <button class="az-pill">W</button>
-        <button class="az-pill">X</button>
-        <button class="az-pill">Y</button>
-        <button class="az-pill">Z</button>
-      </div>
-    </div>
-
-    <div class="featured-band">
-      <div class="featured-band-head">
-        <span class="star">✦</span>
-        Most Searched This Week
-      </div>
-      <div class="featured-list">
-        <a href="#" class="featured-condition">
-          <span class="name">Type 2 Diabetes</span>
-          <span class="count">1,284</span>
-        </a>
-        <a href="#" class="featured-condition">
-          <span class="name">Breast Cancer</span>
-          <span class="count">2,140</span>
-        </a>
-        <a href="#" class="featured-condition">
-          <span class="name">Alzheimer's Disease</span>
-          <span class="count">342</span>
-        </a>
-        <a href="#" class="featured-condition">
-          <span class="name">Depression</span>
-          <span class="count">486</span>
-        </a>
-        <a href="#" class="featured-condition">
-          <span class="name">Crohn's Disease</span>
-          <span class="count">218</span>
-        </a>
-        <a href="#" class="featured-condition">
-          <span class="name">Psoriasis</span>
-          <span class="count">395</span>
-        </a>
-        <a href="#" class="featured-condition">
-          <span class="name">Multiple Sclerosis</span>
-          <span class="count">412</span>
-        </a>
-        <a href="#" class="featured-condition">
-          <span class="name">Hypertension</span>
-          <span class="count">678</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="letter-section">
-      <div class="letter-head">
-        <span class="letter">A</span>
-        <span class="count">428 conditions</span>
-      </div>
-      <div class="condition-grid">
-        <a href="#" class="condition-item"><span class="c-name">AADC Deficiency</span><span class="c-count">2</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Abdominal Aortic Aneurysm</span><span class="c-count">117</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Abdominal Cancer</span><span class="c-count">1,370</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Abdominal Pain</span><span class="c-count">361</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Achalasia</span><span class="c-count">24</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Acne Vulgaris</span><span class="c-count">186</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Acute Lymphoblastic Leukemia</span><span class="c-count">412</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Acute Myeloid Leukemia</span><span class="c-count">638</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Acute Myocardial Infarction</span><span class="c-count">298</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Addison's Disease</span><span class="c-count">14</span></a>
-        <a href="#" class="condition-item"><span class="c-name">ADHD</span><span class="c-count">227</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Alopecia Areata</span><span class="c-count">94</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Alzheimer's Disease</span><span class="c-count">342</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Amyloidosis</span><span class="c-count">112</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Anemia</span><span class="c-count">456</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Ankylosing Spondylitis</span><span class="c-count">73</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Anorexia Nervosa</span><span class="c-count">38</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Anxiety Disorders</span><span class="c-count">312</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Asthma</span><span class="c-count">521</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Atopic Dermatitis</span><span class="c-count">287</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Atrial Fibrillation</span><span class="c-count">198</span></a>
-      </div>
-    </div>
-
-    <div class="letter-section">
-      <div class="letter-head">
-        <span class="letter">B</span>
-        <span class="count">196 conditions</span>
-      </div>
-      <div class="condition-grid">
-        <a href="#" class="condition-item"><span class="c-name">Back Pain</span><span class="c-count">412</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Bacterial Infection</span><span class="c-count">289</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Barrett's Esophagus</span><span class="c-count">47</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Beta Thalassemia</span><span class="c-count">68</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Bipolar Disorder</span><span class="c-count">198</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Bladder Cancer</span><span class="c-count">347</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Brain Tumor</span><span class="c-count">456</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Breast Cancer</span><span class="c-count">2,140</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Bronchitis</span><span class="c-count">112</span></a>
-      </div>
-    </div>
-
-    <div class="letter-section">
-      <div class="letter-head">
-        <span class="letter">C</span>
-        <span class="count">387 conditions</span>
-      </div>
-      <div class="condition-grid">
-        <a href="#" class="condition-item"><span class="c-name">Cardiomyopathy</span><span class="c-count">156</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Celiac Disease</span><span class="c-count">87</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Cervical Cancer</span><span class="c-count">418</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Chronic Fatigue Syndrome</span><span class="c-count">42</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Chronic Kidney Disease</span><span class="c-count">684</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Chronic Pain</span><span class="c-count">523</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Colorectal Cancer</span><span class="c-count">1,247</span></a>
-        <a href="#" class="condition-item"><span class="c-name">COPD</span><span class="c-count">387</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Coronary Artery Disease</span><span class="c-count">412</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Crohn's Disease</span><span class="c-count">218</span></a>
-        <a href="#" class="condition-item"><span class="c-name">Cystic Fibrosis</span><span class="c-count">142</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ LOCATION VIEW ============ -->
-  <section id="view-location" class="view">
-    <div class="section-head">
       <div>
-        <h2>Browse by <em>location</em></h2>
-        <p>Find trials in your country, state, or city — 8,987 sites across 120+ countries</p>
-      </div>
-      <div class="right">
-        <strong>120+</strong>
-        Countries with trials
+        <h4>Company</h4>
+        <a href="#/about">About</a>
+        <a href="#/contact">Contact</a>
+        <a href="#/contact">Book a call</a>
       </div>
     </div>
-
-    <div class="location-grid">
-      <div class="loc-card">
-        <span class="flag">🇺🇸</span>
-        <h3>United States</h3>
-        <p class="area-meta">All 50 states · 3,847 sites</p>
-        <div class="stats">
-          <div class="stat"><strong>28,142</strong><span>Trials</span></div>
-          <div class="stat"><strong>3,847</strong><span>Sites</span></div>
-        </div>
-      </div>
-
-      <div class="loc-card">
-        <span class="flag">🇬🇧</span>
-        <h3>United Kingdom</h3>
-        <p class="area-meta">London · Manchester · 487 sites</p>
-        <div class="stats">
-          <div class="stat"><strong>4,128</strong><span>Trials</span></div>
-          <div class="stat"><strong>487</strong><span>Sites</span></div>
-        </div>
-      </div>
-
-      <div class="loc-card">
-        <span class="flag">🇨🇦</span>
-        <h3>Canada</h3>
-        <p class="area-meta">Toronto · Montreal · 312 sites</p>
-        <div class="stats">
-          <div class="stat"><strong>2,847</strong><span>Trials</span></div>
-          <div class="stat"><strong>312</strong><span>Sites</span></div>
-        </div>
-      </div>
-
-      <div class="loc-card">
-        <span class="flag">🇩🇪</span>
-        <h3>Germany</h3>
-        <p class="area-meta">Berlin · Munich · 418 sites</p>
-        <div class="stats">
-          <div class="stat"><strong>3,621</strong><span>Trials</span></div>
-          <div class="stat"><strong>418</strong><span>Sites</span></div>
-        </div>
-      </div>
-
-      <div class="loc-card">
-        <span class="flag">🇮🇳</span>
-        <h3>India</h3>
-        <p class="area-meta">Hyderabad · Mumbai · 287 sites</p>
-        <div class="stats">
-          <div class="stat"><strong>2,134</strong><span>Trials</span></div>
-          <div class="stat"><strong>287</strong><span>Sites</span></div>
-        </div>
-      </div>
-
-      <div class="loc-card">
-        <span class="flag">🇦🇺</span>
-        <h3>Australia</h3>
-        <p class="area-meta">Sydney · Melbourne · 218 sites</p>
-        <div class="stats">
-          <div class="stat"><strong>1,847</strong><span>Trials</span></div>
-          <div class="stat"><strong>218</strong><span>Sites</span></div>
-        </div>
-      </div>
-
-      <div class="loc-card">
-        <span class="flag">🇫🇷</span>
-        <h3>France</h3>
-        <p class="area-meta">Paris · Lyon · 342 sites</p>
-        <div class="stats">
-          <div class="stat"><strong>2,891</strong><span>Trials</span></div>
-          <div class="stat"><strong>342</strong><span>Sites</span></div>
-        </div>
-      </div>
-
-      <div class="loc-card">
-        <span class="flag">🇯🇵</span>
-        <h3>Japan</h3>
-        <p class="area-meta">Tokyo · Osaka · 287 sites</p>
-        <div class="stats">
-          <div class="stat"><strong>2,247</strong><span>Trials</span></div>
-          <div class="stat"><strong>287</strong><span>Sites</span></div>
-        </div>
-      </div>
-
-      <div class="loc-card">
-        <span class="flag">🇧🇷</span>
-        <h3>Brazil</h3>
-        <p class="area-meta">São Paulo · Rio · 198 sites</p>
-        <div class="stats">
-          <div class="stat"><strong>1,524</strong><span>Trials</span></div>
-          <div class="stat"><strong>198</strong><span>Sites</span></div>
-        </div>
-      </div>
+    <div class="foot-bottom">
+      <span>© 2026 Advait Labs · advaitlabs.com</span>
+      <span>INDIA → USA · IST ↔ EST</span>
     </div>
+  </div>
+</footer>
 
-    <div class="region-list">
-      <h3>Popular US States</h3>
-      <div class="region-grid">
-        <a href="#" class="region-item"><span class="r-name">California</span><span class="r-count">4,287</span></a>
-        <a href="#" class="region-item"><span class="r-name">New York</span><span class="r-count">3,621</span></a>
-        <a href="#" class="region-item"><span class="r-name">Texas</span><span class="r-count">3,012</span></a>
-        <a href="#" class="region-item"><span class="r-name">Florida</span><span class="r-count">2,847</span></a>
-        <a href="#" class="region-item"><span class="r-name">Massachusetts</span><span class="r-count">2,134</span></a>
-        <a href="#" class="region-item"><span class="r-name">Pennsylvania</span><span class="r-count">1,891</span></a>
-        <a href="#" class="region-item"><span class="r-name">Illinois</span><span class="r-count">1,724</span></a>
-        <a href="#" class="region-item"><span class="r-name">Minnesota</span><span class="r-count">1,524</span></a>
-        <a href="#" class="region-item"><span class="r-name">Ohio</span><span class="r-count">1,418</span></a>
-        <a href="#" class="region-item"><span class="r-name">North Carolina</span><span class="r-count">1,287</span></a>
-        <a href="#" class="region-item"><span class="r-name">Georgia</span><span class="r-count">1,142</span></a>
-        <a href="#" class="region-item"><span class="r-name">Washington</span><span class="r-count">1,047</span></a>
-      </div>
+<script>
+/* ---------------- live clocks ---------------- */
+function fmt(tz){
+  try{return new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:true}).format(new Date());}
+  catch(e){return '--:--';}
+}
+function ticks(){
+  const ist=document.getElementById('ist'), est=document.getElementById('est');
+  if(ist) ist.textContent=fmt('Asia/Kolkata');
+  if(est) est.textContent=fmt('America/New_York');
+  document.querySelectorAll('[data-ist]').forEach(el=>el.textContent=fmt('Asia/Kolkata'));
+  document.querySelectorAll('[data-est]').forEach(el=>el.textContent=fmt('America/New_York'));
+}
+setInterval(ticks,1000); ticks();
+
+/* ---------------- data ---------------- */
+const SERVICES=[
+  {slug:'digital-marketing',num:'01',short:'Digital Marketing',title:'Digital Marketing in India for US Businesses',
+   blurb:'World-class, full-funnel digital marketing run by a senior India-based team, covering strategy, media, and creative under one roof.',
+   lead:'Hire a complete, world-class digital marketing team in India that plugs into your US business like an in-house department, at a fraction of a US agency retainer, with none of the drop in quality.',
+   includes:[['Growth strategy & roadmap','Positioning, channel mix, and a 90-day plan built around your revenue goals.'],['Paid media management','Google, Meta, LinkedIn, managed daily by India-based specialists.'],['SEO & content','Rankings and organic pipeline that compound month over month.'],['Analytics & reporting','GA4, conversion tracking, and weekly reporting in your timezone.'],['Creative & landing pages','On-brand assets and premium landing pages that convert paid traffic.']],
+   faqs:[['Why run digital marketing from India?','India has one of the largest pools of certified, English-fluent marketing talent in the world. A digital marketing team in India gives US businesses senior-level execution at a structurally lower cost, and our IST hours mean work ships overnight.'],['How is this different from a cheap freelancer?','We are a studio, not a marketplace. You get a named India-based team, documented process, and accountability, priced for growth, built to a US quality bar.'],['Which US time zones do you cover?','All of them. Calls are scheduled in your local time; async updates land before your workday starts.']]},
+  {slug:'seo',num:'02',short:'SEO',title:'SEO Services in India for US Businesses',
+   blurb:'Technical SEO, content, and links that move US rankings, engineered by an India-based team.',
+   lead:'Rank for the searches that bring you customers. Our SEO services in India combine technical rigor, editorial content, and clean link-building to grow qualified US organic traffic.',
+   includes:[['Technical SEO audit','Crawl, index, Core Web Vitals, and schema fixed at the source.'],['Keyword & intent mapping','US-market keyword research mapped to buyer intent and pages.'],['Content engine','Editorial content written and optimized for US audiences.'],['Authority building','Relevant, editorial links, no spam, no PBNs.'],['Local & national SEO','Whether you serve one city or all fifty states.']],
+   faqs:[['Can an India-based team rank US websites?','Yes. Search is global, and our SEO team in India works US SERPs every day. What matters is technical skill and content quality, both of which we deliver to a US standard.'],['How long until I see results?','Technical and on-page wins land in weeks; competitive rankings compound over 4–8 months. We report leading indicators from month one.'],['Do you write US-native content?','Yes. Content is written and edited for a US audience, in US English, reviewed before it ships.']]},
+  {slug:'google-ads',num:'03',short:'Google Ads / PPC',title:'Google Ads Management in India for US Businesses',
+   blurb:'Profitable paid search and PPC, managed daily by certified India-based specialists.',
+   lead:'Turn ad spend into pipeline. Our Google Ads management in India is run by certified specialists who obsess over CPC, quality score, and cost-per-lead in the US auction.',
+   includes:[['Account build & restructure','Tight, intent-led campaigns and ad groups from scratch or rebuilt.'],['Conversion tracking','Clean GA4 + Google Ads conversion setup you can trust.'],['Landing pages','High-converting pages that lift quality score and lower CPC.'],['Daily optimization','Bids, negatives, and search-term mining every single day.'],['Transparent reporting','You own the account; you see every dollar and every lead.']],
+   faqs:[['Is a $1–3K/mo budget enough for the US?','It works when it is spent on tight, high-intent keywords with strong negatives, exactly how we structure India-managed US accounts. We prioritize cost-per-lead over vanity clicks.'],['Do I keep ownership of my account?','Always. We work inside your Google Ads account; if we ever part ways, everything stays with you.'],['Can you run Meta and LinkedIn too?','Yes. Paid social is available as part of a combined program.']]},
+  {slug:'web-development',num:'04',short:'Web Development',title:'Web Development in India for US Businesses',
+   blurb:'Custom websites and web apps built by senior India-based engineers.',
+   lead:'Hire web developers in India who ship production-grade code. From marketing sites to complex web apps, we build fast, secure, maintainable products for US companies.',
+   includes:[['Custom development','React, Next.js, Node, and modern stacks, built to spec.'],['Web apps & portals','Dashboards, CRMs, and customer portals that scale.'],['CMS & headless','WordPress, Webflow, or headless. You choose, we build.'],['Performance & SEO','Fast Core Web Vitals baked in, not bolted on.'],['Ongoing support','A retained India-based team for iteration and maintenance.']],
+   faqs:[['Why outsource web development to India?','India has a deep bench of senior engineers. Outsourcing web development to India gives US businesses top-tier engineering capacity and overnight turnaround at a sustainable cost.'],['How do you handle communication?','Async-first with scheduled calls in your timezone. You get a project lead, a shared board, and updates before your workday starts.'],['Who owns the code?','You do. Full IP transfer, clean repos, and documentation on handover.']]},
+  {slug:'web-design',num:'05',short:'Web Design',title:'Web Design in India for US Businesses',
+   blurb:'Premium, conversion-focused web and landing-page design from India.',
+   lead:'Design that earns trust and drives action. Our web design team in India crafts premium sites and landing pages tuned to convert US audiences.',
+   includes:[['Brand-led UI design','Distinctive interfaces that look like you, not a template.'],['Landing page design','Pages engineered around a single conversion goal.'],['Design systems','Reusable components your team can build on.'],['Prototyping','Clickable prototypes before a line of code is written.'],['Conversion review','Every screen reviewed against real UX principles.']],
+   faqs:[['Will my site look premium, not cheap?','That is the entire point. We design to a US premium standard. The India cost advantage never shows up in the work.'],['Do you design and build?','Yes. Design and development live under one roof, so nothing gets lost in handoff.'],['Can you redesign an existing site?','Absolutely. Redesigns and conversion-focused refreshes are a core service.']]},
+  {slug:'ecommerce',num:'06',short:'Ecommerce',title:'Ecommerce Development in India for US Businesses',
+   blurb:'Shopify and custom ecommerce builds by an India-based team.',
+   lead:'Sell more online. Our ecommerce development in India covers Shopify, headless, and custom storefronts built to convert and scale for US brands.',
+   includes:[['Shopify & Shopify Plus','Custom themes, apps, and checkout optimization.'],['Headless commerce','Fast, flexible storefronts on modern stacks.'],['Migrations','Move platforms without losing rankings or revenue.'],['CRO','Product, cart, and checkout tuned for conversion.'],['Integrations','ERP, CRM, payments, and fulfillment wired in.']],
+   faqs:[['Do you work with Shopify?','Yes. Shopify and Shopify Plus are core. We also build headless and custom storefronts.'],['Can you improve an existing store?','Yes. We audit, then fix speed, UX, and checkout to lift conversion.'],['How do you handle US payments and tax?','We integrate US-standard payment, tax, and fulfillment tooling as part of the build.']]},
+  {slug:'social-media',num:'07',short:'Social Media',title:'Social Media Marketing in India for US Businesses',
+   blurb:'Content, community, and paid social managed from India.',
+   lead:'Show up consistently and on-brand. Our social media marketing in India handles strategy, content, and paid social so your US brand stays top of mind.',
+   includes:[['Content strategy','Platform-specific plans tied to business goals.'],['Content production','Scroll-stopping creative, shipped on schedule.'],['Community management','Responsive engagement in your timezone.'],['Paid social','Meta, LinkedIn, and TikTok campaigns that perform.'],['Reporting','Clear metrics that connect social to pipeline.']],
+   faqs:[['Can you match a US brand voice?','Yes. We build a voice guide with you and every post is reviewed against it before publishing.'],['Which platforms do you cover?','Instagram, Facebook, LinkedIn, TikTok, YouTube, and X.'],['Do you handle both organic and paid?','Yes. Organic and paid social run together for compounding results.']]}
+];
+function svc(slug){return SERVICES.find(s=>s.slug===slug);}
+
+/* ---------------- imagery ---------------- */
+const Q='?auto=format&fit=crop&w=1100&q=80';
+const MEDIA={
+  'digital-marketing':'https://images.unsplash.com/photo-1460925895917-afdab827c52f'+Q,
+  'seo':'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07'+Q,
+  'google-ads':'https://images.unsplash.com/photo-1551288049-bebda4e38f71'+Q,
+  'web-development':'https://images.unsplash.com/photo-1461749280684-dccba630e2f6'+Q,
+  'web-design':'https://images.unsplash.com/photo-1561070791-2526d30994b5'+Q,
+  'ecommerce':'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d'+Q,
+  'social-media':'https://images.unsplash.com/photo-1611162617474-5b21e879e113'+Q
+};
+const BAND={
+  team:'https://images.unsplash.com/photo-1522071820081-009f0129c71c'+Q,
+  work:'https://images.unsplash.com/photo-1600880292203-757bb62b4baf'+Q,
+  office:'https://images.unsplash.com/photo-1497215728101-856f4ea42174'+Q,
+  strategy:'https://images.unsplash.com/photo-1531482615713-2afd69097998'+Q
+};
+const _img=(u,alt)=>u?`<img src="${u}" alt="${(alt||'').replace(/"/g,'')}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">`:'';
+function cardMedia(slug,alt){return `<div class="card-media"><div class="motif"></div><div class="glow"></div>${_img(MEDIA[slug],alt)}</div>`;}
+function bandFig(url,alt,eyebrow,title,sub){
+  return `<div class="band reveal"><div class="motif"></div>${_img(url,alt)}<div class="band-txt">
+    ${eyebrow?`<span class="eyebrow">${eyebrow}</span>`:''}${title?`<h3>${title}</h3>`:''}${sub?`<p>${sub}</p>`:''}
+  </div></div>`;
+}
+
+/* ---------------- view templates ---------------- */
+const V={};
+
+V.home=()=>`
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">World-class digital marketing, engineered in India</span>
+    <h1 class="reveal">World-class digital marketing &amp; engineering, <em>made in India</em>, built for US growth.</h1>
+    <p class="lead reveal">Advait Labs is an India-based studio that runs world-class digital marketing and builds software for ambitious US companies. You get senior talent, a US quality bar, and work that ships while you sleep.</p>
+    <div class="hero-cta reveal">
+      <a href="#/contact" class="btn btn-primary btn-lg">Book a call →</a>
+      <a href="#/services/digital-marketing" class="btn btn-ghost btn-lg">Explore services</a>
     </div>
-  </section>
-
-</main>
-
-<!-- Help CTA -->
-<section class="help-cta">
-  <div class="help-inner">
-    <div>
-      <h2>Need help finding a <em>trial</em>?</h2>
-      <p>Our registered nurses can guide you through the process and pre-screen you for trials that best fit your condition, location, and goals.</p>
-    </div>
-    <div class="help-actions">
-      <button class="btn-light">
-        Talk to a Nurse
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-          <line x1="5" y1="12" x2="19" y2="12"/>
-          <polyline points="12 5 19 12 12 19"/>
-        </svg>
-      </button>
-      <button class="btn-outline">Browse all trials</button>
+    <div class="hero-strip reveal">
+      <div class="hs-node"><span class="lbl">Your India team · IST</span><span class="time" data-ist>··:··</span></div>
+      <div class="hs-bridge"><div class="cap">↺ OVERNIGHT</div><div class="rail"></div><div class="cap">HANDOFF</div></div>
+      <div class="hs-node right"><span class="lbl">Your desk · EST</span><span class="time" data-est>··:··</span></div>
+      <div class="hs-note">The ~10-hour gap is the advantage. <b>You brief at end of day; it's done by morning.</b></div>
     </div>
   </div>
 </section>
 
-<script>
-  // Tab switching
-  const tabs = document.querySelectorAll('.tab');
-  const views = document.querySelectorAll('.view');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.view;
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      views.forEach(v => v.classList.remove('active'));
-      document.getElementById('view-' + target).classList.add('active');
-      // scroll to top of main
-      window.scrollTo({ top: document.querySelector('.browse-tabs-wrap').offsetTop - 10, behavior: 'smooth' });
-    });
-  });
+<div class="wrap" style="padding-top:8px;padding-bottom:8px">
+  ${bandFig(BAND.team,'Advait Labs team collaborating','Your extended team, in India',
+    'One senior India studio for world-class digital marketing and engineering',
+    'The people on your account have shipped this before. You get the output of a top US agency, without the top US overhead.')}
+</div>
 
-  // A-Z pill active state (visual only)
-  document.querySelectorAll('.az-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      document.querySelectorAll('.az-pill').forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-    });
+<div class="trust"><div class="wrap">
+  <div class="stat reveal"><div class="n"><span>12</span>+ yrs</div><div class="l">World-class digital marketing &amp; engineering</div></div>
+  <div class="stat reveal"><div class="n"><span>50</span>%+</div><div class="l">Typical saving vs. a US agency</div></div>
+  <div class="stat reveal"><div class="n"><span>~10</span>hr</div><div class="l">Overnight head-start, every day</div></div>
+  <div class="stat reveal"><div class="n">US <span>&</span> UAE</div><div class="l">Markets we build campaigns for</div></div>
+</div></div>
+
+<section>
+  <div class="wrap">
+    <div class="head-block reveal">
+      <span class="eyebrow">Services in India</span>
+      <h2>Every growth function you need, <span class="india">delivered from India</span>.</h2>
+      <p class="lead">One studio for world-class digital marketing and software. Pick a service or combine them into a full growth program.</p>
+    </div>
+    <div class="grid">
+      ${SERVICES.map(s=>`
+      <a class="card reveal" href="#/services/${s.slug}">
+        ${cardMedia(s.slug, s.short)}
+        <span class="num">${s.num}</span>
+        <h3>${s.short} in India</h3>
+        <p>${s.blurb}</p>
+        <span class="go">Learn more <span class="arw">→</span></span>
+      </a>`).join('')}
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap why-grid">
+    <div>
+      <span class="eyebrow reveal">Why India</span>
+      <h2 class="reveal" style="margin-bottom:14px">Premium isn't a place. <span class="india">It's a standard.</span></h2>
+      <p class="lead reveal" style="margin-bottom:34px">The reasons US companies build with an India team on purpose, not to cut corners, but to move faster and further.</p>
+      <div class="why-list">
+        <div class="why-item reveal"><span class="k">01</span><div><h3>Deep senior talent</h3><p>India produces a vast pool of certified digital marketers and engineers. You get senior operators, not juniors learning on your account.</p></div></div>
+        <div class="why-item reveal"><span class="k">02</span><div><h3>The timezone advantage</h3><p>IST runs ~10 hours ahead of EST. Brief us at end of day; wake up to progress. Your business effectively runs a night shift.</p></div></div>
+        <div class="why-item reveal"><span class="k">03</span><div><h3>Growth pricing</h3><p>The same quality a US agency delivers, priced so more of your budget goes to actual work and media, not overhead.</p></div></div>
+        <div class="why-item reveal"><span class="k">04</span><div><h3>Fluent, async-first communication</h3><p>US English, clear documentation, and scheduled calls in your timezone. Distance you never feel.</p></div></div>
+      </div>
+    </div>
+    <div class="why-card reveal">
+      <div class="big">₹→$</div>
+      <div class="cap">More budget into the work. We're an India studio priced for US growth, so a bigger share of every dollar reaches media, engineering, and creative.</div>
+      <div class="rulebar"></div>
+      <div class="mini-clock"><span>India · IST</span><b data-ist>··:··</b></div>
+      <div class="mini-clock" style="margin-top:8px"><span>New York · EST</span><b data-est>··:··</b></div>
+      <div class="rulebar"></div>
+      <a href="#/why-india" class="btn btn-ghost" style="width:100%;justify-content:center">The full case for India →</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head-block reveal"><span class="eyebrow">How we work</span><h2>From first call to shipped work, <span class="india">without the friction</span>.</h2></div>
+    <div class="steps">
+      <div class="step reveal"><span class="st">STEP 01</span><h3>Discovery call</h3><p>We learn your goals, market, and numbers on a call in your timezone.</p></div>
+      <div class="step reveal"><span class="st">STEP 02</span><h3>Plan &amp; proposal</h3><p>A clear scope, timeline, and flat pricing, with no surprise retainers.</p></div>
+      <div class="step reveal"><span class="st">STEP 03</span><h3>Your India team</h3><p>A named team spins up and starts shipping within days, not weeks.</p></div>
+      <div class="step reveal"><span class="st">STEP 04</span><h3>Ship &amp; report</h3><p>Weekly progress, transparent metrics, and work that lands overnight.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap"><div class="cta-band reveal">
+    <h2>Build your India growth team today.</h2>
+    <p class="lead">Tell us your goal for the US market. We'll come back with a plan and flat pricing, usually within one business day.</p>
+    <div class="hero-cta"><a href="#/contact" class="btn btn-primary btn-lg">Book a call →</a><a href="#/why-india" class="btn btn-ghost btn-lg">Why India</a></div>
+  </div></div>
+</section>`;
+
+V.service=(slug)=>{
+  const s=svc(slug); if(!s) return V.notfound();
+  const others=SERVICES.filter(x=>x.slug!==slug).slice(0,3);
+  return `
+  <section class="svc-hero">
+    <div class="hero-glow"></div>
+    <div class="wrap">
+      <span class="eyebrow reveal"><a href="#/" style="color:var(--muted)">Home</a> &nbsp;/&nbsp; ${s.short} in India</span>
+      <h1 class="reveal">${s.title}</h1>
+      <p class="lead reveal">${s.lead}</p>
+      <div class="hero-cta reveal"><a href="#/contact" class="btn btn-primary btn-lg">Book a call →</a><a href="#/services/${others[0].slug}" class="btn btn-ghost btn-lg">See ${others[0].short}</a></div>
+    </div>
+  </section>
+
+  <div class="wrap" style="padding:8px 24px 0">
+    <div class="media reveal" style="aspect-ratio:24/7;min-height:180px">
+      <div class="motif"></div>${_img(MEDIA[slug], s.short+' in India')}
+      <span class="cap"><b>${s.short.toUpperCase()}</b> · DELIVERED FROM INDIA, BUILT FOR THE US</span>
+    </div>
+  </div>
+
+  <section style="padding-top:40px">
+    <div class="wrap two">
+      <div class="reveal">
+        <span class="eyebrow">What's included</span>
+        <h2 style="margin-bottom:28px">A complete ${s.short.toLowerCase()} service, run from India.</h2>
+        <ul class="checklist">
+          ${s.includes.map(i=>`<li><span class="tick">✓</span><span><b>${i[0]}.</b> <span>${i[1]}</span></span></li>`).join('')}
+        </ul>
+      </div>
+      <div class="panel reveal">
+        <h3>Engagement snapshot</h3>
+        <div class="price-row"><span>Model</span><span class="v">Monthly retainer or project</span></div>
+        <div class="price-row"><span>Team</span><span class="v">Named, India-based</span></div>
+        <div class="price-row"><span>Timezone</span><span class="v">Your hours + overnight ship</span></div>
+        <div class="price-row"><span>Reporting</span><span class="v">Weekly</span></div>
+        <div class="price-row"><span>Kickoff</span><span class="v">Within days</span></div>
+        <a href="#/contact" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:20px">Get a quote →</a>
+        <p class="form-note" style="text-align:center">Flat pricing. No lock-in. You own everything.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" style="padding:72px 0">
+    <div class="wrap">
+      <div class="head-block reveal"><span class="eyebrow">Common questions</span><h2>${s.short} in India, answered.</h2></div>
+      <div class="faq reveal">
+        ${s.faqs.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head-block reveal"><span class="eyebrow">Keep exploring</span><h2>Other services <span class="india">in India</span>.</h2></div>
+      <div class="grid">
+        ${others.map(o=>`<a class="card reveal" href="#/services/${o.slug}">${cardMedia(o.slug,o.short)}<span class="num">${o.num}</span><h3>${o.short} in India</h3><p>${o.blurb}</p><span class="go">Learn more <span class="arw">→</span></span></a>`).join('')}
+      </div>
+      <div class="cta-band reveal" style="margin-top:52px">
+        <h2>Ready to start your ${s.short.toLowerCase()} in India?</h2>
+        <p class="lead">Book a call and we'll map a plan to your US goals.</p>
+        <div class="hero-cta"><a href="#/contact" class="btn btn-primary btn-lg">Book a call →</a></div>
+      </div>
+    </div>
+  </section>`;
+};
+
+V.why=()=>`
+<section class="svc-hero">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">Why India</span>
+    <h1 class="reveal">The honest case for building your growth team <em class="india" style="font-style:normal">in India</em>.</h1>
+    <p class="lead reveal">US businesses don't choose an India team to go cheap. They choose it to go faster, hire deeper, and stretch every dollar further, without dropping the quality bar. Here's how.</p>
+  </div>
+</section>
+<div class="wrap" style="padding:8px 24px 0">
+  ${bandFig(BAND.work,'India-based team at work','The advantage','Talent, timezone, and value, working together',
+    'Not a shortcut. A deliberate choice US companies make to move faster and reach further.')}
+</div>
+<section style="padding-top:30px"><div class="wrap">
+  <div class="why-list reveal" style="max-width:820px">
+    <div class="why-item"><span class="k">01</span><div><h3>A talent pool the US can't match on scale</h3><p>India graduates one of the largest cohorts of engineers and certified digital marketers in the world. That depth means we staff your work with senior operators, the people who've done it before, rather than juniors learning on your budget.</p></div></div>
+    <div class="why-item"><span class="k">02</span><div><h3>The ~10-hour gap works for you</h3><p>IST sits roughly ten hours ahead of US Eastern. Hand off at 5pm your time and the work is moving while you sleep. For US businesses, an India team is effectively an always-on night shift that compresses timelines.</p></div></div>
+    <div class="why-item"><span class="k">03</span><div><h3>Growth pricing, not cheap pricing</h3><p>Lower cost of delivery in India means more of your budget reaches the actual work: media spend, engineering hours, creative. Same standard a US shop holds; more of your money doing something.</p></div></div>
+    <div class="why-item"><span class="k">04</span><div><h3>English-fluent and async-first</h3><p>Communication is US English, documented, and scheduled around your calendar. The distance is real; feeling it isn't.</p></div></div>
+    <div class="why-item"><span class="k">05</span><div><h3>Accountability of a studio, not a marketplace</h3><p>You get a named team, a documented process, clean handovers, and full ownership of everything we build. This isn't a freelancer gamble.</p></div></div>
+  </div>
+  <div class="cta-band reveal" style="margin-top:56px">
+    <h2>See what an India team can do for your US business.</h2>
+    <p class="lead">One call. A real plan. Flat pricing.</p>
+    <div class="hero-cta"><a href="#/contact" class="btn btn-primary btn-lg">Book a call →</a><a href="#/services/digital-marketing" class="btn btn-ghost btn-lg">Browse services</a></div>
+  </div>
+</div></section>`;
+
+V.about=()=>`
+<section class="svc-hero">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">About</span>
+    <h1 class="reveal">We're the India team US businesses <em class="india" style="font-style:normal">actually want to hire</em>.</h1>
+    <p class="lead reveal">Advait Labs was built on a simple idea: world-class digital marketing and engineering talent isn't confined to one zip code. We assembled a senior India-based studio and pointed it at one job: growing ambitious US companies to a standard they'd expect from any top agency at home.</p>
+    <div class="hero-cta reveal"><a href="#/contact" class="btn btn-primary btn-lg">Work with us →</a></div>
+  </div>
+</section>
+<div class="wrap" style="padding:8px 24px 0">
+  ${bandFig(BAND.office,'Advait Labs studio','Who we are','A senior India studio pointed at US growth',
+    'Assembled to hold a US premium bar on every piece of work that leaves the building.')}
+</div>
+<section style="padding-top:30px"><div class="wrap">
+  <div class="head-block reveal"><span class="eyebrow">What we stand for</span><h2>Principles that keep the work <span class="india">premium</span>.</h2></div>
+  <div class="val-grid">
+    <div class="val reveal"><span class="k">01</span><h3>Quality has no accent</h3><p>Where the work is made never shows up in the work. We hold a US premium bar on everything that leaves the studio.</p></div>
+    <div class="val reveal"><span class="k">02</span><h3>You own everything</h3><p>Accounts, code, assets, data, all yours, always. No lock-in, no hostage situations.</p></div>
+    <div class="val reveal"><span class="k">03</span><h3>Flat, honest pricing</h3><p>Clear scope and a flat price. No percentage-of-spend games, no surprise line items.</p></div>
+    <div class="val reveal"><span class="k">04</span><h3>Senior hands only</h3><p>The people on your account have done it before. We don't learn on your budget.</p></div>
+    <div class="val reveal"><span class="k">05</span><h3>Speed as a feature</h3><p>The timezone gap is our edge. We use it to ship faster than a US-only team can.</p></div>
+    <div class="val reveal"><span class="k">06</span><h3>Report the truth</h3><p>Transparent metrics, even when a number is down. You always know where you stand.</p></div>
+  </div>
+  <div class="cta-band reveal" style="margin-top:56px">
+    <h2>Let's build something worth outsourcing.</h2>
+    <p class="lead">Tell us your goal for the US or UAE market, and we'll bring the plan.</p>
+    <div class="hero-cta"><a href="#/contact" class="btn btn-primary btn-lg">Book a call →</a></div>
+  </div>
+</div></section>`;
+
+V.contact=()=>`
+<section class="svc-hero">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">Contact</span>
+    <h1 class="reveal">Book a call with your <em class="india" style="font-style:normal">India growth team</em>.</h1>
+    <p class="lead reveal">Tell us what you're trying to grow in the US or UAE. We usually reply with a plan and flat pricing within one business day.</p>
+  </div>
+</section>
+<section style="padding-top:20px"><div class="wrap contact-grid">
+  <div class="reveal">
+    <form id="contactForm" novalidate>
+      <div class="field"><label for="name">Your name</label><input id="name" name="name" required placeholder="Jane Doe"></div>
+      <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" required placeholder="jane@company.com"></div>
+      <div class="field"><label for="company">Company &amp; market</label><input id="company" name="company" placeholder="Acme Inc · US"></div>
+      <div class="field"><label for="service">What do you need?</label>
+        <select id="service" name="service">
+          <option>Digital Marketing in India</option><option>SEO in India</option>
+          <option>Google Ads in India</option><option>Web Development in India</option>
+          <option>Web Design in India</option><option>Ecommerce in India</option>
+          <option>Social Media in India</option><option>A full growth program</option>
+        </select></div>
+      <div class="field"><label for="msg">What are you trying to grow?</label><textarea id="msg" name="msg" placeholder="A sentence or two about your goal, timeline, and budget."></textarea></div>
+      <button class="btn btn-primary btn-lg" type="submit" style="width:100%;justify-content:center">Send &amp; book a call →</button>
+      <p class="form-note">Prefer email? Write to <b style="color:var(--saffron)">hello@advaitlabs.com</b>. We respond in your timezone.</p>
+      <div id="formOk"></div>
+    </form>
+  </div>
+  <div class="cinfo reveal">
+    <div class="row"><div class="k">Email</div><div class="v">hello@advaitlabs.com</div></div>
+    <div class="row"><div class="k">Website</div><div class="v">advaitlabs.com</div></div>
+    <div class="row"><div class="k">Based in</div><div class="v">Hyderabad, India · serving the US &amp; UAE</div></div>
+    <div class="row"><div class="k">Right now in India</div><div class="v" data-ist>··:··</div></div>
+    <div class="row"><div class="k">Right now in New York</div><div class="v" data-est>··:··</div></div>
+    <div class="row" style="background:linear-gradient(135deg,rgba(244,169,59,.12),transparent);border-color:rgba(244,169,59,.35)">
+      <div class="k">Our promise</div><div class="v" style="font-size:15px;color:var(--muted)">You brief us today. We start within days. Work ships overnight.</div></div>
+  </div>
+</div></section>`;
+
+V.notfound=()=>`
+<section style="padding:120px 0;text-align:center"><div class="wrap">
+  <span class="eyebrow" style="justify-content:center">404</span>
+  <h1>That page took the night shift off.</h1>
+  <p class="lead" style="margin:20px auto 30px">The page you're after doesn't exist, but your India growth team does.</p>
+  <a href="#/" class="btn btn-primary btn-lg">Back home →</a>
+</div></section>`;
+
+/* ---------------- router ---------------- */
+function render(){
+  const hash=location.hash.replace(/^#/,'')||'/';
+  const parts=hash.split('/').filter(Boolean); // e.g. ['services','seo']
+  let html;
+  if(parts.length===0) html=V.home();
+  else if(parts[0]==='services'&&parts[1]) html=V.service(parts[1]);
+  else if(parts[0]==='why-india') html=V.why();
+  else if(parts[0]==='about') html=V.about();
+  else if(parts[0]==='contact') html=V.contact();
+  else html=V.notfound();
+  const app=document.getElementById('app');
+  app.innerHTML=html;
+  window.scrollTo({top:0,behavior:'instant' in window?'instant':'auto'});
+  buildNav(hash);
+  ticks();
+  wireForm();
+  observeReveal();
+}
+function buildNav(hash){
+  const nav=document.getElementById('nav');
+  const onServices=hash.startsWith('/services');
+  const dropItems=SERVICES.map(s=>
+    `<a href="#/services/${s.slug}"><span class="dn">${s.num}</span><span class="dt">${s.short}<small>${s.blurb.split('.')[0].slice(0,44)}</small></span></a>`
+  ).join('');
+  nav.innerHTML=`
+    <a href="#/" class="${hash==='/'?'active':''}">Home</a>
+    <div class="navdrop" id="navdrop">
+      <button type="button" class="${onServices?'active':''}" aria-haspopup="true" aria-expanded="false">Services <span class="chev">▾</span></button>
+      <div class="navdrop-menu" role="menu">
+        ${dropItems}
+        <div class="navdrop-foot">
+          <a href="#/why-india">Why hire in India →</a>
+          <a href="#/contact">Book a call →</a>
+        </div>
+      </div>
+    </div>
+    <a href="#/why-india" class="${hash.startsWith('/why-india')?'active':''}">Why India</a>
+    <a href="#/about" class="${hash.startsWith('/about')?'active':''}">About</a>`;
+  // click-to-toggle for touch/keyboard; hover handled by CSS
+  const drop=document.getElementById('navdrop');
+  const btn=drop.querySelector('button');
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    const open=drop.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
   });
+  drop.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{drop.classList.remove('open');btn.setAttribute('aria-expanded','false');}));
+  document.addEventListener('click',e=>{if(!drop.contains(e.target)){drop.classList.remove('open');btn.setAttribute('aria-expanded','false');}});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){drop.classList.remove('open');btn.setAttribute('aria-expanded','false');}});
+}
+function wireForm(){
+  const f=document.getElementById('contactForm'); if(!f) return;
+  f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const name=f.name.value.trim(), email=f.email.value.trim();
+    const ok=document.getElementById('formOk');
+    if(!name||!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      ok.innerHTML='<div class="ok" style="background:rgba(228,146,42,.12);border-color:rgba(228,146,42,.4);color:var(--saffron)">Add your name and a valid work email so we can reach you.</div>';
+      return;
+    }
+    /* TODO: connect to your CRM/endpoint (e.g. Formspree, HubSpot, or advaitlabs.com API).
+       Replace the block below with a fetch() POST to your form handler. */
+    ok.innerHTML='<div class="ok">Thanks, '+name.split(' ')[0]+', request received. Your India team will reply within one business day, in your timezone.</div>';
+    f.reset();
+  });
+}
+/* reveal on scroll */
+let io;
+function observeReveal(){
+  if(io) io.disconnect();
+  io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=Math.min(i*45,260)+'ms';io.observe(el);});
+}
+/* mobile menu */
+const mm=document.getElementById('mobileMenu');
+document.getElementById('mtoggle').addEventListener('click',()=>mm.classList.add('open'));
+document.getElementById('mclose').addEventListener('click',()=>mm.classList.remove('open'));
+document.querySelectorAll('[data-mnav]').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+
+window.addEventListener('hashchange',render);
+render();
 </script>
-
 </body>
 </html>
